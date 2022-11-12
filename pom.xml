@@ -61,7 +61,7 @@
                         <id>default-cli</id>
                         <configuration>
                             <mainClass>
-                                ca.bcit.comp2522.termproject.secretwonders/ca.bcit.comp2522.termproject.secretwonders.HelloApplication
+                                ca.bcit.comp2522.termproject.secretwonders/ca.bcit.comp2522.termproject.secretwonders.GameMenu
                             </mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>

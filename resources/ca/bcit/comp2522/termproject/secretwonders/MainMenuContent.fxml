@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+
+<!-- Handles controller-based events -->
+<GridPane fx:controller="ca.bcit.comp2522.termproject.secretwonders.MainMenuContentController"
+          xmlns:fx="http://javafx.com/fxml" alignment="CENTER" hgap="10" vgap="10">
+
+    <padding>
+        <Insets top="25" right="25" bottom="10" left="25"/>
+    </padding>
+
+    <Text text="Secret Wonders"
+          GridPane.columnIndex="0" GridPane.rowIndex="0"
+          GridPane.columnSpan="3">
+    </Text>
+
+
+
+    <!-- Game Buttons -->
+    <HBox spacing="10" alignment="BOTTOM_CENTER"
+          GridPane.rowIndex="1" GridPane.columnIndex="1">
+        <Button minWidth="80" text="Play Game"
+        onAction="#handleNewGameButtonAction">
+        </Button>
+    </HBox>
+
+    <HBox spacing="10" alignment="BOTTOM_CENTER"
+          GridPane.rowIndex="2" GridPane.columnIndex="1">
+        <Button minWidth="80" text="Instructions"
+        onAction="#handleInstructionsButtonAction">
+        </Button>
+    </HBox>
+
+    <HBox spacing="10" alignment="BOTTOM_CENTER"
+          GridPane.rowIndex="3" GridPane.columnIndex="1">
+        <Button minWidth="80" text="Quit Game"
+        onAction="#handleQuitGameButtonAction">
+        </Button>
+    </HBox>
+
+    <!-- Button Pressed Results -->
+    <!-- Start Game Button -->
+    <Text fx:id="newGameButtonAction"
+          GridPane.rowIndex="1" GridPane.columnIndex="2" >
+    </Text>
+
+    <!-- Instructions Button -->
+    <Text fx:id="instructionsButtonAction"
+          GridPane.rowIndex="2" GridPane.columnIndex="2">
+    </Text>
+
+    <!-- Quit Game Button -->
+    <Text fx:id="quitGameButtonAction"
+          GridPane.rowIndex="3" GridPane.columnIndex="2">
+    </Text>
+
+
+</GridPane>
