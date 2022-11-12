@@ -4,60 +4,126 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
+<?import java.net.URL?>
+
+<BorderPane
+        fx:controller="ca.bcit.comp2522.termproject.secretwonders.MainMenuContentController"
+        xmlns:fx="http://javafx.com/fxml"
+        styleClass="root">
+
+    <padding><Insets top="25" right="25" bottom="10" left="25"/></padding>
+
+    <top>
+        <Text id="main-menu-title" text="Secret Wonders"
+              BorderPane.alignment="CENTER">
+        </Text>
+    </top>
+
+    <center>
+        <VBox alignment="CENTER" >
+            <Button
+                    minWidth="120"
+                    text="Play Game"
+                    onAction="#handleNewGameButtonAction">
+            </Button>
+            <Button
+                    minWidth="120"
+                    text="Instructions"
+                    onAction="#handleInstructionsButtonAction">
+            </Button>
+            <Button
+                    minWidth="120"
+                    text="Quit Game"
+                    onAction="#handleQuitGameButtonAction">
+            </Button>
+        </VBox>
+    </center>
+
+    <bottom>
+        <Text id="main-menu-copyright" text="A game by Carson Olafson and Rhys Mahannah"
+              BorderPane.alignment="TOP_CENTER">
+        </Text>
+    </bottom>
 
 
-<!-- Handles controller-based events -->
-<GridPane fx:controller="ca.bcit.comp2522.termproject.secretwonders.MainMenuContentController"
-          xmlns:fx="http://javafx.com/fxml" alignment="CENTER" hgap="10" vgap="10">
 
-    <padding>
-        <Insets top="25" right="25" bottom="10" left="25"/>
-    </padding>
 
-    <Text text="Secret Wonders"
-          GridPane.columnIndex="0" GridPane.rowIndex="0"
-          GridPane.columnSpan="3">
+<!--    <padding>-->
+<!--        <Insets top="25"-->
+<!--                right="25"-->
+<!--                bottom="25"-->
+<!--                left="25"/>-->
+<!--    </padding>-->
+
+
+    <Text id="main-menu-copyright" text="A game by Carson Olafson and Rhys Mahannah"
+          BorderPane.alignment="BOTTOM_CENTER">
     </Text>
-
-
 
     <!-- Game Buttons -->
     <HBox spacing="10" alignment="BOTTOM_CENTER"
-          GridPane.rowIndex="1" GridPane.columnIndex="1">
-        <Button minWidth="80" text="Play Game"
-        onAction="#handleNewGameButtonAction">
+          GridPane.rowIndex="1"
+          GridPane.columnIndex="2"
+          GridPane.columnSpan="3"
+          GridPane.halignment="CENTER">
+
+        <Button
+                minWidth="120"
+                text="Play Game"
+                onAction="#handleNewGameButtonAction">
         </Button>
     </HBox>
 
-    <HBox spacing="10" alignment="BOTTOM_CENTER"
-          GridPane.rowIndex="2" GridPane.columnIndex="1">
-        <Button minWidth="80" text="Instructions"
-        onAction="#handleInstructionsButtonAction">
+    <HBox spacing="10"
+          alignment="BOTTOM_CENTER"
+          GridPane.rowIndex="2"
+          GridPane.columnIndex="2"
+          GridPane.columnSpan="3"
+          GridPane.halignment="CENTER">
+
+        <Button minWidth="120"
+                text="Instructions"
+                onAction="#handleInstructionsButtonAction">
         </Button>
     </HBox>
 
-    <HBox spacing="10" alignment="BOTTOM_CENTER"
-          GridPane.rowIndex="3" GridPane.columnIndex="1">
-        <Button minWidth="80" text="Quit Game"
-        onAction="#handleQuitGameButtonAction">
+    <HBox spacing="10"
+          alignment="BOTTOM_CENTER"
+          GridPane.rowIndex="3"
+          GridPane.columnIndex="2"
+          GridPane.columnSpan="3"
+          GridPane.halignment="CENTER">
+
+        <Button
+                minWidth="120"
+                text="Quit Game"
+                onAction="#handleQuitGameButtonAction">
         </Button>
     </HBox>
 
     <!-- Button Pressed Results -->
     <!-- Start Game Button -->
     <Text fx:id="newGameButtonAction"
-          GridPane.rowIndex="1" GridPane.columnIndex="2" >
+          GridPane.rowIndex="1"
+          GridPane.columnIndex="2" >
     </Text>
 
     <!-- Instructions Button -->
     <Text fx:id="instructionsButtonAction"
-          GridPane.rowIndex="2" GridPane.columnIndex="2">
+          GridPane.rowIndex="2"
+          GridPane.columnIndex="2">
     </Text>
 
     <!-- Quit Game Button -->
     <Text fx:id="quitGameButtonAction"
-          GridPane.rowIndex="3" GridPane.columnIndex="2">
+          GridPane.rowIndex="3"
+          GridPane.columnIndex="2">
     </Text>
 
+    <!-- CSS Element Styling -->
+    <stylesheets>
+        <URL value="@MainMenuStyle.css"/>
+    </stylesheets>
 
-</GridPane>
+
+</BorderPane>

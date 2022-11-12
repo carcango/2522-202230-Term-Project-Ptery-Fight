@@ -1,0 +1,28 @@
+root {
+    display: block;
+    -fx-alignment: center;
+}
+
+.root {
+    -fx-font-family: Futura;
+    -fx-font-weight: bold;
+    -fx-background-color: white;
+    -fx-background-image: url("main-menu-background.jpeg");
+}
+
+#main-menu-title {
+    -fx-font-size: 40px;
+    -fx-fill: white;
+    -fx-translate-y: px;
+}
+
+#main-menu-copyright {
+    -fx-font-size: 14px;
+    -fx-fill: white;
+    -fx-alignment: center;
+    -fx-translate-y: -10px;
+}
+
+.button {
+    -fx-font-size: 16px;
+}

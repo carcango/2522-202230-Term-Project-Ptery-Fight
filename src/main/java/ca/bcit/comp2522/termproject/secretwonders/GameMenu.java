@@ -3,13 +3,14 @@ package ca.bcit.comp2522.termproject.secretwonders;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
 public class GameMenu extends Application {
-    private final int gameWindowHeight   = 300;
-    private final int gameWindowWidth    = 300;
+    private final int gameWindowHeight   = 311;
+    private final int gameWindowWidth    = 552;
     private final String gameWindowTitle = "Secret Wonders";
 
     @Override
