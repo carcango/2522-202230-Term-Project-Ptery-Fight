@@ -7,18 +7,19 @@ root {
     -fx-font-family: Futura;
     -fx-font-weight: bold;
     -fx-background-color: white;
-    -fx-background-image: url("main-menu-background.jpeg");
+    -fx-background-image: url("background.jpeg");
 }
 
 #main-menu-title {
     -fx-font-size: 40px;
     -fx-fill: white;
+    -fx-translate-y: 20;
 }
 
-#main-menu-copyright {
+#game-designers {
     -fx-font-size: 14px;
     -fx-fill: white;
-    -fx-alignment: center;
+    -fx-translate-y: -20;
 }
 
 .button {

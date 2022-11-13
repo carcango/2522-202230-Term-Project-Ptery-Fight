@@ -6,15 +6,19 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 import java.io.IOException;
 
-public class GameMenu extends Application {
+public class MainMenu extends Application {
     private static final int BUTTON_SPACING = 10;
 
     private final int    gameWindowHeight   = 300;
     private final int    gameWindowWidth    = 400;
     private final String gameWindowTitle    = "Secret Wonders";
+    private final Text   mainMenuTitle      = new Text("Secret Wonders");
+    private final Text   gameDesigners = new Text("A game by Carson Olafson and Rhys Mahannah");
 
     @Override
     public void start(final Stage stage) throws IOException {
@@ -42,14 +46,31 @@ public class GameMenu extends Application {
         vbox.setAlignment(Pos.CENTER);
 
         BorderPane borderPane = new BorderPane();
-        borderPane.setCenter(vbox);
+        BorderPane.setAlignment(mainMenuTitle, Pos.CENTER);
+        BorderPane.setAlignment(gameDesigners, Pos.CENTER);
 
-        Scene scene = new Scene(borderPane, gameWindowWidth, gameWindowHeight);
-        stage.setScene(scene);
-        stage.setTitle(gameWindowTitle);
-        stage.show();
+        borderPane.setTop(mainMenuTitle);
+        borderPane.setBottom(gameDesigners);
+
+        borderPane.setCenter(vbox);
+        mainMenuTitle.setId("main-menu-title");
+        gameDesigners.setId("game-designers");
+
+        try {
+            Scene scene = new Scene(borderPane, gameWindowWidth, gameWindowHeight);
+            scene.getStylesheets().add("/style.css");
+            stage.setScene(scene);
+            stage.setTitle(gameWindowTitle);
+            stage.show();
+        } catch (final Exception e) {
+            e.printStackTrace();
+        }
     }
 
+    /**
+     * Launches the program.
+     * @param args command line arguments.
+     */
     public static void main(final String[] args) {
         launch();
     }
