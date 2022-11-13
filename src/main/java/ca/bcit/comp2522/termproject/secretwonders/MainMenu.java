@@ -8,8 +8,12 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import java.io.IOException;
 
+/**
+ * Represents a main menu for an application.
+ * @author Rhys Mahannah
+ * @version 12 November 2022
+ */
 public class MainMenu extends Application {
 
     private static final int BUTTON_SPACING = 10;
@@ -20,6 +24,12 @@ public class MainMenu extends Application {
     private final Text   mainMenuTitle      = new Text("Secret Wonders");
     private final Text   gameDesigners      = new Text("A game by Carson Olafson and Rhys Mahannah");
 
+    /**
+     * Stages a main menu for a game.
+     * Contains a header, a footer and three buttons: Start Game, Instructions, Quit Game.
+     *
+     * @param stage a scene
+     */
     @Override
     public void start(final Stage stage) {
 
