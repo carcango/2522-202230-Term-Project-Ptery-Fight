@@ -62,8 +62,8 @@ public class MainMenu extends Application {
 
         // Center borderpane children
         borderPane.setTop(mainMenuTitle);
-        borderPane.setBottom(gameDesigners);
         borderPane.setCenter(vbox);
+        borderPane.setBottom(gameDesigners);
 
         // Add CSS styling ID's to header and footer
         mainMenuTitle.setId("main-menu-title");
@@ -74,6 +74,7 @@ public class MainMenu extends Application {
         scene.getStylesheets().add("/style.css");
         stage.setScene(scene);
         stage.setTitle(gameWindowTitle);
+        stage.show();
     }
 
     /**
