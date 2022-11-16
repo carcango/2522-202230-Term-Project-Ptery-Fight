@@ -70,37 +70,34 @@ public class Game extends Application {
         Scene scene = new Scene(root, appWidth, appHeight, Color.WHITE);
 
         // Register the key listener here
-        scene.setOnKeyPressed(new EventHandler<KeyEvent>(){
+        scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
-            public void handle(KeyEvent event)
-            {
-                switch(event.getCode())
-                {
-                    case UP: goNorth = true; break;
-                    case DOWN: goSouth = true; break;
-                    case LEFT: goWest = true; break;
-                    case RIGHT: goEast = true; break;
-                    case W: goNorth2 = true; break;
-                    case S: goSouth2 = true; break;
-                    case A: goWest2 = true; break;
-                    case D: goEast2 = true; break;
+            public void handle(KeyEvent event) {
+                switch (event.getCode()) {
+                    case UP -> goNorth = true;
+                    case DOWN -> goSouth = true;
+                    case LEFT -> goWest = true;
+                    case RIGHT -> goEast = true;
+                    case W -> goNorth2 = true;
+                    case S -> goSouth2 = true;
+                    case A -> goWest2 = true;
+                    case D -> goEast2 = true;
                 }
             }
         });
 
         scene.setOnKeyReleased(new EventHandler<KeyEvent>() {
             @Override
-            public void handle(KeyEvent event)
-            {
-                switch(event.getCode()) {
-                    case UP: goNorth = false; break;
-                    case DOWN: goSouth = false; break;
-                    case LEFT: goWest = false; break;
-                    case RIGHT: goEast = false; break;
-                    case W: goNorth2 = false; break;
-                    case S: goSouth2 = false; break;
-                    case A: goWest2 = false; break;
-                    case D: goEast2 = false; break;
+            public void handle(KeyEvent event) {
+                switch (event.getCode()) {
+                    case UP -> goNorth = false;
+                    case DOWN -> goSouth = false;
+                    case LEFT -> goWest = false;
+                    case RIGHT -> goEast = false;
+                    case W -> goNorth2 = false;
+                    case S -> goSouth2 = false;
+                    case A -> goWest2 = false;
+                    case D -> goEast2 = false;
                 }
             }
         });
