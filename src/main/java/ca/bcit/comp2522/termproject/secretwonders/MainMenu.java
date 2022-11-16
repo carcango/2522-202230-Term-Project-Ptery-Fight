@@ -48,7 +48,8 @@ public class MainMenu extends Application {
              */
             @Override
             public void handle(final ActionEvent actionEvent) {
-                stage.close();
+
+                stage.close(); // Closes the main menu window.
 
                 final int gameWindowHeight = 800;
                 final int gameWindowWidth = 800;
