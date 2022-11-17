@@ -2,13 +2,11 @@ package ca.bcit.comp2522.termproject.secretwonders;
 
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
-import javafx.event.EventHandler;
 import javafx.geometry.Point2D;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.transform.Rotate;
 import javafx.scene.transform.Translate;
@@ -16,20 +14,70 @@ import javafx.stage.Stage;
 
 /**
  * Demonstrates the handling of keyboard events.
+ * @author Carson Olafson and Rhys Mahannah
+ * @version 2022
  */
 public class Game extends Application {
 
-    private ImageView player1;
 
-    private ImageView player2;
+    final int BOARD_WIDTH = 600;
+    final int BOARD_HEIGHT = 600;
 
-    boolean goNorth, goSouth, goWest, goEast, goNorth2, goSouth2, goWest2, goEast2;
+    final int MOVEMENT_FACTOR_BEE = 5;
+    final int MOVEMENT_FACTOR_DRAGONFLY = 7;
+    final int SIZE_DRAGONFLY = 80;
+    final int SIZE_BEE = 70;
+    /**
+     * signal for player one to go forward.
+     */
+    boolean goForward;
+    /**
+     * signal for player one to go backward.
+     */
+    boolean goBackward;
+    /**
+     * signal for player one to turn left.
+     */
+    boolean turnLeft;
+    /**
+     * signal for player one to turn right.
+     */
+    boolean turnRight;
+    /**
+     * signal for player one to attack.
+     */
+    boolean attackSignal;
+    /**
+     * signal for player two to go forward.
+     */
+
+    boolean goForward2;
+    /**
+     * signal for player two to go backward.
+     */
+    boolean goBackward2;
+    /**
+     * signal for player two to turn left.
+     */
+    boolean turnLeft2;
+    /**
+     * signal for player two to turn right.
+     */
+    boolean turnRight2;
+    /**
+     * signal for player one to attack.
+     */
+    boolean attackSignal2;
     Point2D initialDirection = new Point2D(0, -1);
 
     final Rotate rotatePlayer1 = new Rotate();
     final Rotate rotatePlayer2 = new Rotate();
     final Translate translatePlayer1 = new Translate();
     final Translate translatePlayer2 = new Translate();
+    private ImageView flyImage;
+    private ImageView player1;
+    private ImageView player2;
+    private Group root;
 
     /**
      * Displays an image that can be moved using the arrow keys.
@@ -38,67 +86,72 @@ public class Game extends Application {
      */
     public void start(final Stage primaryStage) {
 
-        Image Knight = new Image("Knight.png", true);
-        player1 = new ImageView(Knight);
+        // Creates player images
+        Image dragonfly = new Image("dragonfly.gif", true);
+        player1 = new ImageView(dragonfly);
+        player1.setFitHeight(SIZE_DRAGONFLY);
+        player1.setFitWidth(SIZE_DRAGONFLY);
 
-        Image Wizard = new Image("Wizard.png", true);
-        player2 = new ImageView(Wizard);
+        Image bee = new Image("bee.gif", true);
+        player2 = new ImageView(bee);
+        player2.setFitHeight(SIZE_BEE);
+        player2.setFitWidth(SIZE_BEE);
 
-        final int Player1StartCoordinate = 20;
-        player1.setX(Player1StartCoordinate);
-        player1.setY(Player1StartCoordinate);
+        Image fly = new Image("fly.gif", true);
+        flyImage = new ImageView(fly);
+        flyImage.setFitHeight(SIZE_BEE);
+        flyImage.setFitWidth(SIZE_BEE);
 
-        final int Player2StartCoordinate = 200;
-        player2.setX(Player2StartCoordinate);
-        player2.setY(Player2StartCoordinate);
+        final int playerOneStartCoordinateX = 125;
+        final int playerOneStartCoordinateY = 500;
+        player1.setX(playerOneStartCoordinateX);
+        player1.setY(playerOneStartCoordinateY);
 
+        final int playerTwoStartCoordinateX = 475;
+        final int playerTwoStartCoordinateY = 500;
+        player2.setX(playerTwoStartCoordinateX);
+        player2.setY(playerTwoStartCoordinateY);
 
-
-
-        rotatePlayer1.setPivotX(player1.getX() + 16);
-        rotatePlayer1.setPivotY(player1.getY() + 16);
+        rotatePlayer1.setPivotX(player1.getX() + 40);
+        rotatePlayer1.setPivotY(player1.getY() + 40);
         player1.getTransforms().addAll(translatePlayer1, rotatePlayer1);
 
-        rotatePlayer2.setPivotX(player2.getX() + 16);
-        rotatePlayer2.setPivotY(player2.getY() + 16);
+        rotatePlayer2.setPivotX(player2.getX() + 35);
+        rotatePlayer2.setPivotY(player2.getY() + 35);
         player2.getTransforms().addAll(translatePlayer2, rotatePlayer2);
 
-        Group root = new Group(player1, player2);
+        root = new Group(player1, player2);
 
-        final int appWidth = 600;
-        final int appHeight = 600;
-        Scene scene = new Scene(root, appWidth, appHeight, Color.WHITE);
+        Scene scene = new Scene(root, BOARD_WIDTH, BOARD_HEIGHT, Color.WHITE);
 
         // Register the key listener here
-        scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
-            @Override
-            public void handle(KeyEvent event) {
-                switch (event.getCode()) {
-                    case UP -> goNorth = true;
-                    case DOWN -> goSouth = true;
-                    case LEFT -> goWest = true;
-                    case RIGHT -> goEast = true;
-                    case W -> goNorth2 = true;
-                    case S -> goSouth2 = true;
-                    case A -> goWest2 = true;
-                    case D -> goEast2 = true;
-                }
+        scene.setOnKeyPressed(event -> {
+            switch (event.getCode()) {
+                case UP -> goForward = true;
+                case DOWN -> goBackward = true;
+                case LEFT -> turnLeft = true;
+                case RIGHT -> turnRight = true;
+                case CONTROL -> player1Attack();
+                case W -> goForward2 = true;
+                case S -> goBackward2 = true;
+                case A -> turnLeft2 = true;
+                case D -> turnRight2 = true;
+                case SPACE -> player2Attack();
             }
         });
 
-        scene.setOnKeyReleased(new EventHandler<KeyEvent>() {
-            @Override
-            public void handle(KeyEvent event) {
-                switch (event.getCode()) {
-                    case UP -> goNorth = false;
-                    case DOWN -> goSouth = false;
-                    case LEFT -> goWest = false;
-                    case RIGHT -> goEast = false;
-                    case W -> goNorth2 = false;
-                    case S -> goSouth2 = false;
-                    case A -> goWest2 = false;
-                    case D -> goEast2 = false;
-                }
+        scene.setOnKeyReleased(event -> {
+            switch (event.getCode()) {
+                case UP -> goForward = false;
+                case DOWN -> goBackward = false;
+                case LEFT -> turnLeft = false;
+                case RIGHT -> turnRight = false;
+//                case CONTROL -> attackSignal = false;
+                case W -> goForward2 = false;
+                case S -> goBackward2 = false;
+                case A -> turnLeft2 = false;
+                case D -> turnRight2 = false;
+//                case SPACE -> attackSignal2 = false;
             }
         });
 
@@ -106,39 +159,40 @@ public class Game extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
 
+
         AnimationTimer timer = new AnimationTimer() {
             @Override
-            public void handle(long now) {
-                double delta = 0;
-                double delta2 = 0;
+            public void handle(final long now) {
+                double movementChangePlayerOne = 0;
+                double movementChangePlayerTwo = 0;
 
-                if (goNorth) {
-                    delta += 5;
+                if (goForward) {
+                    movementChangePlayerOne += MOVEMENT_FACTOR_DRAGONFLY;
                 }
-                if (goSouth) {
-                    delta -= 5;
+                if (goBackward) {
+                    movementChangePlayerOne -= MOVEMENT_FACTOR_DRAGONFLY;
                 }
-                if (goEast) {
-                    rotatePlayer1(3);
+                if (turnRight) {
+                    rotatePlayer1(MOVEMENT_FACTOR_DRAGONFLY);
                 }
-                if (goWest) {
-                    rotatePlayer1(-3);
+                if (turnLeft) {
+                    rotatePlayer1(-MOVEMENT_FACTOR_DRAGONFLY);
                 }
-                if (goNorth2) {
-                    delta2 += 5;
+                if (goForward2) {
+                    movementChangePlayerTwo += MOVEMENT_FACTOR_BEE;
                 }
-                if (goSouth2) {
-                    delta2 -= 5;
+                if (goBackward2) {
+                    movementChangePlayerTwo -= MOVEMENT_FACTOR_BEE;
                 }
-                if (goEast2) {
-                    rotatePlayer2(3);
+                if (turnRight2) {
+                    rotatePlayer2(MOVEMENT_FACTOR_BEE);
                 }
-                if (goWest2) {
-                    rotatePlayer2(-3);
+                if (turnLeft2) {
+                    rotatePlayer2(-MOVEMENT_FACTOR_BEE);
                 }
 
-                Point2D pt1 = rotatePlayer1.deltaTransform(initialDirection.multiply(delta));
-                Point2D pt2 = rotatePlayer2.deltaTransform(initialDirection.multiply(delta2));
+                Point2D pt1 = rotatePlayer1.deltaTransform(initialDirection.multiply(movementChangePlayerOne));
+                Point2D pt2 = rotatePlayer2.deltaTransform(initialDirection.multiply(movementChangePlayerTwo));
 
                 movePlayer1(pt1.getX(), pt1.getY());
                 movePlayer2(pt2.getX(), pt2.getY());
@@ -149,21 +203,22 @@ public class Game extends Application {
 
 
 
-    private void movePlayer1(double dx, double dy) {
-        if (dx == 0 && dy == 0) {
+    private void movePlayer1(final double changeInX, final double changeInY) {
+        if (changeInX == 0 && changeInY == 0) {
             return;
         }
-        double x = dx + translatePlayer1.getX();
-        double y = dy + translatePlayer1.getY();
+        double x = changeInX + translatePlayer1.getX();
+        double y = changeInY + translatePlayer1.getY();
         translatePlayer1.setX(x);
         translatePlayer1.setY(y);
+
     }
-    private void movePlayer2(double dx, double dy) {
-        if (dx == 0 && dy == 0) {
+    private void movePlayer2(final double changeInX, final double changeInY) {
+        if (changeInX == 0 && changeInY == 0) {
             return;
         }
-        double x = dx + translatePlayer2.getX();
-        double y = dy + translatePlayer2.getY();
+        double x = changeInX + translatePlayer2.getX();
+        double y = changeInY + translatePlayer2.getY();
         translatePlayer2.setX(x);
         translatePlayer2.setY(y);
     }
@@ -181,6 +236,46 @@ public class Game extends Application {
             angle = 0;
         }
         rotatePlayer2.setAngle(angle);
+    }
+
+
+    public void player1Attack() {
+        Image fireBlast = new Image("fireblast.gif", true);
+        ImageView tempFire = new ImageView(fireBlast);
+        tempFire.setFitHeight(60);
+        tempFire.setFitWidth(120);
+        double flyStartCoordinateX = translatePlayer1.getX() + 125;
+        double flyStartCoordinateY = translatePlayer1.getY() + 500;
+        tempFire.setX(flyStartCoordinateX + 80);
+        tempFire.setY(flyStartCoordinateY + 15);
+
+        final Rotate rotateFire = new Rotate();
+        rotateFire.setPivotX(translatePlayer1.getX() + 125);
+        rotateFire.setPivotY(translatePlayer1.getY() + 500);
+        tempFire.getTransforms().addAll(rotateFire);
+
+        rotateFire.setAngle(rotatePlayer1.getAngle() - 90);
+
+        root.getChildren().add(tempFire);
+    }
+
+    public void player2Attack() {
+        Image fly = new Image("short_spear.png", true);
+        ImageView tempFly = new ImageView(fly);
+        tempFly.setFitHeight(48);
+        tempFly.setFitWidth(10);
+        double flyStartCoordinateX = translatePlayer2.getX() + 475;
+        double flyStartCoordinateY = translatePlayer2.getY() + 500;
+        tempFly.setX(flyStartCoordinateX);
+        tempFly.setY(flyStartCoordinateY);
+
+        final Rotate rotateSpear = new Rotate();
+        rotateSpear.setPivotX(translatePlayer2.getX() + 475);
+        rotateSpear.setPivotY(translatePlayer2.getY() + 500);
+        tempFly.getTransforms().addAll(rotateSpear);
+
+        rotateSpear.setAngle(rotatePlayer2.getAngle());
+        root.getChildren().add(tempFly);
     }
 
     /**
