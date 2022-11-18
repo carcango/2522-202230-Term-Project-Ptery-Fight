@@ -5,10 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="511dd55e-1055-4411-9c85-cfde8bbb9710" name="Changes" comment="Fixed display bug">
-      <change afterPath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/GameWindow.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/StartButtonController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/MainWindowController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resources/main-menu.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/MainMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/MainMenuContentController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/main-menu-style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,8 +20,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="FxmlFile" />
         <option value="CSS File" />
+        <option value="FxmlFile" />
         <option value="Class" />
       </list>
     </option>
@@ -64,7 +66,20 @@
       <recent name="$PROJECT_DIR$/resources/view" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.MainMenu">
+  <component name="RunManager" selected="Application.Game">
+    <configuration name="Game" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ca.bcit.comp2522.termproject.secretwonders.Game" />
+      <module name="Secret-Wonders" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ca.bcit.comp2522.termproject.secretwonders.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="GameWindow" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ca.bcit.comp2522.termproject.secretwonders.GameWindow" />
       <module name="Secret-Wonders" />
@@ -91,8 +106,23 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="MainMenu" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ca.bcit.comp2522.termproject.secretwonders.MainMenu" />
+      <module name="Secret-Wonders" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ca.bcit.comp2522.termproject.secretwonders.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Game" />
+        <item itemvalue="Application.MainMenu" />
         <item itemvalue="Application.MainMenu" />
         <item itemvalue="Application.GameWindow" />
       </list>
@@ -113,6 +143,7 @@
       <workItem from="1668310261653" duration="153000" />
       <workItem from="1668459998718" duration="1215000" />
       <workItem from="1668475932315" duration="6064000" />
+      <workItem from="1668736608283" duration="733000" />
     </task>
     <task id="LOCAL-00001" summary="Moved Resources folder to root">
       <created>1668209205820</created>

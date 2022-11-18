@@ -13,13 +13,12 @@ root {
 #main-menu-title {
     -fx-font-size: 40px;
     -fx-fill: white;
-    -fx-translate-y: 20;
 }
 
-#game-designers {
+#main-menu-footer {
     -fx-font-size: 14px;
     -fx-fill: white;
-    -fx-translate-y: -20;
+    -fx-translate-y: 5;
 }
 
 .button {
