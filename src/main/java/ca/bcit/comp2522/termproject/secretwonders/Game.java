@@ -267,21 +267,20 @@ public class Game extends Application {
         ImageView tempFire = new ImageView(fireBlast);
         tempFire.setFitHeight(120);
         tempFire.setFitWidth(60);
-        double flyStartCoordinateX = translatePlayer1.getX() + 125 + (SIZE_DRAGONFLY / 8);
-        double flyStartCoordinateY = translatePlayer1.getY() + 500 + (SIZE_DRAGONFLY / 12);
-        tempFire.setX(flyStartCoordinateX);
-        tempFire.setY(flyStartCoordinateY);
+        double tempFireStartCoordinateX = translatePlayer1.getX() + 125 + (SIZE_DRAGONFLY / 2) - 30;
+        double tempFireStartCoordinateY = translatePlayer1.getY() + 500 + (SIZE_DRAGONFLY / 2) - 100;
+        tempFire.setX(tempFireStartCoordinateX);
+        tempFire.setY(tempFireStartCoordinateY);
 
         final Rotate rotateFire = new Rotate();
-        System.out.println(rotatePlayer1.getAngle());
-//        System.out.println(translatePlayer1.getY());
+
         rotateFire.setPivotX(translatePlayer1.getX() + 125 + (SIZE_DRAGONFLY / 2));
         rotateFire.setPivotY(translatePlayer1.getY() + 500 + (SIZE_DRAGONFLY / 2));
         tempFire.getTransforms().addAll(rotateFire);
 
         rotateFire.setAngle(rotatePlayer1.getAngle());
         int movingForward = 0;
-        if (goForward){
+        if (goForward) {
             movingForward = 5;
         }
 
@@ -319,7 +318,7 @@ public class Game extends Application {
         ImageView tempSpear = new ImageView(fly);
         tempSpear.setFitHeight(29);
         tempSpear.setFitWidth(6);
-        double spearStartCoordinateX = translatePlayer2.getX() + 475 + (SIZE_BEE / 2);
+        double spearStartCoordinateX = translatePlayer2.getX() + 475 + (SIZE_BEE / 2) - 3;
         double spearStartCoordinateY = translatePlayer2.getY() + 500  + (SIZE_BEE / 2);
         tempSpear.setX(spearStartCoordinateX);
         tempSpear.setY(spearStartCoordinateY);
