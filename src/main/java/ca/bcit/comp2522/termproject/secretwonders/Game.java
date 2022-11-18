@@ -265,10 +265,10 @@ public class Game extends Application {
     public void player1Attack() throws InterruptedException {
         Image fireBlast = new Image("fireblast.gif", true);
         ImageView tempFire = new ImageView(fireBlast);
-        tempFire.setFitHeight(60);
-        tempFire.setFitWidth(120);
-        double flyStartCoordinateX = translatePlayer1.getX() + 125 + (SIZE_DRAGONFLY / 2);
-        double flyStartCoordinateY = translatePlayer1.getY() + 500 + (SIZE_DRAGONFLY / 10);
+        tempFire.setFitHeight(120);
+        tempFire.setFitWidth(60);
+        double flyStartCoordinateX = translatePlayer1.getX() + 125 + (SIZE_DRAGONFLY / 8);
+        double flyStartCoordinateY = translatePlayer1.getY() + 500 + (SIZE_DRAGONFLY / 12);
         tempFire.setX(flyStartCoordinateX);
         tempFire.setY(flyStartCoordinateY);
 
@@ -279,9 +279,23 @@ public class Game extends Application {
         rotateFire.setPivotY(translatePlayer1.getY() + 500 + (SIZE_DRAGONFLY / 2));
         tempFire.getTransforms().addAll(rotateFire);
 
-        rotateFire.setAngle(rotatePlayer1.getAngle() - 90);
+        rotateFire.setAngle(rotatePlayer1.getAngle());
+        int movingForward = 0;
+        if (goForward){
+            movingForward = 5;
+        }
 
         root.getChildren().add(tempFire);
+
+        int finalMovingForward = movingForward;
+        AnimationTimer timer = new AnimationTimer() {
+            @Override
+            public void handle(final long now) {
+
+                moveBullet(0, (-5 - finalMovingForward), tempFire);
+            }
+        };
+        timer.start();
         new java.util.Timer().schedule(
                 new java.util.TimerTask() {
                     @Override
@@ -320,8 +334,6 @@ public class Game extends Application {
         root.getChildren().add(tempSpear);
         System.out.println(initialDirection);
         System.out.println(rotatePlayer2.getAngle());
-//        Point2D tempPoint = new Point2D(0, -1);
-//        Point2D pt2 = rotatePlayer2.deltaTransform(tempPoint.multiply(10));
 
         AnimationTimer timer = new AnimationTimer() {
             @Override
