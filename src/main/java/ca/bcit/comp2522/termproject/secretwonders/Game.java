@@ -2,6 +2,7 @@ package ca.bcit.comp2522.termproject.secretwonders;
 
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.geometry.Point2D;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -11,6 +12,11 @@ import javafx.scene.paint.Color;
 import javafx.scene.transform.Rotate;
 import javafx.scene.transform.Translate;
 import javafx.stage.Stage;
+
+import java.util.Timer;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Demonstrates the handling of keyboard events.
@@ -68,6 +74,7 @@ public class Game extends Application {
      * signal for player one to attack.
      */
     boolean attackSignal2;
+
     Point2D initialDirection = new Point2D(0, -1);
 
     final Rotate rotatePlayer1 = new Rotate();
@@ -122,6 +129,7 @@ public class Game extends Application {
 
         root = new Group(player1, player2);
 
+
         Scene scene = new Scene(root, BOARD_WIDTH, BOARD_HEIGHT, Color.WHITE);
 
         // Register the key listener here
@@ -131,7 +139,13 @@ public class Game extends Application {
                 case DOWN -> goBackward = true;
                 case LEFT -> turnLeft = true;
                 case RIGHT -> turnRight = true;
-                case CONTROL -> player1Attack();
+                case CONTROL -> {
+                    try {
+                        player1Attack();
+                    } catch (InterruptedException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
                 case W -> goForward2 = true;
                 case S -> goBackward2 = true;
                 case A -> turnLeft2 = true;
@@ -222,6 +236,15 @@ public class Game extends Application {
         translatePlayer2.setX(x);
         translatePlayer2.setY(y);
     }
+    private void moveBullet(final double changeInX, final double changeInY, final ImageView bullet) {
+        if (changeInX == 0 && changeInY == 0) {
+            return;
+        }
+        double x = changeInX + bullet.getX();
+        double y = changeInY + bullet.getY();
+        bullet.setX(x);
+        bullet.setY(y);
+    }
 
     public void rotatePlayer1(float angle) {
         angle += rotatePlayer1.getAngle();
@@ -239,7 +262,7 @@ public class Game extends Application {
     }
 
 
-    public void player1Attack() {
+    public void player1Attack() throws InterruptedException {
         Image fireBlast = new Image("fireblast.gif", true);
         ImageView tempFire = new ImageView(fireBlast);
         tempFire.setFitHeight(60);
@@ -250,6 +273,8 @@ public class Game extends Application {
         tempFire.setY(flyStartCoordinateY + 15);
 
         final Rotate rotateFire = new Rotate();
+        System.out.println(rotatePlayer1.getAngle());
+//        System.out.println(translatePlayer1.getY());
         rotateFire.setPivotX(translatePlayer1.getX() + 125);
         rotateFire.setPivotY(translatePlayer1.getY() + 500);
         tempFire.getTransforms().addAll(rotateFire);
@@ -257,25 +282,73 @@ public class Game extends Application {
         rotateFire.setAngle(rotatePlayer1.getAngle() - 90);
 
         root.getChildren().add(tempFire);
+        new java.util.Timer().schedule(
+                new java.util.TimerTask() {
+                    @Override
+                    public void run() {
+
+                        Platform.runLater(new Runnable() {
+                            @Override public void run() {
+                                root.getChildren().remove(tempFire);
+
+                            }
+                        });
+                    }
+                },
+                800
+        );
+
+
     }
 
     public void player2Attack() {
         Image fly = new Image("short_spear.png", true);
-        ImageView tempFly = new ImageView(fly);
-        tempFly.setFitHeight(48);
-        tempFly.setFitWidth(10);
-        double flyStartCoordinateX = translatePlayer2.getX() + 475;
-        double flyStartCoordinateY = translatePlayer2.getY() + 500;
-        tempFly.setX(flyStartCoordinateX);
-        tempFly.setY(flyStartCoordinateY);
+        ImageView tempSpear = new ImageView(fly);
+        tempSpear.setFitHeight(29);
+        tempSpear.setFitWidth(6);
+        double spearStartCoordinateX = translatePlayer2.getX() + 475;
+        double spearStartCoordinateY = translatePlayer2.getY() + 500;
+        tempSpear.setX(spearStartCoordinateX);
+        tempSpear.setY(spearStartCoordinateY);
 
         final Rotate rotateSpear = new Rotate();
+        final Translate translateSpear = new Translate();
         rotateSpear.setPivotX(translatePlayer2.getX() + 475);
         rotateSpear.setPivotY(translatePlayer2.getY() + 500);
-        tempFly.getTransforms().addAll(rotateSpear);
+        tempSpear.getTransforms().addAll(rotateSpear, translateSpear);
 
         rotateSpear.setAngle(rotatePlayer2.getAngle());
-        root.getChildren().add(tempFly);
+        root.getChildren().add(tempSpear);
+        System.out.println(initialDirection);
+        System.out.println(rotatePlayer2.getAngle());
+//        Point2D tempPoint = new Point2D(0, -1);
+//        Point2D pt2 = rotatePlayer2.deltaTransform(tempPoint.multiply(10));
+
+        AnimationTimer timer = new AnimationTimer() {
+            @Override
+            public void handle(final long now) {
+
+                moveBullet(0, -10, tempSpear);
+            }
+        };
+        timer.start();
+
+
+        new java.util.Timer().schedule(
+                new java.util.TimerTask() {
+                    @Override
+                    public void run() {
+
+                        Platform.runLater(new Runnable() {
+                            @Override public void run() {
+                                root.getChildren().remove(tempSpear);
+
+                            }
+                        });
+                    }
+                },
+                5000
+        );
     }
 
     /**
