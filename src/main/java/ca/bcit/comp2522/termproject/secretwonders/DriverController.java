@@ -4,7 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
-public class MainWindowController {
+public class DriverController {
 
     @FXML public Button startGameButton;
     @FXML public Button instructionsButton;

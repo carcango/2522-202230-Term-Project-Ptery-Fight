@@ -12,7 +12,7 @@ import java.io.IOException;
  * @author Rhys Mahannah
  * @version 17 November 2022
  */
-public class MainMenuWindow extends Application {
+public class Driver extends Application {
 
     private final String menuWindowTitle  = "Secret Wonders";
     private final int    menuWindowHeight = 300;
@@ -27,7 +27,7 @@ public class MainMenuWindow extends Application {
     public void start(final Stage stage) throws IOException {
 
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(MainMenuWindow.class.getResource("/main-menu.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(Driver.class.getResource("/main-menu.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), menuWindowWidth, menuWindowHeight);
             stage.setTitle(menuWindowTitle);
             stage.setScene(scene);

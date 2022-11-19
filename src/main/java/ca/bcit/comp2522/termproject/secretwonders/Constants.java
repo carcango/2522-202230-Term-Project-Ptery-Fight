@@ -14,7 +14,6 @@ public class Constants {
     public static final int PLAYER_ONE_MOVEMENT = 4;
     public static final int PLAYER_ONE_HEALTH = 100;
 
-
     //Player Two - Dragonfly
     public static final double PLAYER_TWO_WIDTH = 80;
     public static final double PLAYER_TWO_HEIGHT = 80;

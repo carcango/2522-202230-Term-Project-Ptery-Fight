@@ -1,10 +1,16 @@
 package ca.bcit.comp2522.termproject.secretwonders;
 
 import javafx.beans.property.ReadOnlyIntegerProperty;
+import javafx.scene.image.Image;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 
 public class GamePane extends Pane {
@@ -15,8 +21,17 @@ public class GamePane extends Pane {
     private Rectangle healthBar2;
 
     public GamePane() {
-        this.setBackground(new Background(new BackgroundFill(Color.rgb(255,255,255), null, null)));
 
+        // Background image for game.
+        Image background = new Image("background-img.jpeg");
+        BackgroundImage backgroundImage = new BackgroundImage(
+                background,
+                BackgroundRepeat.NO_REPEAT,
+                BackgroundRepeat.NO_REPEAT,
+                BackgroundPosition.DEFAULT,
+                BackgroundSize.DEFAULT);
+        Background bgImg = new Background(backgroundImage);
+        this.setBackground(bgImg);
 
         healthBar1 = new Rectangle(Constants.SCREEN_WIDTH, Constants.HEALTH_BAR_SIZE, Color.RED);
         healthBar1.setX(0);
