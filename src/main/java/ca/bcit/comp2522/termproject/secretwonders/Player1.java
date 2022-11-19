@@ -71,7 +71,7 @@ public class Player1 extends Character {
 
         Point2D pt1 = rotatePlayer.deltaTransform(initialDirection.multiply(movementChangePlayerOne));
 
-        movePlayer1(pt1.getX(), pt1.getY());
+        movePlayer(pt1.getX(), pt1.getY());
 
     }
 
@@ -85,7 +85,7 @@ public class Player1 extends Character {
         }
     }
 
-    private void movePlayer1(final double changeInX, final double changeInY) {
+    private void movePlayer(final double changeInX, final double changeInY) {
         if (changeInX == 0 && changeInY == 0) {
             return;
         }

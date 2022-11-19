@@ -20,13 +20,13 @@ public class Player2 extends Character {
 
     public Player2() {
         super("dragonfly.gif", Constants.PLAYER_TWO_WIDTH,
-                Constants.PLAYER_TWO_WIDTH, Constants.PLAYER_TWO_HEALTH);
+                Constants.PLAYER_TWO_HEIGHT, Constants.PLAYER_TWO_HEALTH);
         setInitialPosition();
     }
 
     private void setInitialPosition() {
         setX(0);
-        setY(Constants.SCREEN_HEIGHT - Constants.PLAYER_ONE_HEIGHT);
+        setY(Constants.SCREEN_HEIGHT - Constants.PLAYER_TWO_HEIGHT);
         rotatePlayer.setPivotX(getCenterX());
         rotatePlayer.setPivotY(getCenterY());
         getTransforms().addAll(rotatePlayer);
@@ -53,7 +53,7 @@ public class Player2 extends Character {
             case RIGHT -> turnRight = false;
         }
     }
-    private void movePlayer1(final double changeInX, final double changeInY) {
+    private void movePlayer(final double changeInX, final double changeInY) {
         if (changeInX == 0 && changeInY == 0) {
             return;
         }
@@ -67,13 +67,13 @@ public class Player2 extends Character {
         rotatePlayer.setPivotX(getCenterX());
         rotatePlayer.setPivotY(getCenterY());
 
-        double movementChangePlayerOne = 0;
+        double movementChangePlayer = 0;
 
         if (goForward) {
-            movementChangePlayerOne += movementFactor;
+            movementChangePlayer += movementFactor;
         }
         if (goBackward) {
-            movementChangePlayerOne -= movementFactor;
+            movementChangePlayer -= movementFactor;
         }
         if (turnRight) {
             rotatePlayer(movementFactor);
@@ -82,9 +82,9 @@ public class Player2 extends Character {
             rotatePlayer(-movementFactor);
         }
 
-        Point2D pt1 = rotatePlayer.deltaTransform(initialDirection.multiply(movementChangePlayerOne));
+        Point2D pt1 = rotatePlayer.deltaTransform(initialDirection.multiply(movementChangePlayer));
 
-        movePlayer1(pt1.getX(), pt1.getY());
+        movePlayer(pt1.getX(), pt1.getY());
 
     }
     public void rotatePlayer(float angle) {
@@ -98,8 +98,8 @@ public class Player2 extends Character {
     public void fireProjectile() {
         ((GamePane)getParent()).getEngine().queueAddition(
                 new Player2Projectile(
-                        getCenterX() - (Constants.PROJECTILE_PLAYER_ONE_WIDTH / 2),
-                        getY() - Constants.PROJECTILE_PLAYER_ONE_HEIGHT,
+                        getCenterX(),
+                        getCenterY(),
                         rotatePlayer.getAngle()
                 )
         );
