@@ -28,8 +28,8 @@ public class Constants {
     public static final double PROJECTILE_PLAYER_ONE_DELTA_Y = 10.0;
 
     //Player Two - Dragonfly Projectiles
-    public static final double PROJECTILE_PLAYER_TWO_WIDTH = 60;
-    public static final double PROJECTILE_PLAYER_TWO_HEIGHT = 120;
+    public static final double PROJECTILE_PLAYER_TWO_WIDTH = 42;
+    public static final double PROJECTILE_PLAYER_TWO_HEIGHT = 100;
     public static final double PROJECTILE_PLAYER_TWO_DELTA_X = 0;
     public static final double PROJECTILE_PLAYER_TWO_DELTA_Y = 4.0;
 }
