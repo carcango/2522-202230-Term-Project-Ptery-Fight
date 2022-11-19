@@ -16,7 +16,6 @@ import javafx.scene.shape.Rectangle;
 public class GamePane extends Pane {
 
     private GameEngine engine;
-
     private Rectangle healthBar1;
     private Rectangle healthBar2;
 

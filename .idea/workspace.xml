@@ -4,15 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="511dd55e-1055-4411-9c85-cfde8bbb9710" name="Changes" comment="Connected primary game to main menu -- runnable from there!">
-      <change afterPath="$PROJECT_DIR$/src/resources/background-img.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/game-background.css" afterDir="false" />
+    <list default="true" id="511dd55e-1055-4411-9c85-cfde8bbb9710" name="Changes" comment="Added background image to main game">
+      <change afterPath="$PROJECT_DIR$/src/resources/menu-background.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/Constants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/Driver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/Driver.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/GamePane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/GamePane.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/MainMenuWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/Driver.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/MainWindowController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/DriverController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/main-menu-style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/main-menu-style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/resources/main-menu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/main-menu.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -164,7 +161,7 @@
       <workItem from="1668475932315" duration="6064000" />
       <workItem from="1668736608283" duration="733000" />
       <workItem from="1668816463428" duration="1304000" />
-      <workItem from="1668889810822" duration="4301000" />
+      <workItem from="1668889810822" duration="6056000" />
     </task>
     <task id="LOCAL-00001" summary="Moved Resources folder to root">
       <created>1668209205820</created>
@@ -229,7 +226,14 @@
       <option name="project" value="LOCAL" />
       <updated>1668894444968</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Added background image to main game">
+      <created>1668896675947</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1668896675947</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -257,7 +261,8 @@
     <MESSAGE value="Fixed display buy" />
     <MESSAGE value="Fixed display bug" />
     <MESSAGE value="Connected primary game to main menu -- runnable from there!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Connected primary game to main menu -- runnable from there!" />
+    <MESSAGE value="Added background image to main game" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added background image to main game" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
