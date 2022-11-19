@@ -5,12 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="511dd55e-1055-4411-9c85-cfde8bbb9710" name="Changes" comment="Fixed display bug">
-      <change afterPath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/MainWindowController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/main-menu.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/InstructionsWindow.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/MainMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/MainMenuContentController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/main-menu-style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/MainMenuWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/MainWindowController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/MainWindowController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,7 +65,7 @@
       <recent name="$PROJECT_DIR$/resources/view" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Game">
+  <component name="RunManager" selected="Application.MainMenuWindow">
     <configuration name="Game" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ca.bcit.comp2522.termproject.secretwonders.Game" />
       <module name="Secret-Wonders" />
@@ -93,8 +92,23 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MainMenu" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ca.bcit.comp2522.termproject.secretwonders.MainMenu" />
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ca.bcit.comp2522.termproject.secretwonders.Main" />
+      <module name="Secret-Wonders" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ca.bcit.comp2522.termproject.secretwonders.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MainMenuWindow" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="18" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="MAIN_CLASS_NAME" value="ca.bcit.comp2522.termproject.secretwonders.MainMenuWindow" />
       <module name="Secret-Wonders" />
       <extension name="coverage">
         <pattern>
@@ -121,9 +135,10 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.MainMenuWindow" />
+        <item itemvalue="Application.Main" />
         <item itemvalue="Application.Game" />
-        <item itemvalue="Application.MainMenu" />
-        <item itemvalue="Application.MainMenu" />
+        <item itemvalue="Application.MainMenuWindow" />
         <item itemvalue="Application.GameWindow" />
       </list>
     </recent_temporary>
@@ -144,6 +159,8 @@
       <workItem from="1668459998718" duration="1215000" />
       <workItem from="1668475932315" duration="6064000" />
       <workItem from="1668736608283" duration="733000" />
+      <workItem from="1668816463428" duration="1304000" />
+      <workItem from="1668889810822" duration="2000000" />
     </task>
     <task id="LOCAL-00001" summary="Moved Resources folder to root">
       <created>1668209205820</created>
@@ -229,6 +246,17 @@
     <MESSAGE value="Fixed display buy" />
     <MESSAGE value="Fixed display bug" />
     <option name="LAST_COMMIT_MESSAGE" value="Fixed display bug" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/InstructionsWindow.java</url>
+          <line>33</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
