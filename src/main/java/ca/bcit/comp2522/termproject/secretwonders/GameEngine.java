@@ -3,23 +3,35 @@ package ca.bcit.comp2522.termproject.secretwonders;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.util.Duration;
 
 import java.util.ArrayList;
 
-
-
-
 public class GameEngine {
+
+    /**
+     * Keyboard control directions.
+     */
+    public enum Direction { UP, DOWN, LEFT, RIGHT }
 
     private GamePane pane;
     private Scene scene;
-    public enum Direction { UP, DOWN, LEFT, RIGHT }
     private Timeline gameLoop;
 
     //Entities
+//    private final Image player1Sprite = new Image("bee.gif");
+//    private final Image player2Sprite = new Image("dragonfly.gif");
+//
+//    private Player player1 = new Player(player1Sprite, Constants.PLAYER_ONE_HEIGHT,
+//            Constants.PLAYER_ONE_WIDTH, Constants.PLAYER_ONE_HEALTH);
+//    private Player player2 = new Player(player2Sprite, Constants.PLAYER_TWO_HEIGHT,
+//            Constants.PLAYER_TWO_WIDTH, Constants.PLAYER_TWO_HEALTH
+//    );
+
     private Player1 player1 = new Player1();
     private Player2 player2 = new Player2();
+
     private ArrayList<Entity> entities = new ArrayList<>();
     private ArrayList<Projectile> projectiles = new ArrayList<>();
 

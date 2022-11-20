@@ -32,6 +32,8 @@ public abstract class Character extends Entity {
         healthMonitor = new HealthMonitor(this);
     }
 
+
+
     public int getMaxHealth() {
         return maxHealth;
     }

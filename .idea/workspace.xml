@@ -4,20 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="511dd55e-1055-4411-9c85-cfde8bbb9710" name="Changes" comment="Shifted code">
+    <list default="true" id="511dd55e-1055-4411-9c85-cfde8bbb9710" name="Changes" comment="Removed unnecessary spacing; removed unused imports">
+      <change afterPath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/GameEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/GamePlayer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/MovableCharacter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/ShootingCharacter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/Character.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/Character.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/Driver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/Driver.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/Entity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/InstructionsWindow.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/Player2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/Player2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/Player2Projectile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/Player2Projectile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/Projectile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/Projectile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/Knight.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/Wizard.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/background.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/game-background.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/main-menu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/main-menu.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/Constants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/GameEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/GameEngine.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -169,7 +164,9 @@
       <workItem from="1668736608283" duration="733000" />
       <workItem from="1668816463428" duration="1304000" />
       <workItem from="1668889810822" duration="10505000" />
-      <workItem from="1668966602568" duration="864000" />
+      <workItem from="1668966602568" duration="1954000" />
+      <workItem from="1668968571208" duration="175000" />
+      <workItem from="1668968899485" duration="5707000" />
     </task>
     <task id="LOCAL-00001" summary="Moved Resources folder to root">
       <created>1668209205820</created>
@@ -255,7 +252,21 @@
       <option name="project" value="LOCAL" />
       <updated>1668928490210</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="General code cleanup; removed unused files">
+      <created>1668967489630</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1668967489630</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Removed unnecessary spacing; removed unused imports">
+      <created>1668967578715</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1668967578715</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -286,7 +297,9 @@
     <MESSAGE value="Added background image to main game" />
     <MESSAGE value="Update main menu image and visual style" />
     <MESSAGE value="Shifted code" />
-    <option name="LAST_COMMIT_MESSAGE" value="Shifted code" />
+    <MESSAGE value="General code cleanup; removed unused files" />
+    <MESSAGE value="Removed unnecessary spacing; removed unused imports" />
+    <option name="LAST_COMMIT_MESSAGE" value="Removed unnecessary spacing; removed unused imports" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

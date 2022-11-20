@@ -2,6 +2,7 @@ package ca.bcit.comp2522.termproject.secretwonders;
 
 public class Constants {
     //Game Settings
+    public static final int PLAYER_ROTATION = 360;
     public static final double SCREEN_WIDTH = 640;
     public static final double SCREEN_HEIGHT = 640;
     public static final double HEALTH_BAR_SIZE = 4;
