@@ -16,7 +16,7 @@ import java.io.IOException;
 public class Driver extends Application {
 
     private final String menuWindowTitle  = "Bug Blaster!";
-    private final int    menuWindowHeight = 350;
+    private final int    menuWindowHeight = 300;
     private final int    menuWindowWidth  = 400;
 
     /**

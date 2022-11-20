@@ -1,6 +1,5 @@
 package ca.bcit.comp2522.termproject.secretwonders;
 
-
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
@@ -17,14 +16,12 @@ public abstract class Entity extends ImageView {
         setFitWidth(width);
     }
 
-
     public Entity(String spriteName) {
         sprite = new Image(spriteName, this.width, this.height, false, false);
         super.setImage(sprite);
         setFitHeight(height);
         setFitWidth(width);
     }
-
 
     public Entity(String spriteName, double width, double height) {
         this.width = width;
@@ -35,11 +32,9 @@ public abstract class Entity extends ImageView {
         setFitWidth(width);
     }
 
-
     public double getWidth() {
         return width;
     }
-
 
     public double getHeight() {
         return height;

@@ -2,12 +2,10 @@ package ca.bcit.comp2522.termproject.secretwonders;
 
 public class Player2Projectile extends Projectile {
 
-
     public Player2Projectile() {
         super("smokeyFireball.gif", Constants.PROJECTILE_PLAYER_TWO_WIDTH,
                 Constants.PROJECTILE_PLAYER_TWO_HEIGHT, Constants.PROJECTILE_PLAYER_DMG);
     }
-
 
     public Player2Projectile(double originX, double originY, double angle) {
         super("smokeyFireball.gif", Constants.PROJECTILE_PLAYER_TWO_WIDTH,

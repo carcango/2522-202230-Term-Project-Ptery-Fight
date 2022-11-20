@@ -20,8 +20,6 @@
 
     <Button fx:id="startGameButton" onAction="#onStartGameButtonClick" text="Start Game" />
 
-    <Button fx:id="instructionsButton" onAction="#onInstructionsButtonClick" text="Instructions" />
-
     <Button fx:id="quitGameButton" onAction="#onQuitGameButtonClick" text="Quit Game" />
 
     <Text id="main-menu-footer" text="A game by Carson Olafson and Rhys Mahannah" textAlignment="CENTER" wrappingWidth="364.515625">

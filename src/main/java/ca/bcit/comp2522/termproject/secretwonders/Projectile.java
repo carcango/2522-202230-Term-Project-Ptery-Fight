@@ -12,11 +12,9 @@ public class Projectile extends Entity {
     protected Rotate projectileRotation;
     protected Point2D pt1;
 
-
     public Projectile() {
         super("missingImage.png", 8, 8);
     }
-
 
     public Projectile(String spriteName, int damage) {
         super(spriteName, 8, 8);
@@ -44,10 +42,8 @@ public class Projectile extends Entity {
         projectileRotation.setAngle(angle);
 
         pt1 = projectileRotation.deltaTransform(initialDirection.multiply(deltaY));
-
-
-
     }
+
     public int getDamage() {
         return damage;
     }
@@ -59,12 +55,9 @@ public class Projectile extends Entity {
         double y = pt1.getY() + getY();
         setX(x);
         setY(y);
-
     }
-
     @Override
     public void doTick() {
         doMovement();
     }
-
 }

@@ -4,12 +4,8 @@ import javafx.geometry.Point2D;
 import javafx.scene.image.Image;
 import javafx.scene.transform.Rotate;
 
-
 public class Player2 extends Character {
 
-
-    private static Image Sprite = new Image("dragonfly.gif",
-            Constants.PLAYER_TWO_WIDTH, Constants.PLAYER_TWO_HEIGHT, false, false);
     final int movementFactor = Constants.PLAYER_TWO_MOVEMENT;
     protected boolean turnLeft = false;
     protected boolean turnRight = false;
@@ -53,6 +49,7 @@ public class Player2 extends Character {
             case RIGHT -> turnRight = false;
         }
     }
+
     private void movePlayer(final double changeInX, final double changeInY) {
         if (changeInX == 0 && changeInY == 0) {
             return;
