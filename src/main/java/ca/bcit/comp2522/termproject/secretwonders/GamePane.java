@@ -3,14 +3,12 @@ package ca.bcit.comp2522.termproject.secretwonders;
 import javafx.beans.property.ReadOnlyIntegerProperty;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 
 public class GamePane extends Pane {
@@ -45,10 +43,10 @@ public class GamePane extends Pane {
     public void bindHealthOne(final ReadOnlyIntegerProperty health) {
         healthBar1.widthProperty().bind(health.multiply(Constants.SCREEN_WIDTH).divide(Constants.PLAYER_ONE_HEALTH));
     }
+
     public void bindHealthTwo(final ReadOnlyIntegerProperty health) {
         healthBar2.widthProperty().bind(health.multiply(Constants.SCREEN_WIDTH).divide(Constants.PLAYER_TWO_HEALTH));
     }
-
 
     public GameEngine getEngine() {
         return engine;
