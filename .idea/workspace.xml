@@ -4,12 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="511dd55e-1055-4411-9c85-cfde8bbb9710" name="Changes" comment="Added background image to main game">
-      <change afterPath="$PROJECT_DIR$/src/resources/menu-background.jpg" afterDir="false" />
+    <list default="true" id="511dd55e-1055-4411-9c85-cfde8bbb9710" name="Changes" comment="Update main menu image and visual style">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/Driver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/Driver.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/GamePane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/GamePane.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/main-menu-style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/main-menu-style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/Player1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/Player1.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/resources/main-menu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/main-menu.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -161,7 +159,7 @@
       <workItem from="1668475932315" duration="6064000" />
       <workItem from="1668736608283" duration="733000" />
       <workItem from="1668816463428" duration="1304000" />
-      <workItem from="1668889810822" duration="6056000" />
+      <workItem from="1668889810822" duration="10087000" />
     </task>
     <task id="LOCAL-00001" summary="Moved Resources folder to root">
       <created>1668209205820</created>
@@ -233,7 +231,14 @@
       <option name="project" value="LOCAL" />
       <updated>1668896675947</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Update main menu image and visual style">
+      <created>1668898466937</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1668898466937</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -262,7 +267,8 @@
     <MESSAGE value="Fixed display bug" />
     <MESSAGE value="Connected primary game to main menu -- runnable from there!" />
     <MESSAGE value="Added background image to main game" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added background image to main game" />
+    <MESSAGE value="Update main menu image and visual style" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update main menu image and visual style" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -271,6 +277,11 @@
           <url>file://$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/InstructionsWindow.java</url>
           <line>33</line>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/Player1.java</url>
+          <line>44</line>
+          <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

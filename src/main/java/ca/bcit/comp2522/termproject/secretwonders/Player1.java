@@ -1,19 +1,11 @@
 package ca.bcit.comp2522.termproject.secretwonders;
 
-
 import javafx.geometry.Point2D;
-import javafx.scene.image.Image;
 import javafx.scene.transform.Rotate;
-
 
 public class Player1 extends Character {
 
-
-
-    private static Image Sprite = new Image("bee.gif",
-            Constants.PLAYER_ONE_WIDTH, Constants.PLAYER_ONE_HEIGHT, false, false);
     final int movementFactor = Constants.PLAYER_ONE_MOVEMENT;
-
     protected boolean turnLeft = false;
     protected boolean turnRight = false;
     protected boolean goForward = false;
@@ -27,7 +19,6 @@ public class Player1 extends Character {
                 Constants.PLAYER_ONE_HEIGHT, Constants.PLAYER_ONE_HEALTH);
         setInitialPosition();
     }
-
 
     private void setInitialPosition() {
         setX((Constants.SCREEN_WIDTH - Constants.PLAYER_ONE_WIDTH));
@@ -70,11 +61,8 @@ public class Player1 extends Character {
         }
 
         Point2D pt1 = rotatePlayer.deltaTransform(initialDirection.multiply(movementChangePlayerOne));
-
         movePlayer(pt1.getX(), pt1.getY());
-
     }
-
 
     public void stopMovement(GameEngine.Direction dir) {
         switch (dir) {
@@ -111,12 +99,8 @@ public class Player1 extends Character {
                 )
         );
     }
-
-
     @Override
     public void doTick() {
         doMovement();
     }
-
-
 }

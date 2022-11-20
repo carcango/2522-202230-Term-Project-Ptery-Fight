@@ -3,8 +3,9 @@ package ca.bcit.comp2522.termproject.secretwonders;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 
 /**
@@ -25,6 +26,10 @@ public class Driver extends Application {
      */
     @Override
     public void start(final Stage stage) throws IOException {
+
+        ImageView beeImage = new ImageView("bee.gif");
+        Pane pane = new Pane();
+        pane.getChildren().add(beeImage);
 
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(Driver.class.getResource("/main-menu.fxml"));
