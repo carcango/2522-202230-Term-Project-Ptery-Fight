@@ -7,12 +7,16 @@ package ca.bcit.comp2522.termproject.secretwonders;
  */
 public class GameCharacter extends GameEntity {
 
+    private static final int DEFAULT_PLAYER_HEALTH = 100;
+
+    private final HealthMonitor healthMonitor;
+    private final Integer maxHealth;
+
+    private String entitySpriteFileName;
     private double entityWidth;
     private double entityHeight;
-    private String entitySpriteFileName;
-    private final int maxHealth;
-    private final int health;
-    private final HealthMonitor healthMonitor;
+    private int health;
+
 
     /**
      * Creates an object of type GameCharacter.
@@ -20,16 +24,16 @@ public class GameCharacter extends GameEntity {
      * @param entityWidth the width of the game character (double).
      * @param entityHeight the height of the game character (double).
      * @param entitySpriteFileName the filename of the game character's sprite (String).
-     * @param maxHealth the maximum health of the game character (int).
      * @param health the current health of the game character (int).
      * @param healthMonitor the health monitor for the game character (HealthMonitor).
      */
     public GameCharacter(final double entityWidth, final double entityHeight, final String entitySpriteFileName,
-                         final int maxHealth, final int health, final HealthMonitor healthMonitor) {
+                         final int health, final HealthMonitor healthMonitor) {
+
         super(entityWidth, entityHeight, entitySpriteFileName);
-        this.maxHealth = maxHealth;
-        this.health = health;
         this.healthMonitor = healthMonitor;
+        this.health = health;
+        this.maxHealth = DEFAULT_PLAYER_HEALTH;
     }
 
     /**
@@ -59,10 +63,9 @@ public class GameCharacter extends GameEntity {
     /**
      * Subtracts from the character's current health.
      *
-     * @param characterHealth the game character's current health.
+     * @param subtractedHealth the game character's current health.
      */
-    public void subtractHealth(int characterHealth) {
-        characterHealth = health;
-        // Code needed.
+    public void subtractHealth(final int subtractedHealth) {
+        this.health -= subtractedHealth;
     }
 }
