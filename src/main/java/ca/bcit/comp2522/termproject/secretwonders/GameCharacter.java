@@ -10,30 +10,32 @@ import javafx.scene.transform.Rotate;
  */
 public class GameCharacter extends GameEntity {
 
+    private static final float INITIAL_CHARACTER_ANGLE = 0;
     private static final int CHARACTER_MAX_ROTATION = 360;
     private static final int CHARACTER_MIN_ROTATION = 0;
-    private static final int DEFAULT_MAX_HEALTH = 100;
-    private static final int MOVEMENT_FACTOR = Constants.PLAYER_ONE_MOVEMENT;
+    private static final int DEFAULT_MAX_HEALTH     = 100;
+    private static final int MOVEMENT_FACTOR        = 5;
 
     /**
      * The Boolean status of the turn-left button.
      */
-    protected boolean turnLeft   = false;
+    protected boolean turnLeft = false;
 
     /**
      * The Boolean status of the turn-right button.
      */
-    protected boolean turnRight  = false;
+    protected boolean turnRight = false;
 
     /**
      * The Boolean status of the go-forward button.
      */
-    protected boolean goForward  = false;
+    protected boolean goForward = false;
 
     /**
      * The Boolean status of the go-backward button.
      */
     protected boolean goBackward = false;
+    private float angle;
 
     private final Rotate rotatePlayer = new Rotate();
     private final Point2D initialDirection = new Point2D(0, -1);
@@ -50,14 +52,16 @@ public class GameCharacter extends GameEntity {
      * @param entitySpriteFileName the filename of the game character's sprite (String).
      * @param health the current health of the game character (int).
      * @param healthMonitor the health monitor for the game character (HealthMonitor).
+     * @param angle the angle of the game character (float).
      */
     public GameCharacter(final double entityWidth, final double entityHeight, final String entitySpriteFileName,
-                         final int health, final HealthMonitor healthMonitor) {
+                         final int health, final HealthMonitor healthMonitor, final float angle) {
 
         super(entityWidth, entityHeight, entitySpriteFileName);
         this.healthMonitor = healthMonitor;
         this.health = health;
         this.maxHealth = DEFAULT_MAX_HEALTH;
+        this.angle = INITIAL_CHARACTER_ANGLE;
     }
 
     /**
@@ -119,36 +123,32 @@ public class GameCharacter extends GameEntity {
     }
 
     /**
-     *
-     * @param angle
+     * Changes the angle of -- the direction faced by -- the game character.
+     * @param newAngle the new angle (direction) for the game character.
      */
-    public void rotatePlayer(float angle) {
-        angle += rotatePlayer.getAngle();
-        if (angle == CHARACTER_MAX_ROTATION) {
-            angle = CHARACTER_MIN_ROTATION;
+    public void rotatePlayer(final float newAngle) {
+        this.angle += rotatePlayer.getAngle();
+        if (this.angle == CHARACTER_MAX_ROTATION) {
+            this.angle = CHARACTER_MIN_ROTATION;
         }
-        rotatePlayer.setAngle(angle);
+        rotatePlayer.setAngle(newAngle);
     }
 
     /**
-     *
-     * @param direction
+     * Starts the movement for the game character.
+     * @param direction the direction of movement (boolean).
      */
     public void startMovement(final GameEngine.Direction direction) {
         switch (direction) {
-            case UP:
-                goForward = true; break;
-            case DOWN:
-                goBackward = true; break;
-            case LEFT:
-                turnLeft = true; break;
-            case RIGHT:
-                turnRight = true; break;
+            case UP -> goForward = true;
+            case DOWN -> goBackward = true;
+            case LEFT -> turnLeft = true;
+            case RIGHT -> turnRight = true;
         }
     }
 
     /**
-     *
+     * Changes the game character's on-screen position.
      */
     public void doMovement() {
         rotatePlayer.setPivotX(getCenterX());

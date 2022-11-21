@@ -81,12 +81,4 @@ public abstract class GameEntity extends ImageView {
     public double getCenterY() {
         return getY() + (entityHeight / 2);
     }
-
-    /**
-     * Returns the filename of the entity sprite.
-     * @return the filename of the entity sprite (String).
-     */
-    public String getEntitySpriteFileName() {
-        return entitySpriteFileName;
-    }
 }
