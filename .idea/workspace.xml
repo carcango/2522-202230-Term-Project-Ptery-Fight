@@ -4,15 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="511dd55e-1055-4411-9c85-cfde8bbb9710" name="Changes" comment="Removed unnecessary spacing; removed unused imports">
-      <change afterPath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/GameEntity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/GamePlayer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/MovableCharacter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/ShootingCharacter.java" afterDir="false" />
+    <list default="true" id="511dd55e-1055-4411-9c85-cfde8bbb9710" name="Changes" comment="Added classes for potential refactoring">
+      <change afterPath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/GameCharacter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/Character.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/Character.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/Constants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/GameEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/GameEngine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/GameEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/GameEntity.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -166,7 +161,9 @@
       <workItem from="1668889810822" duration="10505000" />
       <workItem from="1668966602568" duration="1954000" />
       <workItem from="1668968571208" duration="175000" />
-      <workItem from="1668968899485" duration="5707000" />
+      <workItem from="1668968899485" duration="5798000" />
+      <workItem from="1668996202521" duration="637000" />
+      <workItem from="1669057243232" duration="4497000" />
     </task>
     <task id="LOCAL-00001" summary="Moved Resources folder to root">
       <created>1668209205820</created>
@@ -266,7 +263,14 @@
       <option name="project" value="LOCAL" />
       <updated>1668967578715</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Added classes for potential refactoring">
+      <created>1668974645027</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1668974645027</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -299,7 +303,8 @@
     <MESSAGE value="Shifted code" />
     <MESSAGE value="General code cleanup; removed unused files" />
     <MESSAGE value="Removed unnecessary spacing; removed unused imports" />
-    <option name="LAST_COMMIT_MESSAGE" value="Removed unnecessary spacing; removed unused imports" />
+    <MESSAGE value="Added classes for potential refactoring" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added classes for potential refactoring" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
