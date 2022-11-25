@@ -1,5 +1,6 @@
 package ca.bcit.comp2522.termproject.secretwonders;
 
+import javafx.animation.Timeline;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -30,18 +31,15 @@ public class Driver extends Application {
     @Override
     public void start(final Stage stage) throws IOException {
 
-        ImageView beeImage = new ImageView("bee.gif");
-        Pane pane = new Pane();
-        pane.getChildren().add(beeImage);
-
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(Driver.class.getResource("/main-menu.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), menuWindowWidth, menuWindowHeight);
             stage.setTitle(menuWindowTitle);
             stage.setScene(scene);
             Media media = new Media(getClass().getResource("/mainTheme.mp3").toURI().toString());
-            MediaPlayer mediaPlayer = new MediaPlayer(media);
-            mediaPlayer.setAutoPlay(true);
+            MediaPlayer themeSong = new MediaPlayer(media);
+            themeSong.setAutoPlay(true);
+            themeSong.setCycleCount(Timeline.INDEFINITE);
             stage.show();
 
         } catch (IOException | URISyntaxException ioe) {

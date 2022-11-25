@@ -69,7 +69,7 @@ public class GameProjectile extends GameEntity {
     /**
      * Moves the projectile.
      */
-    public void doMovement() {
+    public void doTick() {
         projectileRotation.setPivotX(getCenterX());
         projectileRotation.setPivotY(getCenterY());
         double x = point.getX() + getX();

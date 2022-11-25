@@ -93,7 +93,7 @@ public class Player2 extends Character {
     }
 
     public void fireProjectile() {
-        ((GamePane)getParent()).getEngine().queueAddition(
+        ((GamePane) getParent()).getEngine().queueAddition(
                 new Player2Projectile(
                         getCenterX(),
                         getCenterY(),

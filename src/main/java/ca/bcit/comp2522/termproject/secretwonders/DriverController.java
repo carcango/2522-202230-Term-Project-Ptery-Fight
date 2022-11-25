@@ -19,7 +19,7 @@ public class DriverController {
     }
 
     @FXML
-    protected void onInstructionsButtonClick() {}
+    protected void onInstructionsButtonClick() { }
 
     @FXML
     protected void onQuitGameButtonClick() {
