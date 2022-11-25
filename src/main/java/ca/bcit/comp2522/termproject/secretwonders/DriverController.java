@@ -7,7 +7,6 @@ import javafx.stage.Stage;
 public class DriverController {
 
     @FXML public Button startGameButton;
-    @FXML public Button instructionsButton;
     @FXML public Button quitGameButton;
 
     @FXML

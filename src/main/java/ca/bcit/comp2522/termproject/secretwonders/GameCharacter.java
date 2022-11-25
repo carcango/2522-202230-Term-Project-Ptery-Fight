@@ -1,5 +1,8 @@
 package ca.bcit.comp2522.termproject.secretwonders;
 
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.ReadOnlyIntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.geometry.Point2D;
 import javafx.scene.transform.Rotate;
 
@@ -11,10 +14,10 @@ import javafx.scene.transform.Rotate;
 public class GameCharacter extends GameEntity {
 
     private static final float INITIAL_CHARACTER_ANGLE = 0;
-    private static final int CHARACTER_MAX_ROTATION = 360;
-    private static final int CHARACTER_MIN_ROTATION = 0;
-    private static final int DEFAULT_MAX_HEALTH     = 100;
-    private static final int MOVEMENT_FACTOR        = 5;
+    private static final int CHARACTER_MAX_ROTATION    = 360;
+    private static final int CHARACTER_MIN_ROTATION    = 0;
+    private static final int DEFAULT_MAX_HEALTH        = 100;
+    private static final int MOVEMENT_FACTOR           = 5;
 
     /**
      * The Boolean status of the turn-left button.
@@ -35,14 +38,16 @@ public class GameCharacter extends GameEntity {
      * The Boolean status of the go-backward button.
      */
     protected boolean goBackward = false;
-    private float angle;
 
     private final Rotate rotatePlayer = new Rotate();
     private final Point2D initialDirection = new Point2D(0, -1);
+    private final GHealthMonitor gameHealthMonitor;
+    private final int maxHealth;
+    private IntegerProperty health = new SimpleIntegerProperty(100);
 
-    private final HealthMonitor healthMonitor;
-    private final Integer maxHealth;
-    private int health;
+
+    private float angle;
+
 
     /**
      * Creates an object of type GameCharacter.
@@ -50,17 +55,13 @@ public class GameCharacter extends GameEntity {
      * @param entityWidth the width of the game character (double).
      * @param entityHeight the height of the game character (double).
      * @param entitySpriteFileName the filename of the game character's sprite (String).
-     * @param health the current health of the game character (int).
-     * @param healthMonitor the health monitor for the game character (HealthMonitor).
-     * @param angle the angle of the game character (float).
      */
     public GameCharacter(final double entityWidth, final double entityHeight, final String entitySpriteFileName,
-                         final int health, final HealthMonitor healthMonitor, final float angle) {
-
+                         final int maxHealth) {
         super(entityWidth, entityHeight, entitySpriteFileName);
-        this.healthMonitor = healthMonitor;
-        this.health = health;
+        this.gameHealthMonitor = new GHealthMonitor(this);
         this.maxHealth = DEFAULT_MAX_HEALTH;
+        health.set(maxHealth);
         this.angle = INITIAL_CHARACTER_ANGLE;
     }
 
@@ -76,7 +77,7 @@ public class GameCharacter extends GameEntity {
      * Returns the game character's current health.
      * @return game character's current health (int).
      */
-    public int getHealth() {
+    public IntegerProperty getHealth() {
         return health;
     }
 
@@ -84,8 +85,8 @@ public class GameCharacter extends GameEntity {
      * Returns the game character's health monitor.
      * @return game character's health monitor (HealthMonitor)
      */
-    public HealthMonitor getHealthMonitor() {
-        return healthMonitor;
+    public GHealthMonitor getHealthMonitor() {
+        return gameHealthMonitor;
     }
 
     /**
@@ -94,7 +95,15 @@ public class GameCharacter extends GameEntity {
      * @param subtractedHealth the game character's current health.
      */
     public void subtractHealth(final int subtractedHealth) {
-        this.health -= subtractedHealth;
+        health.set(health.get() - subtractedHealth);
+    }
+
+    /**
+     *
+     * @return
+     */
+    public ReadOnlyIntegerProperty healthPropertyUnmodifiable() {
+        return health;
     }
 
     // MOVEMENT METHODS
@@ -170,5 +179,18 @@ public class GameCharacter extends GameEntity {
 
         Point2D pt1 = rotatePlayer.deltaTransform(initialDirection.multiply(movementChangePlayerOne));
         movePlayer(pt1.getX(), pt1.getY());
+    }
+
+    public void stopMovement(GameEngine.Direction dir) {
+        switch (dir) {
+            case UP -> goForward = false;
+            case DOWN -> goBackward = false;
+            case LEFT -> turnLeft = false;
+            case RIGHT -> turnRight = false;
+        }
+    }
+
+    public void doTick() {
+        doMovement();
     }
 }

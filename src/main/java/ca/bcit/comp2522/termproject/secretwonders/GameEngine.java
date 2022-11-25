@@ -108,9 +108,7 @@ public class GameEngine {
 
 
     private void remove(Entity entity) {
-
         entities.remove(entity);
-
         projectiles.remove(entity);
         pane.getChildren().remove(entity);
     }

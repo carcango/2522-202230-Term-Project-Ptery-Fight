@@ -81,4 +81,6 @@ public abstract class GameEntity extends ImageView {
     public double getCenterY() {
         return getY() + (entityHeight / 2);
     }
+
+    public abstract void doTick();
 }
