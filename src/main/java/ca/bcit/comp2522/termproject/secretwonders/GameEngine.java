@@ -16,7 +16,8 @@ public class GameEngine {
     public enum Direction { UP, DOWN, LEFT, RIGHT }
 
     private GamePane pane;
-    private final Scene scene;
+    private Scene scene;
+    private Timeline gameLoop;
 
     private Player1 player1 = new Player1();
     private Player2 player2 = new Player2();
@@ -38,7 +39,7 @@ public class GameEngine {
         setupTimelines();
     }
 
-    private void setupScene(final GamePane pane) {
+    private void setupScene(GamePane pane) {
         this.pane = pane;
         pane.setEngine(this);
         scene.setRoot(pane);
@@ -47,40 +48,58 @@ public class GameEngine {
     private void setupKeybindings() {
         scene.setOnKeyPressed(event -> {
             switch (event.getCode()) {
-                case LEFT -> player1.startMovement(Direction.LEFT);
-                case A -> player2.startMovement(Direction.LEFT);
-                case RIGHT -> player1.startMovement(Direction.RIGHT);
-                case D -> player2.startMovement(Direction.RIGHT);
-                case UP -> player1.startMovement(Direction.UP);
-                case W -> player2.startMovement(Direction.UP);
-                case DOWN -> player1.startMovement(Direction.DOWN);
-                case S -> player2.startMovement(Direction.DOWN);
-                case CONTROL -> player1.fireProjectile();
-                case SPACE -> player2.fireProjectile();
+                case LEFT:
+                    player1.startMovement(Direction.LEFT); break;
+                case A:
+                    player2.startMovement(Direction.LEFT); break;
+                case RIGHT:
+                    player1.startMovement(Direction.RIGHT); break;
+                case D:
+                    player2.startMovement(Direction.RIGHT); break;
+                case UP:
+                    player1.startMovement(Direction.UP); break;
+                case W:
+                    player2.startMovement(Direction.UP); break;
+                case DOWN:
+                    player1.startMovement(Direction.DOWN); break;
+                case S:
+                    player2.startMovement(Direction.DOWN); break;
+                case CONTROL:
+                    player1.fireProjectile(); break;
+                case SPACE:
+                    player2.fireProjectile(); break;
             }
         });
         scene.setOnKeyReleased(event -> {
             switch (event.getCode()) {
-                case LEFT -> player1.stopMovement(Direction.LEFT);
-                case A -> player2.stopMovement(Direction.LEFT);
-                case RIGHT -> player1.stopMovement(Direction.RIGHT);
-                case D -> player2.stopMovement(Direction.RIGHT);
-                case UP -> player1.stopMovement(Direction.UP);
-                case W -> player2.stopMovement(Direction.UP);
-                case DOWN -> player1.stopMovement(Direction.DOWN);
-                case S -> player2.stopMovement(Direction.DOWN);
+                case LEFT:
+                    player1.stopMovement(Direction.LEFT); break;
+                case A:
+                    player2.stopMovement(Direction.LEFT); break;
+                case RIGHT:
+                    player1.stopMovement(Direction.RIGHT); break;
+                case D:
+                    player2.stopMovement(Direction.RIGHT); break;
+                case UP:
+                    player1.stopMovement(Direction.UP); break;
+                case W:
+                    player2.stopMovement(Direction.UP); break;
+                case DOWN:
+                    player1.stopMovement(Direction.DOWN); break;
+                case S:
+                    player2.stopMovement(Direction.DOWN); break;
             }
         });
     }
 
-    private void add(final Entity entity) {
+    private void add(Entity entity) {
         entities.add(entity);
         if (entity instanceof Player1) {
-            player1 = (Player1) entity;
+            player1 = (Player1)entity;
             pane.bindHealthOne(player1.healthPropertyUnmodifiable());
         }
         if (entity instanceof Player2) {
-            player2 = (Player2) entity;
+            player2 = (Player2)entity;
             pane.bindHealthTwo(player2.healthPropertyUnmodifiable());
         }
         if (entity instanceof Projectile) projectiles.add((Projectile)entity);
@@ -88,10 +107,8 @@ public class GameEngine {
     }
 
 
-    private void remove(final Entity entity) {
-
+    private void remove(Entity entity) {
         entities.remove(entity);
-
         projectiles.remove(entity);
         pane.getChildren().remove(entity);
     }
@@ -135,16 +152,13 @@ public class GameEngine {
 
     private void setupTimelines() {
 
-        //Check state of all entities every tick time duration.
-        //removes player if dead
-        //check if projectile hits something
-        Timeline gameLoop = new Timeline(new KeyFrame(Duration.millis(Constants.TICK_LENGTH), e -> {
+        gameLoop = new Timeline(new KeyFrame(Duration.millis(Constants.TICK_LENGTH), e -> {
             //Check state of all entities every tick time duration.
             for (Entity entity : entities) {
                 entity.doTick();
                 if (entity instanceof Player1 || entity instanceof Player2) {
                     //removes player if dead
-                    if (((Character) entity).getHealth() <= 0) {
+                    if (((Character)entity).getHealth() <= 0) {
                         queueRemoval(entity);
                     }
                 }
@@ -152,14 +166,14 @@ public class GameEngine {
             //check if projectile hits something
             for (Projectile projectile : projectiles) {
                 if (projectile instanceof Player1Projectile) {
-                    if (projectile.intersects(player2.getX(), player2.getY(),
-                            player2.getWidth(), player2.getHeight())) {
-                        System.out.println(projectile.getX());
-                        System.out.println(projectile.getY());
-                        System.out.println(player2.getX());
-                        System.out.println(player2.getY());
-                        player2.subtractHealth(projectile.getDamage());
-                        queueRemoval(projectile);
+                        if (projectile.intersects(player2.getX(), player2.getY(),
+                                player2.getWidth(), player2.getHeight())) {
+                            System.out.println(projectile.getX());
+                            System.out.println(projectile.getY());
+                            System.out.println(player2.getX());
+                            System.out.println(player2.getY());
+                            player2.subtractHealth(projectile.getDamage());
+                            queueRemoval(projectile);
                     }
                 }
                 if (projectile instanceof Player2Projectile) {
