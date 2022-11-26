@@ -1,68 +1,90 @@
 package ca.bcit.comp2522.termproject.secretwonders;
 
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.ReadOnlyIntegerProperty;
-import javafx.beans.property.SimpleIntegerProperty;
+import javafx.geometry.Point2D;
+import javafx.scene.transform.Rotate;
+import java.util.Random;
 
 /**
- * Represents a game enemy.
+ * Represents an enemy character.
+ *
  * @author Olafson & Mahannah
  * @version 26 November 2022
  */
-public abstract class Enemy extends Entity {
+public class Enemy extends AbstractEnemy {
 
-    private static final int MAX_ENEMY_HEALTH = 60;
+    private static final double MIN_DEGREE_ENEMY_FACES = 20;
+    private static final double MAX_DEGREE_ENEMY_FACES = 161;
+    private static final int    ENEMY_MOVEMENT_SPEED   = 2;
+    private static final int    ENEMY_WIDTH            = 50;
+    private static final int    ENEMY_HEIGHT           = 50;
+    private static final int    ENEMY_MAX_HEALTH       = 60;
+    private static final String ENEMY_SPRITE           = "fireblast.gif";
 
-    private final IntegerProperty health = new SimpleIntegerProperty(MAX_ENEMY_HEALTH);
-    private final int maxHealth;
+    private static final Random RANDOM = new Random();
+
+    private final Rotate rotateEnemy = new Rotate();
+    private final double enemyStartPositionX = Constants.SCREEN_WIDTH / 2;
+    private final double enemyStartPositionY = Constants.SCREEN_HEIGHT;
+
+    private final Point2D initialDirection = new Point2D(
+            enemyStartPositionX,
+            enemyStartPositionY);
 
     /**
-     * Creates an object of type Enemy.
-     *
-     * @param spriteName the name of file for the enemy's spite (String)
-     * @param width the width of the enemy's sprite image (int)
-     * @param height the height of the enemy's sprite image (int)
-     * @param maxHealth the maximum health value of the enemy (int)
+     * Create an object of type Enemy.
      */
-    public Enemy(final String spriteName, final double width, final double height, final int maxHealth) {
-        super(spriteName, width, height); // Calls super constructor to instantiate variables.
-        this.maxHealth = maxHealth;
-        health.set(maxHealth);
+    public Enemy() {
+        super(ENEMY_SPRITE,
+                ENEMY_WIDTH,
+                ENEMY_HEIGHT,
+                ENEMY_MAX_HEALTH);
+        setInitialPosition();
     }
 
     /**
-     * Returns the current health of the enemy.
-     *
-     * @return the enemy's current health as an int.
+     * Sets initial spawn location and sets rotate object to the player to allow rotation Transformations.
      */
-    public int getHealth() {
-        return health.get();
+    private void setInitialPosition() {
+        setX((Constants.SCREEN_WIDTH - ENEMY_WIDTH));
+        setY(Constants.SCREEN_HEIGHT - ENEMY_HEIGHT);
+
+        rotateEnemy.setPivotX(getCenterX());
+        rotateEnemy.setPivotY(getCenterY());
+
+        getTransforms().addAll(rotateEnemy);
     }
 
     /**
-     * Returns the maximum health of the enemy.
-     *
-     * @return the enemy's maximum health as an int.
+     * Sets an initial and permanent angle the enemy faces.
      */
-    public int getMaxHealth() {
-        return maxHealth;
+    public void setEnemyAngle() {
+        double enemyAngle = RANDOM.nextDouble(MIN_DEGREE_ENEMY_FACES,
+                MAX_DEGREE_ENEMY_FACES);
+        rotateEnemy.setAngle(enemyAngle);
     }
 
     /**
-     * Subtracts health from the enemy.
+     * Moves across the screen.
      *
-     * @param subtractedHealth the amount of health (int) to be subtracted from the enemy's current health.
+     * @param changeInX how much the player is supposed to move along relative X coordinate (if turning).
+     * @param changeInY how much the player is supposed to move along relative Y coordinate (forward or backwards).
      */
-    public void subtractHealth(final int subtractedHealth) {
-           health.set(health.get() - subtractedHealth);
+    private void moveEnemy(final double changeInX, final double changeInY) {
+        setX(changeInX + getX());
+        setY(changeInY + getY());
     }
 
     /**
-     * Returns a read-only integer value representing the enemy's health.
-     *
-     * @return health as a read-only integer property.
+     * Interprets instructions to move Player one.
+     * Sets the pivot to centre of player, increments or rotates the movementChange based on what booleans are true,
+     * and transforms the player in that direction.
      */
-    public ReadOnlyIntegerProperty healthPropertyUnmodifiable() {
-        return health;
+    @Override
+    public void doMovement() {
+        rotateEnemy.setPivotX(getCenterX());
+        rotateEnemy.setPivotY(getCenterY());
+
+        Point2D pt1 = rotateEnemy.deltaTransform(initialDirection.multiply(ENEMY_MOVEMENT_SPEED));
+        moveEnemy(pt1.getX(), pt1.getY());
     }
 }

@@ -4,11 +4,10 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.scene.Scene;
 import javafx.util.Duration;
-
 import java.util.ArrayList;
 
 /**
- * GameEngine Class
+ * GameEngine Class.
  *
  * @author Olafson and Mahannah
  * @version 2022
@@ -27,7 +26,7 @@ public class GameEngine {
     /**
      * the scene for the game.
      */
-    private Scene scene;
+    private final Scene scene;
     /**
      * the loop in which all game events happen.
      */
@@ -40,14 +39,20 @@ public class GameEngine {
      * Player two is the dragonfly character who is controlled with the WASD keys and SPACE bar.
      */
     private Player2 player2 = new Player2();
+
+    /*
+     * Enemy character that moves at a constant speed and in a constant direction across the screen.
+     */
+    private Enemy enemy = new Enemy();
+
     /**
      *Arraylist of Entities, not including projectiles. This keeps track of Entities are currently part of the game.
      */
-    private ArrayList<Entity> entities = new ArrayList<>();
+    private final ArrayList<Entity> entities = new ArrayList<>();
     /**
      * Arraylist of Projectiles, keeps track of what projectiles are currently part of the game.
      */
-    private ArrayList<Projectile> projectiles = new ArrayList<>();
+    private final ArrayList<Projectile> projectiles = new ArrayList<>();
     /**
      * Arraylist of entities to be removed from play at the end of the current game loop.
      */
@@ -69,19 +74,22 @@ public class GameEngine {
         scene = new Scene(pane, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT);
         setupScene(pane);
         setupKeybindings();
+
         add(player1);
         add(player2);
+        add(enemy);
+
         setupTimelines();
     }
 
     /**
      * sets up the attribute of pane to the passed pane, sets the root of the scene to watch the pane.
-     * @param pane a GamePane pane.
+     * @param gamePane a GamePane pane.
      */
-    private void setupScene(GamePane pane) {
-        this.pane = pane;
-        pane.setEngine(this);
-        scene.setRoot(pane);
+    private void setupScene(final GamePane gamePane) {
+        this.pane = gamePane;
+        gamePane.setEngine(this);
+        scene.setRoot(gamePane);
     }
 
     /**
@@ -147,17 +155,20 @@ public class GameEngine {
      * If the entity is a player, attachs a health bar to the entity.
      * @param entity an object that extends Entity.
      */
-    private void add(Entity entity) {
+    private void add(final Entity entity) {
         entities.add(entity);
         if (entity instanceof Player1) {
-            player1 = (Player1)entity;
+            player1 = (Player1) entity;
             pane.bindHealthOne(player1.healthPropertyUnmodifiable());
         }
         if (entity instanceof Player2) {
-            player2 = (Player2)entity;
+            player2 = (Player2) entity;
             pane.bindHealthTwo(player2.healthPropertyUnmodifiable());
         }
-        if (entity instanceof Projectile) projectiles.add((Projectile)entity);
+        if (entity instanceof Enemy) {
+            enemy = (Enemy) entity;
+        }
+        if (entity instanceof Projectile) projectiles.add((Projectile) entity);
         pane.getChildren().add(entity);
     }
 
@@ -165,7 +176,7 @@ public class GameEngine {
      * removes the entity from the ArrayLists.
      * @param entity an Entity of entities or projectile.
      */
-    private void remove(Entity entity) {
+    private void remove(final Entity entity) {
         entities.remove(entity);
         projectiles.remove(entity);
         pane.getChildren().remove(entity);
@@ -175,7 +186,7 @@ public class GameEngine {
      * Adds Entity to queue to add on next game loop.
      * @param entity to be added.
      */
-    public void queueAddition(Entity entity) {
+    public void queueAddition(final Entity entity) {
         entitiesToAdd.add(entity);
     }
 
@@ -183,7 +194,7 @@ public class GameEngine {
      * Adds entity to be removed on next game loop.
      * @param entity to be removed.
      */
-    public void queueRemoval(Entity entity) {
+    public void queueRemoval(final Entity entity) {
         entitiesToRemove.add(entity);
     }
 
@@ -250,6 +261,11 @@ public class GameEngine {
                         queueRemoval(entity);
                     }
                 }
+                if (entity instanceof Enemy) {
+                    if (((Enemy) entity).getHealth() <= 0) {
+                        queueRemoval((entity));
+                    }
+                }
             }
             //check if projectile hits something
             for (Projectile projectile : projectiles) {
@@ -293,5 +309,4 @@ public class GameEngine {
         gameLoop.setCycleCount(Timeline.INDEFINITE);
         gameLoop.play();
     }
-
 }

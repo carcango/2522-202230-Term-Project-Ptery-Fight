@@ -4,18 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="511dd55e-1055-4411-9c85-cfde8bbb9710" name="Changes" comment="Updated refactored code; deleted unused classes">
-      <change afterPath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/Enemy.java" afterDir="false" />
+    <list default="true" id="511dd55e-1055-4411-9c85-cfde8bbb9710" name="Changes" comment="Added abstract enemy class">
+      <change afterPath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/AbstractEnemy.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/Driver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/Driver.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/DriverController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/DriverController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/GHealthMonitor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/GameCharacter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/GameEngineUpdate.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/GameEntity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/GameProjectile.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/main-menu-style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/main-menu-style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/main-menu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/main-menu.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/Character.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/Character.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/Enemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/Enemy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/GameEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/GameEngine.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -177,7 +171,7 @@
       <workItem from="1669254107778" duration="1342000" />
       <workItem from="1669256183890" duration="961000" />
       <workItem from="1669332726713" duration="2407000" />
-      <workItem from="1669495560602" duration="803000" />
+      <workItem from="1669495560602" duration="6265000" />
     </task>
     <task id="LOCAL-00001" summary="Moved Resources folder to root">
       <created>1668209205820</created>
@@ -319,7 +313,14 @@
       <option name="project" value="LOCAL" />
       <updated>1669074533822</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="Added abstract enemy class">
+      <created>1669496474155</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1669496474155</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -357,7 +358,8 @@
     <MESSAGE value="Removed unused classes; added refactored code" />
     <MESSAGE value="Updated refactored code" />
     <MESSAGE value="Updated refactored code; deleted unused classes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated refactored code; deleted unused classes" />
+    <MESSAGE value="Added abstract enemy class" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added abstract enemy class" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
