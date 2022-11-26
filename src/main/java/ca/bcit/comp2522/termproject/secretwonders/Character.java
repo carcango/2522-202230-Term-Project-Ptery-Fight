@@ -4,10 +4,24 @@ import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.ReadOnlyIntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 
+/**
+ * Character Class.
+ * @author Olafson and Mahhanah
+ * @version 2022.
+ */
 public abstract class Character extends Entity {
-    //this is an integer property because it needs to be observable in HealthMonitor
+    /**
+     * the current health of the character.
+     * this is an integer property because it needs to implement observable in HealthMonitor
+     */
     private IntegerProperty healthProperty = new SimpleIntegerProperty(100);
+    /**
+     * Max health of the Character.
+     */
     private int maxHealth;
+    /**
+     * A HealthMonitor object that graphically shows the characters current health.
+     */
     private HealthMonitor healthMonitor;
 
     public Character() { }
