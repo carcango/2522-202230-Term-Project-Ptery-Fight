@@ -6,6 +6,7 @@ import javafx.scene.transform.Rotate;
 /**
  * Player One Class.
  * @author Olafson and Mahannah.
+ * @version 2022.
  * This is the Bee character that is controlled with the arrow keys and CTRL.
  */
 public class Player1 extends Character {
