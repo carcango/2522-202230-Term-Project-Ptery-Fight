@@ -19,9 +19,6 @@ public class DriverController {
     }
 
     @FXML
-    protected void onInstructionsButtonClick() { }
-
-    @FXML
     protected void onQuitGameButtonClick() {
         Stage stage = (Stage) quitGameButton.getScene().getWindow();
         stage.close();

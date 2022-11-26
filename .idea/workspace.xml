@@ -5,13 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="511dd55e-1055-4411-9c85-cfde8bbb9710" name="Changes" comment="Updated refactored code; deleted unused classes">
-      <change afterPath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/GHealthMonitor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/Enemy.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/Driver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/Driver.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/DriverController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/DriverController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/GameCharacter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/GameCharacter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/GameEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/GameEngine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/GameEngineUpdate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/GameEngineUpdate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/GameEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/GameEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/GHealthMonitor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/GameCharacter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/GameEngineUpdate.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/GameEntity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/GameProjectile.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/main-menu-style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/main-menu-style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/main-menu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/main-menu.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,8 +64,8 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/resources" />
       <recent name="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders" />
+      <recent name="$PROJECT_DIR$/src/resources" />
       <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$/src/main" />
       <recent name="$PROJECT_DIR$/resources/view" />
@@ -173,6 +177,7 @@
       <workItem from="1669254107778" duration="1342000" />
       <workItem from="1669256183890" duration="961000" />
       <workItem from="1669332726713" duration="2407000" />
+      <workItem from="1669495560602" duration="803000" />
     </task>
     <task id="LOCAL-00001" summary="Moved Resources folder to root">
       <created>1668209205820</created>
