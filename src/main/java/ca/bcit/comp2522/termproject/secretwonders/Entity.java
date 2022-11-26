@@ -48,5 +48,5 @@ public abstract class Entity extends ImageView {
         return getY() + (height / 2);
     }
 
-    public abstract void doTick();
+    public abstract void doMovement();
 }

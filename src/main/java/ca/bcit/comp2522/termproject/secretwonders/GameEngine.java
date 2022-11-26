@@ -242,7 +242,8 @@ public class GameEngine {
         gameLoop = new Timeline(new KeyFrame(Duration.millis(Constants.TICK_LENGTH), e -> {
             //Check state of all entities every tick time duration.
             for (Entity entity : entities) {
-                entity.doTick();
+                //Moves all entities
+                entity.doMovement();
                 if (entity instanceof Player1 || entity instanceof Player2) {
                     //removes player if dead
                     if (((Character) entity).getHealth() <= 0) {
@@ -271,6 +272,7 @@ public class GameEngine {
                         queueRemoval(projectile);
                     }
                 }
+                //removes projectile if it goes much past screen bounds.
                 if (projectile.getY() < -1000 || projectile.getY() > (Constants.SCREEN_HEIGHT * 2)) {
                     queueRemoval(projectile);
                 }

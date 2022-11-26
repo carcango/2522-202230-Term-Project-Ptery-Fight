@@ -41,6 +41,7 @@ public class Player1 extends Character {
                 turnRight = true; break;
         }
     }
+    @Override
     public void doMovement() {
         rotatePlayer.setPivotX(getCenterX());
         rotatePlayer.setPivotY(getCenterY());
@@ -99,8 +100,5 @@ public class Player1 extends Character {
                 )
         );
     }
-    @Override
-    public void doTick() {
-        doMovement();
-    }
+
 }

@@ -47,8 +47,8 @@ public class Projectile extends Entity {
     public int getDamage() {
         return damage;
     }
-
-    protected void doMovement() {
+    @Override
+    public void doMovement() {
         projectileRotation.setPivotX(getCenterX());
         projectileRotation.setPivotY(getCenterY());
         double x = pt1.getX() + getX();
@@ -56,8 +56,5 @@ public class Projectile extends Entity {
         setX(x);
         setY(y);
     }
-    @Override
-    public void doTick() {
-        doMovement();
-    }
+
 }

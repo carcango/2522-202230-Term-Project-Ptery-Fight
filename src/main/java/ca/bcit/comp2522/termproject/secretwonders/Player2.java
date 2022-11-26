@@ -60,6 +60,7 @@ public class Player2 extends Character {
         setY(y);
     }
 
+    @Override
     public void doMovement() {
         rotatePlayer.setPivotX(getCenterX());
         rotatePlayer.setPivotY(getCenterY());
@@ -100,9 +101,5 @@ public class Player2 extends Character {
                         rotatePlayer.getAngle()
                 )
         );
-    }
-    @Override
-    public void doTick() {
-        doMovement();
     }
 }
