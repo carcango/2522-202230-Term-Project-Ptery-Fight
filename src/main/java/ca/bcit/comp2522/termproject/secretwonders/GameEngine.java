@@ -222,13 +222,10 @@ public class GameEngine {
             if (System.currentTimeMillis() - lastEnemyAddedToGame >= 2000) {
                 Enemy enemy = new Enemy();
                 enemies.add(enemy);
+                entities.add(enemy);
                 pane.getChildren().add(enemy);
                 enemy.makeEnemyAppear();
                 lastEnemyAddedToGame = System.currentTimeMillis();
-            }
-
-            for (Enemy enemy : enemies) {
-                enemy.doMovement();
             }
 
             for (Entity entity : entities) {
