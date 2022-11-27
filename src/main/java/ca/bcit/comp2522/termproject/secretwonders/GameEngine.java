@@ -213,18 +213,18 @@ public class GameEngine {
      * Sets up Timelines, and loops through gameLoop Timeline, watching for events. Handles game logic.
      */
     private void setupTimelines() {
-
-
-
         gameLoop = new Timeline(new KeyFrame(Duration.millis(Constants.TICK_LENGTH), e -> {
 
             //Check state of all entities every tick time duration.
-            if (System.currentTimeMillis() - lastEnemyAddedToGame >= 2000) {
+            if (System.currentTimeMillis() - lastEnemyAddedToGame >= 1000) {
                 Enemy enemy = new Enemy();
+
                 enemies.add(enemy);
                 entities.add(enemy);
+
                 pane.getChildren().add(enemy);
                 enemy.makeEnemyAppear();
+
                 lastEnemyAddedToGame = System.currentTimeMillis();
             }
 
@@ -249,33 +249,18 @@ public class GameEngine {
                         System.out.println("Player 1 hit Player 2!");
                         player2.subtractHealth(projectile.getDamage());
                         queueRemoval(projectile);
-
-                    // Check if Player 1 projectile hits an enemy
-                    for (Enemy enemy: enemies) {
-                        if (projectile.intersects(enemy.getX(), enemy.getY(),
-                                enemy.getWidth(), enemy.getHeight())) {
-                            System.out.println("Player 1 hit an enemy!");
-                            queueRemoval(enemy);
-                            }
-                        }
                     }
                 }
+
+                // Check if Player 2 projectile hits Player 1
                 if (projectile instanceof Player2Projectile) {
                     // Check if Player 2 projectile hits Player 1
                     if (projectile.intersects(player1.getX(), player1.getY(),
                             player1.getWidth(), player1.getHeight())) {
+
                         System.out.println("Player 2 hit Player 1!");
                         player1.subtractHealth(projectile.getDamage());
                         queueRemoval(projectile);
-
-                    // Check if Player 2 projectile hits an enemy
-                    for (Enemy enemy : enemies) {
-                        if (projectile.intersects(enemy.getX(), enemy.getY(),
-                                enemy.getWidth(), enemy.getHeight())) {
-                            System.out.println("Player 2 hit an enemy!");
-                            queueRemoval(enemy);
-                            }
-                        }
                     }
                 }
                 //removes projectile if it goes much past screen bounds.
@@ -285,18 +270,37 @@ public class GameEngine {
             }
 
             for (Enemy enemyUnit : enemies) {
+
                 // Checks if enemy hits player 1; if so, character is damaged, and enemy disappears
                 if (enemyUnit.intersects(player1.getX(), player1.getY(), player1.getWidth(), player1.getHeight())) {
-                    System.out.println("Enemy hit player one!");
+                    System.out.println("Enemy hit Player 1!");
                     player1.subtractHealth(enemyUnit.getEnemyDamage());
                     queueRemoval(enemyUnit);
+
+                    // Check if enemy hit by Player 1 projectile
+                    for (Projectile projectile : projectiles) {
+                        if (projectile.intersects(enemyUnit.getX(), enemyUnit.getY(),
+                                enemyUnit.getWidth(), enemyUnit.getHeight())) {
+                            queueRemoval(enemyUnit);
+                            queueRemoval(projectile);
+                        }
+                    }
                 }
 
                 // Checks if enemy hits player 2; if so, character is damaged, and enemy disappears
                 if (enemyUnit.intersects(player2.getX(), player2.getY(), player2.getWidth(), player2.getHeight())) {
-                    System.out.println("Enemy hit player two!");
+                    System.out.println("Enemy hit Player 2!");
                     player2.subtractHealth(enemyUnit.getEnemyDamage());
                     queueRemoval(enemyUnit);
+                }
+
+                // Check if enemy hit by player 2 projectile
+                for (Projectile projectile : projectiles) {
+                    if (projectile.intersects(enemyUnit.getX(), enemyUnit.getY(),
+                            enemyUnit.getWidth(), enemyUnit.getHeight())) {
+                        queueRemoval(enemyUnit);
+                        queueRemoval(projectile);
+                    }
                 }
 
                 // Checks if enemy is off screen; if so, removes enemy.
