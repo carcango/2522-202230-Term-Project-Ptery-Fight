@@ -254,7 +254,6 @@ public class GameEngine {
                 // Checks if enemy hits player 1; if so, character is damaged, and enemy disappears
                 if (enemyUnit.intersects(player1.getX(), player1.getY(), player1.getWidth(), player1.getHeight())) {
                     System.out.println("Enemy hit player one!");
-                    enemy.setHitPlayerToTrue();
                     player1.subtractHealth(enemy.getEnemyDamage());
                     queueRemoval(enemy);
                 }
@@ -262,7 +261,6 @@ public class GameEngine {
                 // Checks if enemy hits player 2; if so, character is damaged, and enemy disappears
                 if (enemy.intersects(player2.getX(), player2.getY(), player2.getWidth(), player2.getHeight())) {
                     System.out.println("Enemy hit player two!");
-                    enemy.setHitPlayerToTrue();
                     player2.subtractHealth(enemy.getEnemyDamage());
                     queueRemoval(enemy);
                 }

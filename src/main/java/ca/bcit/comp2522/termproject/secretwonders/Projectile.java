@@ -102,5 +102,4 @@ public class Projectile extends Entity {
         setX(x);
         setY(y);
     }
-
 }

@@ -24,8 +24,6 @@ public class Enemy extends AbstractEnemy {
     private final Rotate rotateEnemy = new Rotate();
     private final Point2D initialDirection = new Point2D(0, -1);
 
-    private boolean hitPlayer;
-
     /**
      * Create an object of type Enemy.
      */
@@ -33,14 +31,12 @@ public class Enemy extends AbstractEnemy {
         super(ENEMY_SPRITE, ENEMY_WIDTH, ENEMY_HEIGHT);
         setInitialPosition();
         setEnemyAngle();
-        hitPlayer = false;
     }
 
     /**
      * Sets initial spawn location and sets rotate object to the player to allow rotation Transformations.
      */
     private void setInitialPosition() {
-        //set x at random X coordinate within game border.
         setX(Constants.SCREEN_WIDTH / 2);
         setY(TOP_OF_SCREEN);
 
@@ -58,26 +54,12 @@ public class Enemy extends AbstractEnemy {
         rotateEnemy.setAngle(enemyAngle);
     }
 
-    /**
-     * Moves across the screen.
-     *
-     * @param changeInX how much the player is supposed to move along relative X coordinate (if turning).
-     * @param changeInY how much the player is supposed to move along relative Y coordinate (forward or backwards).
+    /*
+     * Moves enemy across screen.
      */
     private void moveEnemy(final double changeInX, final double changeInY) {
         setX(changeInX + getX());
         setY(changeInY + getY());
-    }
-
-    public boolean getHitPlayerBoolean() {
-        return this.hitPlayer;
-    }
-
-    /**
-     * Is true if the enemy hits a player, else false.
-     */
-    public void setHitPlayerToTrue() {
-        hitPlayer = true;
     }
 
     /**
