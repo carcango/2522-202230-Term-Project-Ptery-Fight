@@ -41,23 +41,11 @@ public abstract class Character extends Entity {
         return healthProperty.get();
     }
 
-    public void setHealth(int health) {
-        healthProperty.set(health);
-    }
-
     public void subtractHealth(int health) {
-        healthProperty.set(healthProperty.get() - health);
-    }
-
-    public void addHealth(int health) {
         healthProperty.set(healthProperty.get() - health);
     }
 
     public ReadOnlyIntegerProperty healthPropertyUnmodifiable() {
         return healthProperty;
-    }
-
-    public HealthMonitor getHealthMonitor() {
-        return healthMonitor;
     }
 }

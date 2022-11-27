@@ -127,36 +127,26 @@ public class GameEngine {
                         System.out.println(System.currentTimeMillis());
                         lastPlayerTwoShot = System.currentTimeMillis();
                         break;
-
                     }
-
             }
         });
         scene.setOnKeyReleased(event -> {
             switch (event.getCode()) {
-                case LEFT:
-                    player1.stopMovement(Direction.LEFT); break;
-                case A:
-                    player2.stopMovement(Direction.LEFT); break;
-                case RIGHT:
-                    player1.stopMovement(Direction.RIGHT); break;
-                case D:
-                    player2.stopMovement(Direction.RIGHT); break;
-                case UP:
-                    player1.stopMovement(Direction.UP); break;
-                case W:
-                    player2.stopMovement(Direction.UP); break;
-                case DOWN:
-                    player1.stopMovement(Direction.DOWN); break;
-                case S:
-                    player2.stopMovement(Direction.DOWN); break;
+                case LEFT -> player1.stopMovement(Direction.LEFT);
+                case A -> player2.stopMovement(Direction.LEFT);
+                case RIGHT -> player1.stopMovement(Direction.RIGHT);
+                case D -> player2.stopMovement(Direction.RIGHT);
+                case UP -> player1.stopMovement(Direction.UP);
+                case W -> player2.stopMovement(Direction.UP);
+                case DOWN -> player1.stopMovement(Direction.DOWN);
+                case S -> player2.stopMovement(Direction.DOWN);
             }
         });
     }
 
     /**
      * adds an entity to the game pane.
-     * If the entity is a player, attachs a health bar to the entity.
+     * If the entity is a player, attaches a health bar to the entity.
      * @param entity an object that extends Entity.
      */
     private void add(final Entity entity) {
@@ -164,18 +154,21 @@ public class GameEngine {
         if (entity instanceof Player1) {
             player1 = (Player1) entity;
             pane.bindHealthOne(player1.healthPropertyUnmodifiable());
+            pane.getChildren().add(entity);
+        }
+        if (entity instanceof Enemy) {
+            enemy = (Enemy) entity;
+            pane.getChildren().add(entity);
         }
         if (entity instanceof Player2) {
             player2 = (Player2) entity;
             pane.bindHealthTwo(player2.healthPropertyUnmodifiable());
+            pane.getChildren().add(entity);
         }
-        if (entity instanceof Enemy) {
-            System.out.println("tried to add enemy");
-            enemies.add((Enemy) entity);
-            enemy = (Enemy) entity;
+        if (entity instanceof Projectile) {
+            projectiles.add((Projectile) entity);
+            pane.getChildren().add(entity);
         }
-        if (entity instanceof Projectile) projectiles.add((Projectile) entity);
-        pane.getChildren().add(entity);
     }
 
     /**
@@ -228,9 +221,12 @@ public class GameEngine {
                         queueRemoval(entity);
                     }
                 }
-                if (entity instanceof Enemy) {
-                    if (((Enemy) entity).getHealth() <= 0) {
-                        queueRemoval((entity));
+            }
+            for (Enemy enemyUnit : enemies) {
+                enemyUnit.doMovement();
+                if (enemyUnit instanceof Enemy) {
+                    if (enemy.getHitPlayerBoolean()) {
+                        queueRemoval(enemyUnit);
                     }
                 }
             }
@@ -255,6 +251,22 @@ public class GameEngine {
                         queueRemoval(projectile);
                     }
                 }
+                // Checks if enemy hits player 1; if so, character is damaged, and enemy disappears
+                if (enemy.intersects(player1.getX(), player1.getY(), player1.getWidth(), player1.getHeight())) {
+                    System.out.println("Enemy hit player one!");
+                    enemy.setHitPlayerToTrue();
+                    player1.subtractHealth(enemy.getEnemyDamage());
+                    queueRemoval(enemy);
+                }
+
+                // Checks if enemy hits player 2; if so, character is damaged, and enemy disappears
+                if (enemy.intersects(player2.getX(), player2.getY(), player2.getWidth(), player2.getHeight())) {
+                    System.out.println("Enemy hit player two!");
+                    enemy.setHitPlayerToTrue();
+                    player2.subtractHealth(enemy.getEnemyDamage());
+                    queueRemoval(enemy);
+                }
+
                 //removes projectile if it goes much past screen bounds.
                 if (projectile.getY() < -1000 || projectile.getY() > (Constants.SCREEN_HEIGHT * 2)) {
                     queueRemoval(projectile);

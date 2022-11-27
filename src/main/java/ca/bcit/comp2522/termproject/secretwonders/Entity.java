@@ -33,17 +33,6 @@ public abstract class Entity extends ImageView {
     }
 
     /**
-     * constructs object of Entity with given image.
-     * @param spriteName file name of image.
-     */
-    public Entity(String spriteName) {
-        sprite = new Image(spriteName, this.width, this.height, false, false);
-        super.setImage(sprite);
-        setFitHeight(height);
-        setFitWidth(width);
-    }
-
-    /**
      * constructs object of Entity with given image, width, and height.
      * @param spriteName file name of image.
      * @param width width of image.

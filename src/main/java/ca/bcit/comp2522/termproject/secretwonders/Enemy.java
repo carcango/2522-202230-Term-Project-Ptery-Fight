@@ -12,34 +12,28 @@ import java.util.Random;
  */
 public class Enemy extends AbstractEnemy {
 
-    private static final double MIN_DEGREE_ENEMY_FACES = 20;
-    private static final double MAX_DEGREE_ENEMY_FACES = 161;
+    private static final double MIN_DEGREE_ENEMY_FACES = 90;
+    private static final double MAX_DEGREE_ENEMY_FACES = 181;
     private static final int    ENEMY_MOVEMENT_SPEED   = 2;
     private static final int    ENEMY_WIDTH            = 50;
     private static final int    ENEMY_HEIGHT           = 50;
-    private static final int    ENEMY_MAX_HEALTH       = 60;
-    private static final String ENEMY_SPRITE           = "fireblast.gif";
-
-    private static final Random RANDOM = new Random();
+    private static final String ENEMY_SPRITE           = "bee.gif";
+    private static final int    TOP_OF_SCREEN          = 0;
+    private static final Random RANDOM                 = new Random();
 
     private final Rotate rotateEnemy = new Rotate();
-    private final double enemyStartPositionX = Constants.SCREEN_WIDTH / 2;
-    private final double enemyStartPositionY = Constants.SCREEN_HEIGHT;
+    private final Point2D initialDirection = new Point2D(0, -1);
 
-    private final Point2D initialDirection = new Point2D(
-            0,
-            -1);
+    private boolean hitPlayer;
 
     /**
      * Create an object of type Enemy.
      */
     public Enemy() {
-        super(ENEMY_SPRITE,
-                ENEMY_WIDTH,
-                ENEMY_HEIGHT,
-                ENEMY_MAX_HEALTH);
+        super(ENEMY_SPRITE, ENEMY_WIDTH, ENEMY_HEIGHT);
         setInitialPosition();
         setEnemyAngle();
+        hitPlayer = false;
     }
 
     /**
@@ -48,7 +42,7 @@ public class Enemy extends AbstractEnemy {
     private void setInitialPosition() {
         //set x at random X coordinate within game border.
         setX(Math.random() * (Constants.SCREEN_WIDTH - width));
-        setY(Constants.SCREEN_HEIGHT - ENEMY_HEIGHT);
+        setY(TOP_OF_SCREEN);
 
         rotateEnemy.setPivotX(getCenterX());
         rotateEnemy.setPivotY(getCenterY());
@@ -73,6 +67,19 @@ public class Enemy extends AbstractEnemy {
     private void moveEnemy(final double changeInX, final double changeInY) {
         setX(changeInX + getX());
         setY(changeInY + getY());
+    }
+
+    public boolean getHitPlayerBoolean() {
+        return this.hitPlayer;
+    }
+
+    /**
+     * Is true if the enemy hits a player, else false.
+     */
+    public void setHitPlayerToTrue() {
+        if (!this.hitPlayer) {
+            hitPlayer = true;
+        }
     }
 
     /**
