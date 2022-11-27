@@ -199,45 +199,6 @@ public class GameEngine {
     }
 
     /**
-     * returns player 1 X location.
-     * @return return the X value of Player One.
-     */
-    public double getPlayer1X() {
-        return player1.getX();
-    }
-
-    /**
-     * returns player 2 Y location.
-     * @return return the Y value of Player Two.
-     */
-    public double getPlayer1Y() {
-        return player1.getY();
-    }
-
-    /**
-     * returns player 1 Y location.
-     * @return return the Y value of Player One.
-     */
-    public double getPlayer2X() {
-        return player2.getX();
-    }
-    /**
-     * returns player 2 Y location.
-     * @return return the Y value of Player Two.
-     */
-    public double getPlayer2Y() {
-        return player2.getY();
-    }
-
-    /**
-     * returns instance of pane.
-     * @return GamePane.
-     */
-    public GamePane getPane() {
-        return pane;
-    }
-
-    /**
      * returns this scene.
      * @return Scene.
      */

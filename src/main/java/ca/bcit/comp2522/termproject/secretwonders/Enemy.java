@@ -39,6 +39,7 @@ public class Enemy extends AbstractEnemy {
                 ENEMY_HEIGHT,
                 ENEMY_MAX_HEALTH);
         setInitialPosition();
+        setEnemyAngle();
     }
 
     /**
@@ -58,8 +59,7 @@ public class Enemy extends AbstractEnemy {
      * Sets an initial and permanent angle the enemy faces.
      */
     public void setEnemyAngle() {
-        double enemyAngle = RANDOM.nextDouble(MIN_DEGREE_ENEMY_FACES,
-                MAX_DEGREE_ENEMY_FACES);
+        double enemyAngle = RANDOM.nextDouble(MIN_DEGREE_ENEMY_FACES, MAX_DEGREE_ENEMY_FACES);
         rotateEnemy.setAngle(enemyAngle);
     }
 
