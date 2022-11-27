@@ -17,7 +17,7 @@ public class Enemy extends AbstractEnemy {
     private static final int    ENEMY_MOVEMENT_SPEED   = 2;
     private static final int    ENEMY_WIDTH            = 50;
     private static final int    ENEMY_HEIGHT           = 50;
-    private static final String ENEMY_SPRITE           = "bee.gif";
+    private static final String ENEMY_SPRITE           = "fly.gif";
     private static final int    TOP_OF_SCREEN          = 0;
     private static final Random RANDOM                 = new Random();
 
@@ -29,8 +29,6 @@ public class Enemy extends AbstractEnemy {
      */
     public Enemy() {
         super(ENEMY_SPRITE, ENEMY_WIDTH, ENEMY_HEIGHT);
-        setInitialPosition();
-        setEnemyAngle();
     }
 
     /**
@@ -52,6 +50,11 @@ public class Enemy extends AbstractEnemy {
     public void setEnemyAngle() {
         double enemyAngle = RANDOM.nextDouble(MIN_DEGREE_ENEMY_FACES, MAX_DEGREE_ENEMY_FACES);
         rotateEnemy.setAngle(enemyAngle);
+    }
+
+    public void makeEnemyAppear() {
+        setInitialPosition();
+        setEnemyAngle();
     }
 
     /*
