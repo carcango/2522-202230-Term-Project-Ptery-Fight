@@ -39,12 +39,10 @@ public class GameEngine {
      * Player two is the dragonfly character who is controlled with the WASD keys and SPACE bar.
      */
     private Player2 player2 = new Player2();
-
     /*
      * Enemy character that moves at a constant speed and in a constant direction across the screen.
      */
     private Enemy enemy = new Enemy();
-
     /**
      *Arraylist of Entities, not including projectiles. This keeps track of Entities are currently part of the game.
      */
@@ -68,7 +66,7 @@ public class GameEngine {
     /**
      * The last timestamp of player 2 attack (fireball).
      */
-    long lastPlayerTwoShot = System.currentTimeMillis();
+    private long lastPlayerTwoShot = System.currentTimeMillis();
 
     /**
      * Constructor for GameEngine.
@@ -156,10 +154,6 @@ public class GameEngine {
             pane.bindHealthOne(player1.healthPropertyUnmodifiable());
             pane.getChildren().add(entity);
         }
-        if (entity instanceof Enemy) {
-            enemy = (Enemy) entity;
-            pane.getChildren().add(entity);
-        }
         if (entity instanceof Player2) {
             player2 = (Player2) entity;
             pane.bindHealthTwo(player2.healthPropertyUnmodifiable());
@@ -167,6 +161,10 @@ public class GameEngine {
         }
         if (entity instanceof Projectile) {
             projectiles.add((Projectile) entity);
+            pane.getChildren().add(entity);
+        }
+        if (entity instanceof Enemy) {
+            enemies.add((Enemy) entity);
             pane.getChildren().add(entity);
         }
     }
@@ -178,6 +176,7 @@ public class GameEngine {
     private void remove(final Entity entity) {
         entities.remove(entity);
         projectiles.remove(entity);
+        enemies.remove(entity);
         pane.getChildren().remove(entity);
     }
 
@@ -222,14 +221,6 @@ public class GameEngine {
                     }
                 }
             }
-            for (Enemy enemyUnit : enemies) {
-                enemyUnit.doMovement();
-                if (enemyUnit instanceof Enemy) {
-                    if (enemy.getHitPlayerBoolean()) {
-                        queueRemoval(enemyUnit);
-                    }
-                }
-            }
             //check if projectile hits something
             for (Projectile projectile : projectiles) {
                 if (projectile instanceof Player1Projectile) {
@@ -251,8 +242,17 @@ public class GameEngine {
                         queueRemoval(projectile);
                     }
                 }
+
+                //removes projectile if it goes much past screen bounds.
+                if (projectile.getY() < -1000 || projectile.getY() > (Constants.SCREEN_HEIGHT * 2)) {
+                    queueRemoval(projectile);
+                }
+            }
+
+            for (Enemy enemyUnit : enemies) {
+
                 // Checks if enemy hits player 1; if so, character is damaged, and enemy disappears
-                if (enemy.intersects(player1.getX(), player1.getY(), player1.getWidth(), player1.getHeight())) {
+                if (enemyUnit.intersects(player1.getX(), player1.getY(), player1.getWidth(), player1.getHeight())) {
                     System.out.println("Enemy hit player one!");
                     enemy.setHitPlayerToTrue();
                     player1.subtractHealth(enemy.getEnemyDamage());
@@ -265,11 +265,6 @@ public class GameEngine {
                     enemy.setHitPlayerToTrue();
                     player2.subtractHealth(enemy.getEnemyDamage());
                     queueRemoval(enemy);
-                }
-
-                //removes projectile if it goes much past screen bounds.
-                if (projectile.getY() < -1000 || projectile.getY() > (Constants.SCREEN_HEIGHT * 2)) {
-                    queueRemoval(projectile);
                 }
             }
             //removes entities that have been flagged for removal earlier.

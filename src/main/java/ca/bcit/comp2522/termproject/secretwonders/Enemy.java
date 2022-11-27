@@ -12,8 +12,8 @@ import java.util.Random;
  */
 public class Enemy extends AbstractEnemy {
 
-    private static final double MIN_DEGREE_ENEMY_FACES = 90;
-    private static final double MAX_DEGREE_ENEMY_FACES = 181;
+    private static final double MIN_DEGREE_ENEMY_FACES = 150;
+    private static final double MAX_DEGREE_ENEMY_FACES = 220;
     private static final int    ENEMY_MOVEMENT_SPEED   = 2;
     private static final int    ENEMY_WIDTH            = 50;
     private static final int    ENEMY_HEIGHT           = 50;
@@ -41,7 +41,7 @@ public class Enemy extends AbstractEnemy {
      */
     private void setInitialPosition() {
         //set x at random X coordinate within game border.
-        setX(Math.random() * (Constants.SCREEN_WIDTH - width));
+        setX(Constants.SCREEN_WIDTH / 2);
         setY(TOP_OF_SCREEN);
 
         rotateEnemy.setPivotX(getCenterX());
@@ -77,9 +77,7 @@ public class Enemy extends AbstractEnemy {
      * Is true if the enemy hits a player, else false.
      */
     public void setHitPlayerToTrue() {
-        if (!this.hitPlayer) {
-            hitPlayer = true;
-        }
+        hitPlayer = true;
     }
 
     /**
