@@ -54,6 +54,10 @@ public class GameEngine {
      */
     private final ArrayList<Projectile> projectiles = new ArrayList<>();
     /**
+     * Arraylist of Enemies, keeps track of what projectiles are currently part of the game.
+     */
+    private ArrayList<Enemy> enemies = new ArrayList<>();
+    /**
      * Arraylist of entities to be removed from play at the end of the current game loop.
      */
     ArrayList<Entity> entitiesToAdd = new ArrayList<>();
@@ -166,6 +170,8 @@ public class GameEngine {
             pane.bindHealthTwo(player2.healthPropertyUnmodifiable());
         }
         if (entity instanceof Enemy) {
+            System.out.println("tried to add enemy");
+            enemies.add((Enemy) entity);
             enemy = (Enemy) entity;
         }
         if (entity instanceof Projectile) projectiles.add((Projectile) entity);

@@ -27,8 +27,8 @@ public class Enemy extends AbstractEnemy {
     private final double enemyStartPositionY = Constants.SCREEN_HEIGHT;
 
     private final Point2D initialDirection = new Point2D(
-            enemyStartPositionX,
-            enemyStartPositionY);
+            0,
+            -1);
 
     /**
      * Create an object of type Enemy.
@@ -46,7 +46,8 @@ public class Enemy extends AbstractEnemy {
      * Sets initial spawn location and sets rotate object to the player to allow rotation Transformations.
      */
     private void setInitialPosition() {
-        setX((Constants.SCREEN_WIDTH - ENEMY_WIDTH));
+        //set x at random X coordinate within game border.
+        setX(Math.random() * (Constants.SCREEN_WIDTH - width));
         setY(Constants.SCREEN_HEIGHT - ENEMY_HEIGHT);
 
         rotateEnemy.setPivotX(getCenterX());
