@@ -55,12 +55,20 @@ public abstract class Entity extends ImageView {
         return width;
     }
 
+    public void setWidthToZero() {
+        this.width = 0;
+    }
+
     /**
      * gets height.
      * @return height.
      */
     public double getHeight() {
         return height;
+    }
+
+    public void setHeightToZero() {
+        this.height = 0;
     }
 
     /**
