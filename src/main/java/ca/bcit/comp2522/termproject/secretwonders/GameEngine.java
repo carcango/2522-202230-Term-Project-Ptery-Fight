@@ -232,8 +232,17 @@ public class GameEngine {
                 //Moves all entities
                 entity.doMovement();
                 if (entity instanceof Player1 || entity instanceof Player2) {
-                    //removes player if dead
+
+                    // Remove player and their hit box if dead.
                     if (((Character) entity).getHealth() <= 0) {
+
+                        // Remove player hit box
+                        entity.setHeightToZero();
+                        entity.setWidthToZero();
+                        entity.setX(0);
+                        entity.setY(0);
+
+                        // Remove player
                         queueRemoval(entity);
                     }
                 }

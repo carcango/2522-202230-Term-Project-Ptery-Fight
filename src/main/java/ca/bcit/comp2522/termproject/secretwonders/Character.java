@@ -26,7 +26,7 @@ public abstract class Character extends Entity {
 
     public Character() { }
 
-    public Character(String spriteName, double width, double height, int maxHealth) {
+    public Character(final String spriteName, final double width, final double height, final int maxHealth) {
         super(spriteName, width, height);
         this.maxHealth = maxHealth;
         healthProperty.set(maxHealth);
