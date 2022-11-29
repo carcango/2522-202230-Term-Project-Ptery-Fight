@@ -34,13 +34,13 @@ public class Driver extends Application {
             Scene scene = new Scene(fxmlLoader.load(), menuWindowWidth, menuWindowHeight);
             stage.setTitle(menuWindowTitle);
             stage.setScene(scene);
-            Media media = new Media(getClass().getResource("/mainTheme.mp3").toURI().toString());
-            MediaPlayer themeSong = new MediaPlayer(media);
-            themeSong.setAutoPlay(true);
-            themeSong.setCycleCount(Timeline.INDEFINITE);
+//            Media media = new Media(getClass().getResource("/mainTheme.mp3").toURI().toString());
+//            MediaPlayer themeSong = new MediaPlayer(media);
+//            themeSong.setAutoPlay(true);
+//            themeSong.setCycleCount(Timeline.INDEFINITE);
             stage.show();
 
-        } catch (IOException | URISyntaxException ioe) {
+        } catch (IOException ioe) {
             throw new IOException("Cannot find file");
         }
     }

@@ -4,11 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="511dd55e-1055-4411-9c85-cfde8bbb9710" name="Changes" comment="Fixed bug -- enemies now come out at one second interval, can be shot.">
+    <list default="true" id="511dd55e-1055-4411-9c85-cfde8bbb9710" name="Changes" comment="Fixed bug where player hit box remained after player died">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/Character.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/Character.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/Entity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/GameEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/GameEngine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/Driver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/Driver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/Player1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/Player1.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/Player2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/Player2.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -175,7 +175,7 @@
       <workItem from="1669595328578" duration="82000" />
       <workItem from="1669600238087" duration="9000" />
       <workItem from="1669661172274" duration="9000" />
-      <workItem from="1669680813608" duration="1482000" />
+      <workItem from="1669680813608" duration="4061000" />
     </task>
     <task id="LOCAL-00001" summary="Moved Resources folder to root">
       <created>1668209205820</created>
@@ -380,7 +380,14 @@
       <option name="project" value="LOCAL" />
       <updated>1669588864790</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="Fixed bug where player hit box remained after player died">
+      <created>1669682495189</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1669682495189</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -398,7 +405,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Updating menu via class, not FXML" />
     <MESSAGE value="reprogrammed menu" />
     <MESSAGE value="Organized code in MainMenu.java" />
     <MESSAGE value="Added Javadocs" />
@@ -423,7 +429,8 @@
     <MESSAGE value="got preliminary enemies on screen working" />
     <MESSAGE value="Removed redundant code" />
     <MESSAGE value="Fixed bug -- enemies now come out at one second interval, can be shot." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed bug -- enemies now come out at one second interval, can be shot." />
+    <MESSAGE value="Fixed bug where player hit box remained after player died" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed bug where player hit box remained after player died" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

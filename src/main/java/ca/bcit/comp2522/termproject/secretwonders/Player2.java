@@ -88,13 +88,31 @@ public class Player2 extends Character {
      * @param changeInY how much the player is supposed to move along relative Y coordinate (forward or backwards).
      */
     private void movePlayer(final double changeInX, final double changeInY) {
+
+        // If no movement, no change
         if (changeInX == 0 && changeInY == 0) {
             return;
         }
-        double x = changeInX + getX();
-        double y = changeInY + getY();
-        setX(x);
-        setY(y);
+        double newXPosition = this.getX() + changeInX;
+        double newYPosition = this.getY() + changeInY;
+
+        // Ensure player can't go out of bounds horizontally
+        if (newXPosition > 590) {
+            this.setX(590);
+        } else if (newXPosition < 0) {
+            this.setX(0);
+        } else {
+            this.setX(newXPosition);
+        }
+
+        // Ensure player can't go out of bounds vertically
+        if (newYPosition > 580) {
+            this.setY(580);
+        } else if (newYPosition < 0) {
+            this.setY(0);
+        } else {
+            this.setY(newYPosition);
+        }
     }
     /**
      * Interprets instructions to move Player two.
