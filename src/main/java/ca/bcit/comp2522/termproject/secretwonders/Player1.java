@@ -134,8 +134,8 @@ public class Player1 extends Character {
         double newYPosition = this.getY() + changeInY;
 
         // Ensure player can't go out of bounds horizontally
-        if (newXPosition > 580) {
-            this.setX(580);
+        if (newXPosition > Constants.SCREEN_WIDTH - this.getWidth()) {
+            this.setX(Constants.SCREEN_WIDTH - this.getWidth());
         } else if (newXPosition < 0) {
             this.setX(0);
         } else {
@@ -143,8 +143,8 @@ public class Player1 extends Character {
         }
 
         // Ensure player can't go out of bounds vertically
-        if (newYPosition > 590) {
-            this.setY(590);
+        if (newYPosition > Constants.SCREEN_HEIGHT - this.getHeight()) {
+            this.setY(Constants.SCREEN_HEIGHT - this.getHeight());
         } else if (newYPosition < 0) {
             this.setY(0);
         } else {
