@@ -37,7 +37,7 @@ public class Driver extends Application {
             Media media = new Media(getClass().getResource("/mainTheme.mp3").toURI().toString());
             MediaPlayer themeSong = new MediaPlayer(media);
             themeSong.setAutoPlay(true);
-            themeSong.setCycleCount(Timeline.INDEFINITE);
+            themeSong.setCycleCount(MediaPlayer.INDEFINITE);
             stage.show();
 
         } catch (IOException | URISyntaxException ioe) {
