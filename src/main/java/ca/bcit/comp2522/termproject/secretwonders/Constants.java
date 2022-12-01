@@ -104,5 +104,5 @@ public class Constants {
     /**
      * projectile one Y value movement speed.
      */
-    public static final double PROJECTILE_PLAYER_TWO_DELTA_Y = 4.0;
+    public static final double PROJECTILE_PLAYER_TWO_DELTA_Y = 6.0;
 }
