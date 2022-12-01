@@ -3,7 +3,11 @@ package ca.bcit.comp2522.termproject.secretwonders;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.scene.Scene;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.util.Duration;
+
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 
 /**
@@ -75,22 +79,29 @@ public class GameEngine {
     private int playerOneScore = 0;
     private int playterTwoScore = 0;
 
+    Media media = new Media(getClass().getResource("/mainTheme.mp3").toURI().toString());
+
+    MediaPlayer themeSong;
+
 
 
     /**
      * Constructor for GameEngine.
      */
-    public GameEngine() {
+    public GameEngine() throws URISyntaxException {
         pane = new GamePane();
         scene = new Scene(pane, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT);
+
         setupScene(pane);
         setupKeybindings();
+        music();
 
         // Add players to the game.
         add(player1);
         add(player2);
 
         // Main Game Loop
+
         setupTimelines();
     }
 
@@ -214,8 +225,14 @@ public class GameEngine {
         return scene;
     }
 
+    public void music() throws URISyntaxException {
+        themeSong = new MediaPlayer(media);
+        themeSong.setAutoPlay(true);
+        themeSong.setCycleCount(MediaPlayer.INDEFINITE);
+    }
+
     ////////////////////
-    // MAIN GAME LOOP //
+    // MAIN GAME LOOP \O.O///
     ////////////////////
     /**
      * Sets up Timelines, and loops through gameLoop Timeline, watching for events. Handles game logic.
@@ -348,7 +365,7 @@ public class GameEngine {
                 add(entity);
             }
             entitiesToAdd.clear();
-            if (player1.getHealth() > 0 && player2.getHealth() > 0) {
+            if (player1.getHealth() > 0 || player2.getHealth() > 0) {
                 pane.survivalTimeLabel.setText(String.valueOf((System.currentTimeMillis() - gameStartTime) / 1000));
             }
         }));

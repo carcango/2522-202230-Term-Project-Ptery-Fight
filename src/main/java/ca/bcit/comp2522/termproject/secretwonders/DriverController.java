@@ -4,13 +4,15 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
+import java.net.URISyntaxException;
+
 public class DriverController {
 
     @FXML public Button startGameButton;
     @FXML public Button quitGameButton;
 
     @FXML
-    protected void onStartGameButtonClick() {
+    protected void onStartGameButtonClick() throws URISyntaxException {
         GameEngine gameEngine = new GameEngine();
         Stage primaryScreen = new Stage();
         primaryScreen.setTitle("Bug Blaster");
