@@ -32,8 +32,14 @@ public class GamePane extends Pane {
      */
     private Rectangle healthBar2;
 
-    Label playerOneScoreLabel = new Label("Score: ");
-    Label playerTwoScoreLabel = new Label("Score: ");
+    /**
+     * scorecard Rectance.
+     */
+    Rectangle scorecardRectangle;
+    Label scoreLabel;
+
+    Label playerOneScoreLabel = new Label("Honeybee Score: ");
+    Label playerTwoScoreLabel = new Label("DragonFly Score: ");
 
     /**
      * Constructs GamePane.
@@ -82,6 +88,20 @@ public class GamePane extends Pane {
      */
     public void bindHealthTwo(final ReadOnlyIntegerProperty health) {
         healthBar2.widthProperty().bind(health.multiply(Constants.SCREEN_WIDTH).divide(Constants.PLAYER_TWO_HEALTH));
+    }
+
+    /**
+     * shows the final scorecard when both players have died.
+     */
+    public void showScoreCard() {
+        scorecardRectangle = new Rectangle(Constants.SCREEN_WIDTH - 100, 200, Color.LIGHTGREEN);
+        scorecardRectangle.setX(50);
+        scorecardRectangle.setY((Constants.SCREEN_WIDTH / 2) - 100);
+        this.getChildren().addAll(scorecardRectangle);
+        playerOneScoreLabel.relocate(scorecardRectangle.getX(), scorecardRectangle.getY());
+        playerTwoScoreLabel.relocate(scorecardRectangle.getX(), scorecardRectangle.getY() + 60);
+        playerOneScoreLabel.toFront();
+        playerTwoScoreLabel.toFront();
     }
 
     /**

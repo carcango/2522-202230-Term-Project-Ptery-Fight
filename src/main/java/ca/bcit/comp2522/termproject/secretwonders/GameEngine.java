@@ -248,6 +248,9 @@ public class GameEngine {
 
                         // Remove player
                         queueRemoval(entity);
+                        if (player1.getHealth() <= 0 && player2.getHealth() <= 0) {
+                            pane.showScoreCard();
+                        }
                     }
                 }
             }
@@ -259,10 +262,9 @@ public class GameEngine {
                     if (projectile.intersects(player2.getX(), player2.getY(),
                             player2.getWidth(), player2.getHeight())) {
 
-                        System.out.println("Player 1 hit Player 2!");
                         player2.subtractHealth(projectile.getDamage());
                         playerOneScore++;
-                        pane.playerOneScoreLabel.setText("Score: " + playerOneScore);
+                        pane.playerOneScoreLabel.setText("Honeybee Score: " + playerOneScore);
                         queueRemoval(projectile);
                     }
                 }
@@ -273,10 +275,9 @@ public class GameEngine {
                     if (projectile.intersects(player1.getX(), player1.getY(),
                             player1.getWidth(), player1.getHeight())) {
 
-                        System.out.println("Player 2 hit Player 1!");
                         player1.subtractHealth(projectile.getDamage());
                         playterTwoScore++;
-                        pane.playerTwoScoreLabel.setText("Score: " + playterTwoScore);
+                        pane.playerTwoScoreLabel.setText("Dragonfly Score: " + playterTwoScore);
                     }
                 }
                 //removes projectile if it goes much past screen bounds.
@@ -310,7 +311,7 @@ public class GameEngine {
                             queueRemoval(enemyUnit);
                             queueRemoval(projectile);
                             playerOneScore++;
-                            pane.playerOneScoreLabel.setText("Score: " + playerOneScore);
+                            pane.playerOneScoreLabel.setText("Honeybee Score: " + playerOneScore);
                         }
                     }
                     if (projectile instanceof Player2Projectile) {
@@ -318,7 +319,7 @@ public class GameEngine {
                                 enemyUnit.getWidth(), enemyUnit.getHeight())) {
                             queueRemoval(enemyUnit);
                             playterTwoScore++;
-                            pane.playerTwoScoreLabel.setText("Score: " + playterTwoScore);
+                            pane.playerTwoScoreLabel.setText("DragonFly Score: " + playterTwoScore);
                         }
                     }
                 }
