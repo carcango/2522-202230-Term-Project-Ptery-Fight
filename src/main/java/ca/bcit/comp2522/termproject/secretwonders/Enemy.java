@@ -35,7 +35,7 @@ public class Enemy extends AbstractEnemy {
      * Sets initial spawn location and sets rotate object to the player to allow rotation Transformations.
      */
     private void setInitialPosition() {
-        setX(Constants.SCREEN_WIDTH / 2);
+        setX(RANDOM.nextDouble(0 + 20, Constants.SCREEN_WIDTH - 20));
         setY(TOP_OF_SCREEN);
 
         rotateEnemy.setPivotX(getCenterX());

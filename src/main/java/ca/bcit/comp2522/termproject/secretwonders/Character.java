@@ -14,7 +14,7 @@ public abstract class Character extends Entity {
      * the current health of the character.
      * this is an integer property because it needs to implement observable in HealthMonitor
      */
-    private IntegerProperty healthProperty = new SimpleIntegerProperty(100);
+    private final IntegerProperty healthProperty = new SimpleIntegerProperty(100);
     /**
      * Max health of the Character.
      */
