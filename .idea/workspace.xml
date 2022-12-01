@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="511dd55e-1055-4411-9c85-cfde8bbb9710" name="Changes" comment="Fixed bug with screen bounds">
+    <list default="true" id="511dd55e-1055-4411-9c85-cfde8bbb9710" name="Changes" comment="Randomized enemy placement at top of screen">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/Character.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/Character.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/Enemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/Enemy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/GameEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/GameEngine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/main-menu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/main-menu.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -176,7 +176,8 @@
       <workItem from="1669661172274" duration="9000" />
       <workItem from="1669680813608" duration="4421000" />
       <workItem from="1669687830806" duration="529000" />
-      <workItem from="1669776776916" duration="162000" />
+      <workItem from="1669776776916" duration="700000" />
+      <workItem from="1669931084075" duration="89000" />
     </task>
     <task id="LOCAL-00001" summary="Moved Resources folder to root">
       <created>1668209205820</created>
@@ -409,7 +410,14 @@
       <option name="project" value="LOCAL" />
       <updated>1669688171248</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="Randomized enemy placement at top of screen">
+      <created>1669777009455</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1669777009455</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -427,7 +435,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added Javadocs" />
     <MESSAGE value="Fixed display buy" />
     <MESSAGE value="Fixed display bug" />
     <MESSAGE value="Connected primary game to main menu -- runnable from there!" />
@@ -452,7 +459,8 @@
     <MESSAGE value="Fixed bug where player hit box remained after player died" />
     <MESSAGE value="Added bounds, so players cannot leave the play screen. Still a bit buggy." />
     <MESSAGE value="Fixed bug with screen bounds" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed bug with screen bounds" />
+    <MESSAGE value="Randomized enemy placement at top of screen" />
+    <option name="LAST_COMMIT_MESSAGE" value="Randomized enemy placement at top of screen" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -464,7 +472,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/GamePane.java</url>
-          <line>43</line>
+          <line>48</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
