@@ -33,10 +33,13 @@ public class GamePane extends Pane {
     private Rectangle healthBar2;
 
     /**
-     * scorecard Rectance.
+     * scorecard Rectangle.
      */
     Rectangle scorecardRectangle;
-    Label scoreLabel;
+    /**
+     * shows how long the players have survived.
+     */
+    Label survivalTimeLabel = new Label("00:00:00");
 
     Label playerOneScoreLabel = new Label("Honeybee Score: ");
     Label playerTwoScoreLabel = new Label("DragonFly Score: ");
@@ -64,15 +67,21 @@ public class GamePane extends Pane {
         healthBar2 = new Rectangle(Constants.SCREEN_WIDTH, Constants.HEALTH_BAR_SIZE, Color.RED);
         healthBar2.setX(0);
         healthBar2.setY(630);
-        //apply settings to score labels
+
+        /* apply settings to score labels */
         playerOneScoreLabel.setTextFill(Color.WHITE);
         playerOneScoreLabel.setFont(new Font("Arial", 24));
         playerTwoScoreLabel.setTextFill(Color.WHITE);
         playerTwoScoreLabel.setFont(new Font("Arial", 24));
 
-        this.getChildren().addAll(healthBar1, healthBar2, playerOneScoreLabel, playerTwoScoreLabel);
+        /* apply settings to time. */
+        survivalTimeLabel.setTextFill(Color.WHITE);
+        survivalTimeLabel.setFont(new Font("Arial", 30));
+
+        this.getChildren().addAll(healthBar1, healthBar2, playerOneScoreLabel, playerTwoScoreLabel, survivalTimeLabel);
         playerOneScoreLabel.relocate(0, 0);
         playerTwoScoreLabel.relocate(0, 600);
+        survivalTimeLabel.relocate((Constants.SCREEN_WIDTH / 2) - 25, 550);
     }
 
     /**
@@ -98,10 +107,16 @@ public class GamePane extends Pane {
         scorecardRectangle.setX(50);
         scorecardRectangle.setY((Constants.SCREEN_WIDTH / 2) - 100);
         this.getChildren().addAll(scorecardRectangle);
+
         playerOneScoreLabel.relocate(scorecardRectangle.getX(), scorecardRectangle.getY());
         playerTwoScoreLabel.relocate(scorecardRectangle.getX(), scorecardRectangle.getY() + 60);
+        survivalTimeLabel.relocate(scorecardRectangle.getX(), scorecardRectangle.getY() + 120);
+        String finalTime = survivalTimeLabel.getText();
+        survivalTimeLabel.setText("Survival Time = " + finalTime + " seconds");
+
         playerOneScoreLabel.toFront();
         playerTwoScoreLabel.toFront();
+        survivalTimeLabel.toFront();
     }
 
     /**

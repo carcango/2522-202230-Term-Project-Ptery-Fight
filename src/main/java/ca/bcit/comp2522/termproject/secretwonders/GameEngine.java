@@ -66,6 +66,10 @@ public class GameEngine {
      */
     private long lastPlayerTwoShot = System.currentTimeMillis();
 
+    private long lastPlayerOneHit = System.currentTimeMillis();
+
+    private long gameStartTime = System.currentTimeMillis();
+
     private long lastEnemyAddedToGame = System.currentTimeMillis();
 
     private int playerOneScore = 0;
@@ -273,8 +277,9 @@ public class GameEngine {
                 if (projectile instanceof Player2Projectile) {
                     // Check if Player 2 projectile hits Player 1
                     if (projectile.intersects(player1.getX(), player1.getY(),
-                            player1.getWidth(), player1.getHeight())) {
-
+                            player1.getWidth(), player1.getHeight())
+                            && System.currentTimeMillis() - lastPlayerOneHit >= 500)  {
+                        lastPlayerOneHit = System.currentTimeMillis();
                         player1.subtractHealth(projectile.getDamage());
                         playterTwoScore++;
                         pane.playerTwoScoreLabel.setText("Dragonfly Score: " + playterTwoScore);
@@ -343,9 +348,11 @@ public class GameEngine {
                 add(entity);
             }
             entitiesToAdd.clear();
+            if (player1.getHealth() > 0 && player2.getHealth() > 0) {
+                pane.survivalTimeLabel.setText(String.valueOf((System.currentTimeMillis() - gameStartTime) / 1000));
+            }
         }));
         //runs indefinitely
-        //TODO make game loop end on win or loss
         gameLoop.setCycleCount(Timeline.INDEFINITE);
         gameLoop.play();
     }
