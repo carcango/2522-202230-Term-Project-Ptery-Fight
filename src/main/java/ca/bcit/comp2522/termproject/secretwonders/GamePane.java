@@ -58,6 +58,7 @@ public class GamePane extends Pane {
         healthBar2 = new Rectangle(Constants.SCREEN_WIDTH, Constants.HEALTH_BAR_SIZE, Color.RED);
         healthBar2.setX(0);
         healthBar2.setY(630);
+        //apply settings to score labels
         playerOneScoreLabel.setTextFill(Color.WHITE);
         playerOneScoreLabel.setFont(new Font("Arial", 24));
         playerTwoScoreLabel.setTextFill(Color.WHITE);
