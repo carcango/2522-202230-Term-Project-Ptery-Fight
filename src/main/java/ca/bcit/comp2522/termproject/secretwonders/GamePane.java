@@ -1,6 +1,7 @@
 package ca.bcit.comp2522.termproject.secretwonders;
 
 import javafx.beans.property.ReadOnlyIntegerProperty;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
@@ -10,6 +11,7 @@ import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Font;
 
 /**
  * GamePane. Keeps track of all graphical elements of the game.
@@ -29,6 +31,9 @@ public class GamePane extends Pane {
      * health bar of player 2.
      */
     private Rectangle healthBar2;
+
+    Label playerOneScoreLabel = new Label("Score: ");
+    Label playerTwoScoreLabel = new Label("Score: ");
 
     /**
      * Constructs GamePane.
@@ -53,8 +58,14 @@ public class GamePane extends Pane {
         healthBar2 = new Rectangle(Constants.SCREEN_WIDTH, Constants.HEALTH_BAR_SIZE, Color.RED);
         healthBar2.setX(0);
         healthBar2.setY(630);
+        playerOneScoreLabel.setTextFill(Color.WHITE);
+        playerOneScoreLabel.setFont(new Font("Arial", 24));
+        playerTwoScoreLabel.setTextFill(Color.WHITE);
+        playerTwoScoreLabel.setFont(new Font("Arial", 24));
 
-        this.getChildren().addAll(healthBar1, healthBar2);
+        this.getChildren().addAll(healthBar1, healthBar2, playerOneScoreLabel, playerTwoScoreLabel);
+        playerOneScoreLabel.relocate(0, 0);
+        playerTwoScoreLabel.relocate(0, 600);
     }
 
     /**

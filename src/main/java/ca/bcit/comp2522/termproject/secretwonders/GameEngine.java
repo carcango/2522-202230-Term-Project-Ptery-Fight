@@ -68,6 +68,11 @@ public class GameEngine {
 
     private long lastEnemyAddedToGame = System.currentTimeMillis();
 
+    private int playerOneScore = 0;
+    private int playterTwoScore = 0;
+
+
+
     /**
      * Constructor for GameEngine.
      */
@@ -257,6 +262,8 @@ public class GameEngine {
 
                         System.out.println("Player 1 hit Player 2!");
                         player2.subtractHealth(projectile.getDamage());
+                        playerOneScore++;
+                        pane.playerOneScoreLabel.setText("Score: " + playerOneScore);
                         queueRemoval(projectile);
                     }
                 }
@@ -269,6 +276,8 @@ public class GameEngine {
 
                         System.out.println("Player 2 hit Player 1!");
                         player1.subtractHealth(projectile.getDamage());
+                        playterTwoScore++;
+                        pane.playerTwoScoreLabel.setText("Score: " + playterTwoScore);
                         queueRemoval(projectile);
                     }
                 }
@@ -286,14 +295,6 @@ public class GameEngine {
                     player1.subtractHealth(enemyUnit.getEnemyDamage());
                     queueRemoval(enemyUnit);
 
-                    // Check if enemy hit by Player 1 projectile
-                    for (Projectile projectile : projectiles) {
-                        if (projectile.intersects(enemyUnit.getX(), enemyUnit.getY(),
-                                enemyUnit.getWidth(), enemyUnit.getHeight())) {
-                            queueRemoval(enemyUnit);
-                            queueRemoval(projectile);
-                        }
-                    }
                 }
 
                 // Checks if enemy hits player 2; if so, character is damaged, and enemy disappears
@@ -305,10 +306,23 @@ public class GameEngine {
 
                 // Check if enemy hit by player 2 projectile
                 for (Projectile projectile : projectiles) {
-                    if (projectile.intersects(enemyUnit.getX(), enemyUnit.getY(),
-                            enemyUnit.getWidth(), enemyUnit.getHeight())) {
-                        queueRemoval(enemyUnit);
-                        queueRemoval(projectile);
+                    if (projectile instanceof Player1Projectile) {
+                        if (projectile.intersects(enemyUnit.getX(), enemyUnit.getY(),
+                                enemyUnit.getWidth(), enemyUnit.getHeight())) {
+                            queueRemoval(enemyUnit);
+                            queueRemoval(projectile);
+                            playerOneScore++;
+                            pane.playerOneScoreLabel.setText("Score: " + playerOneScore);
+                        }
+                    }
+                    if (projectile instanceof Player2Projectile) {
+                        if (projectile.intersects(enemyUnit.getX(), enemyUnit.getY(),
+                                enemyUnit.getWidth(), enemyUnit.getHeight())) {
+                            queueRemoval(enemyUnit);
+                            queueRemoval(projectile);
+                            playterTwoScore++;
+                            pane.playerTwoScoreLabel.setText("Score: " + playterTwoScore);
+                        }
                     }
                 }
 
