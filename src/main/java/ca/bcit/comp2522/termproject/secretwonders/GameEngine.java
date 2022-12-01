@@ -278,7 +278,6 @@ public class GameEngine {
                         player1.subtractHealth(projectile.getDamage());
                         playterTwoScore++;
                         pane.playerTwoScoreLabel.setText("Score: " + playterTwoScore);
-                        queueRemoval(projectile);
                     }
                 }
                 //removes projectile if it goes much past screen bounds.
@@ -319,7 +318,6 @@ public class GameEngine {
                         if (projectile.intersects(enemyUnit.getX(), enemyUnit.getY(),
                                 enemyUnit.getWidth(), enemyUnit.getHeight())) {
                             queueRemoval(enemyUnit);
-                            queueRemoval(projectile);
                             playterTwoScore++;
                             pane.playerTwoScoreLabel.setText("Score: " + playterTwoScore);
                         }
