@@ -13,7 +13,7 @@ import java.io.IOException;
  */
 public class Driver extends Application {
 
-    private static final String MENU_WINDOW_TITLE  = "Bug Blaster!";
+    private static final String MENU_WINDOW_TITLE  = "Ptery Fight";
     private static final int    MENU_WINDOW_HEIGHT = 300;
     private static final int    MENU_WINDOW_WIDTH  = 400;
 
