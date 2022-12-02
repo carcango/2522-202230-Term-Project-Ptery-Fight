@@ -24,48 +24,62 @@ public class GameEngine {
      */
     public enum Direction { UP, DOWN, LEFT, RIGHT }
 
-    /**
-     * Visible contents of Objects for the screen.
-     */
-    private GamePane pane;
-    /**
-     * the scene for the game.
-     */
-    private final Scene scene;
-    /**
-     * the loop in which all game events happen.
-     */
-    private Timeline gameLoop;
-    /**
-     * Player one is the bee character who is controlled with the arrow keys and CTRL button.
-     */
-    private Player1 player1 = new Player1();
-    /**
-     * Player two is the dragonfly character who is controlled with the WASD keys and SPACE bar.
-     */
-    private Player2 player2 = new Player2();
-    /*
-    /**
-     *Arraylist of Entities, not including projectiles. This keeps track of Entities are currently part of the game.
-     */
-    private final ArrayList<Entity> entities = new ArrayList<>();
-    /**
-     * Arraylist of Projectiles, keeps track of what projectiles are currently part of the game.
-     */
-    private final ArrayList<Projectile> projectiles = new ArrayList<>();
-    /**
-     * Arraylist of Enemies, keeps track of what projectiles are currently part of the game.
-     */
-    private final ArrayList<Enemy> enemies = new ArrayList<>();
+    private static final int ENEMY_CREATION_TIMER_IN_MS = 1000;
+    private static final int PLAYER_PROJECTILE_COOLDOWN_IN_MS = 500;
+    private static final int ONE_SECOND_REPRESENTED_AS_MS = 1000;
+
     /**
      * Arraylist of entities to be removed from play at the end of the current game loop.
      */
     ArrayList<Entity> entitiesToAdd = new ArrayList<>();
+
     /**
      * Arraylist of projectiles to be removed from play at the end of the current game loop.
      */
     ArrayList<Entity> entitiesToRemove = new ArrayList<>();
-    /**
+
+    /*
+     * Visible contents of Objects for the screen.
+     */
+    private GamePane pane;
+
+    /*
+     * the scene for the game.
+     */
+    private final Scene scene;
+
+    /*
+     * the loop in which all game events happen.
+     */
+    private Timeline gameLoop;
+
+    /*
+     * Player one is the bee character who is controlled with the arrow keys and CTRL button.
+     */
+    private Player1 player1 = new Player1();
+
+    /*
+     * Player two is the dragonfly character who is controlled with the WASD keys and SPACE bar.
+     */
+    private Player2 player2 = new Player2();
+
+    /*
+    /*
+     *Arraylist of Entities, not including projectiles. This keeps track of Entities are currently part of the game.
+     */
+    private final ArrayList<Entity> entities = new ArrayList<>();
+
+    /*
+     * Arraylist of Projectiles, keeps track of what projectiles are currently part of the game.
+     */
+    private final ArrayList<Projectile> projectiles = new ArrayList<>();
+
+    /*
+     * Arraylist of Enemies, keeps track of what projectiles are currently part of the game.
+     */
+    private final ArrayList<Enemy> enemies = new ArrayList<>();
+
+    /*
      * The last timestamp of player 2 attack (fireball).
      */
     private long lastPlayerTwoShot = System.currentTimeMillis();
@@ -75,20 +89,33 @@ public class GameEngine {
     private long lastEnemyAddedToGame = System.currentTimeMillis();
 
     private int playerOneScore = 0;
-    private int playterTwoScore = 0;
+    private int playerTwoScore = 0;
 
-    private final Media media = new Media(getClass().getResource("/mainTheme.mp3").toURI().toString());
+    private final Media media;
+
+    {
+        try {
+            media = new Media(getClass().getResource("/mainTheme.mp3").toURI().toString());
+        } catch (URISyntaxException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     private MediaPlayer themeSong;
     /**
      * Constructor for GameEngine.
      */
-    public GameEngine() throws URISyntaxException {
+    public GameEngine() {
         pane = new GamePane();
         scene = new Scene(pane, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT);
 
         setupScene(pane);
         setupKeybindings();
-        music();
+        try {
+            music();
+        } catch (URISyntaxException e) {
+            throw new RuntimeException(e);
+        }
 
         // Add players to the game.
         add(player1);
@@ -134,7 +161,7 @@ public class GameEngine {
                 case CONTROL:
                     player1.fireProjectile(); break;
                 case SPACE:
-                    if (System.currentTimeMillis() - lastPlayerTwoShot >= 500) {
+                    if (System.currentTimeMillis() - lastPlayerTwoShot >= PLAYER_PROJECTILE_COOLDOWN_IN_MS) {
                         player2.fireProjectile();
                         System.out.println(System.currentTimeMillis());
                         lastPlayerTwoShot = System.currentTimeMillis();
@@ -213,17 +240,27 @@ public class GameEngine {
         themeSong.setAutoPlay(true);
         themeSong.setCycleCount(MediaPlayer.INDEFINITE);
     }
-    ///////////////////////
-    // MAIN GAME LOOP \O.O/
-    ///////////////////////
+
+    ////////////////////
+    // MAIN GAME LOOP //
+    ////////////////////
     /**
      * Sets up Timelines, and loops through gameLoop Timeline, watching for events. Handles game logic.
      */
     private void setupTimelines() {
+
+        // Game Start //
         gameLoop = new Timeline(new KeyFrame(Duration.millis(Constants.TICK_LENGTH), e -> {
 
-            //Check state of all entities every tick time duration.
-            if (System.currentTimeMillis() - lastEnemyAddedToGame >= 1000) {
+            // Check if both players are dead;
+            // if so, show score screen and stop game.
+            if (player1.getHealth() <= 0 && player2.getHealth() <= 0) {
+                pane.showScoreCard();
+                gameLoop.stop();
+            }
+
+            // Every second, create and add enemy to the game scene.
+            if (System.currentTimeMillis() - lastEnemyAddedToGame >= ENEMY_CREATION_TIMER_IN_MS) {
                 Enemy enemy = new Enemy();
 
                 enemies.add(enemy);
@@ -231,35 +268,43 @@ public class GameEngine {
 
                 pane.getChildren().add(enemy);
                 enemy.makeEnemyAppear();
-
                 lastEnemyAddedToGame = System.currentTimeMillis();
             }
             for (Entity entity : entities) {
-                //Moves all entities
+
+                // Move all entities.
                 entity.doMovement();
+
+                // Check if player 1 is dead; if so, set death sprite and stop player from moving.
+                // Remove hit box, so other entities pass through player.
                 if (entity instanceof Player1 && ((Player1) entity).getHealth() <= 0) {
                     Image deathSprite = new Image("dead_bee.png");
+
                     entity.setSprite(deathSprite);
                     entity.setHeightToZero();
                     entity.setWidthToZero();
+
                     ((Player1) entity).setIsAlive(false);
                 }
+
+                // Check if Player 2 is dead; if so, set death sprite and stop player from moving.
+                // Remove hit box, so other entities pass through player.
                 if (entity instanceof Player2 && ((Player2) entity).getHealth() <= 0) {
                     Image deathSprite = new Image("dead_dragonfly.png");
+
                     entity.setSprite(deathSprite);
                     entity.setHeightToZero();
                     entity.setWidthToZero();
+
                     ((Player2) entity).setIsAlive(false);
-                }
-                if (player1.getHealth() <= 0 && player2.getHealth() <= 0) {
-                    pane.showScoreCard();
                 }
             }
             // Check if player projectiles hit player or enemy
             for (Projectile projectile : projectiles) {
                 if (projectile instanceof Player1Projectile) {
 
-                    // Check if Player 1 projectile hits Player 2
+                    // Check if Player 1 projectile hits Player 2;
+                    // If so, remove health from P2, increase P1 score, and remove projectile.
                     if (projectile.intersects(player2.getX(), player2.getY(),
                             player2.getWidth(), player2.getHeight())) {
 
@@ -269,98 +314,108 @@ public class GameEngine {
                         queueRemoval(projectile);
                     }
                 }
-
-                // Check if Player 2 projectile hits Player 1
                 if (projectile instanceof Player2Projectile) {
-                    // Check if Player 2 projectile hits Player 1
+
+                    // Check if Player 1 projectile hits Player 2;
+                    // If so, remove health from P2, increase P1 score, and remove projectile.
                     if (projectile.intersects(player1.getX(), player1.getY(),
                             player1.getWidth(), player1.getHeight())
-                            && System.currentTimeMillis() - lastPlayerOneHit >= 500)  {
+                            && System.currentTimeMillis() - lastPlayerOneHit >= PLAYER_PROJECTILE_COOLDOWN_IN_MS)  {
 
                         lastPlayerOneHit = System.currentTimeMillis();
                         player1.subtractHealth(projectile.getDamage());
-                        playterTwoScore++;
-                        pane.playerTwoScoreLabel.setText("Dragonfly Score: " + playterTwoScore);
+                        playerTwoScore++;
+                        pane.playerTwoScoreLabel.setText("Dragonfly Score: " + playerTwoScore);
                     }
                 }
-                //removes projectile if it goes much past screen bounds.
-                if (projectile.getY() < -10 || projectile.getY() > (Constants.SCREEN_HEIGHT * 2)) {
+                // Remove projectile if it leaves visible screen.
+                if (projectile.getY() < 0 || projectile.getY() > Constants.SCREEN_HEIGHT) {
                     queueRemoval(projectile);
                 }
             }
 
             for (Enemy enemyUnit : enemies) {
 
-                // Checks if enemy hits player 1; if so, character is damaged, and enemy disappears
+                // Checks if enemy hits player 1; if so, character is damaged and enemy dies.
                 if (enemyUnit.intersects(player1.getX(), player1.getY(), player1.getWidth(), player1.getHeight())
                         &&
                         !enemyUnit.getHasHitPlayer()) {
-                    System.out.println("Enemy hit Player 1!");
-                    player1.subtractHealth(enemyUnit.getEnemyDamage());
 
+                    player1.subtractHealth(enemyUnit.getEnemyDamage());
                     enemyUnit.setHasHitPlayer(true);
+                    enemyUnit.setIsAlive(false);
+
+                    enemyUnit.setHeightToZero();
+                    enemyUnit.setWidthToZero();
 
                     Image deadEnemySprite = new Image("dead_fly.png");
                     enemyUnit.setImage(deadEnemySprite);
-                    enemyUnit.setIsAlive(false);
                 }
-                // Checks if enemy hits player 2; if so, character is damaged, and enemy disappears
+                // Checks if enemy hits player 2; if so, character is damaged and enemy dies.
                 if (enemyUnit.intersects(player2.getX(), player2.getY(), player2.getWidth(), player2.getHeight())
                         &&
                         !enemyUnit.getHasHitPlayer()) {
-                    System.out.println("Enemy hit Player 2!");
+
                     player2.subtractHealth(enemyUnit.getEnemyDamage());
-
                     enemyUnit.setHasHitPlayer(true);
+                    enemyUnit.setIsAlive(false);
 
-                    Image deadEnemySprite = new Image("dead_fly.png");
                     enemyUnit.setHeightToZero();
                     enemyUnit.setWidthToZero();
+
+                    Image deadEnemySprite = new Image("dead_fly.png");
                     enemyUnit.setImage(deadEnemySprite);
-                    enemyUnit.setIsAlive(false);
                 }
                 // Check if enemy hit by player 2 projectile
                 for (Projectile projectile : projectiles) {
                     if (projectile instanceof Player1Projectile) {
                         if (projectile.intersects(enemyUnit.getX(), enemyUnit.getY(),
-                                enemyUnit.getWidth(), enemyUnit.getHeight())) {
+                                enemyUnit.getWidth(), enemyUnit.getHeight())
+                                &&
+                                !enemyUnit.getHasHitPlayer()) {
 
-                            enemyUnit.setHasHitPlayer(false);
-
-                            Image deadEnemySprite = new Image("dead_fly.png");
-                            enemyUnit.setHeightToZero();
-                            enemyUnit.setWidthToZero();
-                            enemyUnit.setImage(deadEnemySprite);
+                            enemyUnit.setHasHitPlayer(true);
                             enemyUnit.setIsAlive(false);
 
+                            enemyUnit.setHeightToZero();
+                            enemyUnit.setWidthToZero();
+
+                            Image deadEnemySprite = new Image("dead_fly.png");
+                            enemyUnit.setImage(deadEnemySprite);
+
                             queueRemoval(projectile);
+
                             playerOneScore++;
                             pane.playerOneScoreLabel.setText("Honeybee Score: " + playerOneScore);
                         }
                     }
                     if (projectile instanceof Player2Projectile) {
                         if (projectile.intersects(enemyUnit.getX(), enemyUnit.getY(),
-                                enemyUnit.getWidth(), enemyUnit.getHeight())) {
+                                enemyUnit.getWidth(), enemyUnit.getHeight())
+                                &&
+                                !enemyUnit.getHasHitPlayer() ) {
 
-                            enemyUnit.setHasHitPlayer(false);
-
-                            Image deadEnemySprite = new Image("dead_fly.png");
-                            enemyUnit.setHeightToZero();
-                            enemyUnit.setWidthToZero();
-                            enemyUnit.setImage(deadEnemySprite);
+                            enemyUnit.setHasHitPlayer(true);
                             enemyUnit.setIsAlive(false);
 
+                            enemyUnit.setHeightToZero();
+                            enemyUnit.setWidthToZero();
+
+                            Image deadEnemySprite = new Image("dead_fly.png");
+                            enemyUnit.setImage(deadEnemySprite);
+
                             queueRemoval(projectile);
-                            playterTwoScore++;
-                            pane.playerTwoScoreLabel.setText("DragonFly Score: " + playterTwoScore);
+
+                            playerTwoScore++;
+                            pane.playerTwoScoreLabel.setText("DragonFly Score: " + playerTwoScore);
                         }
                     }
                 }
                 // Checks if enemy is offscreen; if so, removes enemy.
-                if (enemyUnit.getCenterX() < -10 || enemyUnit.getCenterX() > Constants.SCREEN_WIDTH + 10) {
+                if (enemyUnit.getCenterX() < 0 || enemyUnit.getCenterX() > Constants.SCREEN_WIDTH) {
                     queueRemoval(enemyUnit);
                 }
-                if (enemyUnit.getCenterY() < -10 || enemyUnit.getCenterY() > Constants.SCREEN_HEIGHT + 10) {
+                if (enemyUnit.getCenterY() < 0 || enemyUnit.getCenterY() > Constants.SCREEN_HEIGHT) {
                     queueRemoval(enemyUnit);
                 }
             }
@@ -375,10 +430,12 @@ public class GameEngine {
             }
             entitiesToAdd.clear();
             if (player1.getHealth() > 0 && player2.getHealth() > 0) {
-                pane.survivalTimeLabel.setText(String.valueOf((System.currentTimeMillis() - gameStartTime) / 1000));
+                pane.survivalTimeLabel.setText(String.valueOf(
+                        (System.currentTimeMillis() - gameStartTime) / ONE_SECOND_REPRESENTED_AS_MS));
             }
         }));
-        //runs indefinitely
+
+        // Game runs until both players die.
         gameLoop.setCycleCount(Timeline.INDEFINITE);
         gameLoop.play();
     }

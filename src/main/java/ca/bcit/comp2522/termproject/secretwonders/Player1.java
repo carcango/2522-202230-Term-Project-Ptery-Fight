@@ -175,6 +175,10 @@ public class Player1 extends Character {
      * creates Player One Projectile at characters location.
      */
     public void fireProjectile() {
+        if (!this.isAlive) {
+            return;
+        }
+
         ((GamePane) getParent()).getEngine().queueAddition(
                 new Player1Projectile(
                         getCenterX(),

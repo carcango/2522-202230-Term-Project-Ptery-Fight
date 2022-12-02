@@ -170,6 +170,10 @@ public class Player2 extends Character {
      * creates Player two Projectile at characters location.
      */
     public void fireProjectile() {
+        if (!this.isAlive) {
+            return;
+        }
+
         ((GamePane) getParent()).getEngine().queueAddition(
                 new Player2Projectile(
                         getCenterX(),
