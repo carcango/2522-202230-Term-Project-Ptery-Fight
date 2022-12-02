@@ -340,11 +340,11 @@ public class GameEngine {
                 // Checks if enemy hits player 1; if so, character is damaged and enemy dies.
                 if (enemyUnit.intersects(player1.getX(), player1.getY(), player1.getWidth(), player1.getHeight())
                         &&
-                        !enemyUnit.getHasHitPlayer()) {
+                        enemyUnit.getHasNotHitPlayer()) {
 
-                    player1.subtractHealth(enemyUnit.getEnemyDamage());
-                    enemyUnit.setHasHitPlayer(true);
-                    enemyUnit.setIsAlive(false);
+                    player1.subtractHealth(enemyUnit.getEnemyAttackDamage());
+                    enemyUnit.setHasHitPlayer();
+                    enemyUnit.enemyIsDead();
 
                     enemyUnit.setHeightToZero();
                     enemyUnit.setWidthToZero();
@@ -355,11 +355,11 @@ public class GameEngine {
                 // Checks if enemy hits player 2; if so, character is damaged and enemy dies.
                 if (enemyUnit.intersects(player2.getX(), player2.getY(), player2.getWidth(), player2.getHeight())
                         &&
-                        !enemyUnit.getHasHitPlayer()) {
+                        enemyUnit.getHasNotHitPlayer()) {
 
-                    player2.subtractHealth(enemyUnit.getEnemyDamage());
-                    enemyUnit.setHasHitPlayer(true);
-                    enemyUnit.setIsAlive(false);
+                    player2.subtractHealth(enemyUnit.getEnemyAttackDamage());
+                    enemyUnit.setHasHitPlayer();
+                    enemyUnit.enemyIsDead();
 
                     enemyUnit.setHeightToZero();
                     enemyUnit.setWidthToZero();
@@ -373,10 +373,10 @@ public class GameEngine {
                         if (projectile.intersects(enemyUnit.getX(), enemyUnit.getY(),
                                 enemyUnit.getWidth(), enemyUnit.getHeight())
                                 &&
-                                !enemyUnit.getHasHitPlayer()) {
+                                enemyUnit.getHasNotHitPlayer()) {
 
-                            enemyUnit.setHasHitPlayer(true);
-                            enemyUnit.setIsAlive(false);
+                            enemyUnit.setHasHitPlayer();
+                            enemyUnit.enemyIsDead();
 
                             enemyUnit.setHeightToZero();
                             enemyUnit.setWidthToZero();
@@ -394,10 +394,10 @@ public class GameEngine {
                         if (projectile.intersects(enemyUnit.getX(), enemyUnit.getY(),
                                 enemyUnit.getWidth(), enemyUnit.getHeight())
                                 &&
-                                !enemyUnit.getHasHitPlayer() ) {
+                                enemyUnit.getHasNotHitPlayer()) {
 
-                            enemyUnit.setHasHitPlayer(true);
-                            enemyUnit.setIsAlive(false);
+                            enemyUnit.setHasHitPlayer();
+                            enemyUnit.enemyIsDead();
 
                             enemyUnit.setHeightToZero();
                             enemyUnit.setWidthToZero();
