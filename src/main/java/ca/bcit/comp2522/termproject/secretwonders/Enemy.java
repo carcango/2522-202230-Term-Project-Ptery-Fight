@@ -24,18 +24,23 @@ public class Enemy extends AbstractEnemy {
     private final Rotate rotateEnemy = new Rotate();
     private final Point2D initialDirection = new Point2D(0, -1);
 
+    private boolean isAlive;
+    private boolean hasHitPlayer;
+
     /**
      * Create an object of type Enemy.
      */
     public Enemy() {
         super(ENEMY_SPRITE, ENEMY_WIDTH, ENEMY_HEIGHT);
+        isAlive = true;
+        hasHitPlayer = false;
     }
 
     /**
      * Sets initial spawn location and sets rotate object to the player to allow rotation Transformations.
      */
     private void setInitialPosition() {
-        setX(RANDOM.nextDouble(0 + 20, Constants.SCREEN_WIDTH - 20));
+        setX(RANDOM.nextDouble(20, Constants.SCREEN_WIDTH - 20));
         setY(TOP_OF_SCREEN);
 
         rotateEnemy.setPivotX(getCenterX());
@@ -65,6 +70,18 @@ public class Enemy extends AbstractEnemy {
         setY(changeInY + getY());
     }
 
+    public void setHasHitPlayer(final boolean hitStatus) {
+        this.hasHitPlayer = hitStatus;
+    }
+
+    public boolean getHasHitPlayer() {
+        return hasHitPlayer;
+    }
+
+    public void setIsAlive(final boolean newStatus) {
+        this.isAlive = newStatus;
+    }
+
     /**
      * Interprets instructions to move Player one.
      * Sets the pivot to centre of player, increments or rotates the movementChange based on what booleans are true,
@@ -72,6 +89,10 @@ public class Enemy extends AbstractEnemy {
      */
     @Override
     public void doMovement() {
+
+        if (!isAlive) {
+            return;
+        }
         rotateEnemy.setPivotX(getCenterX());
         rotateEnemy.setPivotY(getCenterY());
 

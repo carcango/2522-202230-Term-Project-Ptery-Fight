@@ -1,14 +1,10 @@
 package ca.bcit.comp2522.termproject.secretwonders;
 
-import javafx.animation.Timeline;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 import java.io.IOException;
-import java.net.URISyntaxException;
 
 /**
  * Represents a main menu screen.
@@ -34,10 +30,6 @@ public class Driver extends Application {
             Scene scene = new Scene(fxmlLoader.load(), menuWindowWidth, menuWindowHeight);
             stage.setTitle(menuWindowTitle);
             stage.setScene(scene);
-//            Media media = new Media(getClass().getResource("/mainTheme.mp3").toURI().toString());
-//            MediaPlayer themeSong = new MediaPlayer(media);
-//            themeSong.setAutoPlay(true);
-//            themeSong.setCycleCount(MediaPlayer.INDEFINITE);
             stage.show();
 
         } catch (IOException ioe) {

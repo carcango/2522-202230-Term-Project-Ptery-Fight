@@ -23,7 +23,6 @@ public class GameEngine {
      * Keyboard control directions.
      */
     public enum Direction { UP, DOWN, LEFT, RIGHT }
-    private final static int ENEMIES_IN_GAME = 5;
 
     /**
      * Visible contents of Objects for the screen.
@@ -72,15 +71,14 @@ public class GameEngine {
     private long lastPlayerTwoShot = System.currentTimeMillis();
     private long lastPlayerOneHit = System.currentTimeMillis();
 
-    private long gameStartTime = System.currentTimeMillis();
+    private final long gameStartTime = System.currentTimeMillis();
     private long lastEnemyAddedToGame = System.currentTimeMillis();
 
     private int playerOneScore = 0;
     private int playterTwoScore = 0;
 
-    private Media media = new Media(getClass().getResource("/mainTheme.mp3").toURI().toString());
+    private final Media media = new Media(getClass().getResource("/mainTheme.mp3").toURI().toString());
     private MediaPlayer themeSong;
-
     /**
      * Constructor for GameEngine.
      */
@@ -278,6 +276,7 @@ public class GameEngine {
                     if (projectile.intersects(player1.getX(), player1.getY(),
                             player1.getWidth(), player1.getHeight())
                             && System.currentTimeMillis() - lastPlayerOneHit >= 500)  {
+
                         lastPlayerOneHit = System.currentTimeMillis();
                         player1.subtractHealth(projectile.getDamage());
                         playterTwoScore++;
@@ -293,23 +292,47 @@ public class GameEngine {
             for (Enemy enemyUnit : enemies) {
 
                 // Checks if enemy hits player 1; if so, character is damaged, and enemy disappears
-                if (enemyUnit.intersects(player1.getX(), player1.getY(), player1.getWidth(), player1.getHeight())) {
+                if (enemyUnit.intersects(player1.getX(), player1.getY(), player1.getWidth(), player1.getHeight())
+                        &&
+                        !enemyUnit.getHasHitPlayer()) {
                     System.out.println("Enemy hit Player 1!");
                     player1.subtractHealth(enemyUnit.getEnemyDamage());
-                    queueRemoval(enemyUnit);
+
+                    enemyUnit.setHasHitPlayer(true);
+
+                    Image deadEnemySprite = new Image("dead_fly.png");
+                    enemyUnit.setImage(deadEnemySprite);
+                    enemyUnit.setIsAlive(false);
                 }
                 // Checks if enemy hits player 2; if so, character is damaged, and enemy disappears
-                if (enemyUnit.intersects(player2.getX(), player2.getY(), player2.getWidth(), player2.getHeight())) {
+                if (enemyUnit.intersects(player2.getX(), player2.getY(), player2.getWidth(), player2.getHeight())
+                        &&
+                        !enemyUnit.getHasHitPlayer()) {
                     System.out.println("Enemy hit Player 2!");
                     player2.subtractHealth(enemyUnit.getEnemyDamage());
-                    queueRemoval(enemyUnit);
+
+                    enemyUnit.setHasHitPlayer(false);
+
+                    Image deadEnemySprite = new Image("dead_fly.png");
+                    enemyUnit.setHeightToZero();
+                    enemyUnit.setWidthToZero();
+                    enemyUnit.setImage(deadEnemySprite);
+                    enemyUnit.setIsAlive(false);
                 }
                 // Check if enemy hit by player 2 projectile
                 for (Projectile projectile : projectiles) {
                     if (projectile instanceof Player1Projectile) {
                         if (projectile.intersects(enemyUnit.getX(), enemyUnit.getY(),
                                 enemyUnit.getWidth(), enemyUnit.getHeight())) {
-                            queueRemoval(enemyUnit);
+
+                            enemyUnit.setHasHitPlayer(false);
+
+                            Image deadEnemySprite = new Image("dead_fly.png");
+                            enemyUnit.setHeightToZero();
+                            enemyUnit.setWidthToZero();
+                            enemyUnit.setImage(deadEnemySprite);
+                            enemyUnit.setIsAlive(false);
+
                             queueRemoval(projectile);
                             playerOneScore++;
                             pane.playerOneScoreLabel.setText("Honeybee Score: " + playerOneScore);
@@ -318,17 +341,26 @@ public class GameEngine {
                     if (projectile instanceof Player2Projectile) {
                         if (projectile.intersects(enemyUnit.getX(), enemyUnit.getY(),
                                 enemyUnit.getWidth(), enemyUnit.getHeight())) {
-                            queueRemoval(enemyUnit);
+
+                            enemyUnit.setHasHitPlayer(false);
+
+                            Image deadEnemySprite = new Image("dead_fly.png");
+                            enemyUnit.setHeightToZero();
+                            enemyUnit.setWidthToZero();
+                            enemyUnit.setImage(deadEnemySprite);
+                            enemyUnit.setIsAlive(false);
+
+                            queueRemoval(projectile);
                             playterTwoScore++;
                             pane.playerTwoScoreLabel.setText("DragonFly Score: " + playterTwoScore);
                         }
                     }
                 }
                 // Checks if enemy is offscreen; if so, removes enemy.
-                if (enemyUnit.getCenterX() < -500 || enemyUnit.getCenterX() > Constants.SCREEN_WIDTH + 200) {
+                if (enemyUnit.getCenterX() < -10 || enemyUnit.getCenterX() > Constants.SCREEN_WIDTH + 10) {
                     queueRemoval(enemyUnit);
                 }
-                if (enemyUnit.getCenterY() < -500 || enemyUnit.getCenterY() > Constants.SCREEN_HEIGHT + 200) {
+                if (enemyUnit.getCenterY() < -10 || enemyUnit.getCenterY() > Constants.SCREEN_HEIGHT + 10) {
                     queueRemoval(enemyUnit);
                 }
             }

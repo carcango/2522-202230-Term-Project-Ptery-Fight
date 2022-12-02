@@ -75,13 +75,8 @@ public class Player1 extends Character {
             case RIGHT -> turnRight = true;
         }
     }
-
     public void setIsAlive(final boolean newStatus) {
         this.isAlive = newStatus;
-    }
-
-    public boolean getIsAlive() {
-        return isAlive;
     }
 
     /**

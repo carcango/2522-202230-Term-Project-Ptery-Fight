@@ -119,15 +119,9 @@ public class Player2 extends Character {
         }
     }
 
-
     public void setIsAlive(final boolean newStatus) {
         this.isAlive = newStatus;
     }
-
-    public boolean getIsAlive() {
-        return isAlive;
-    }
-
 
     /**
      * Interprets instructions to move Player two.
