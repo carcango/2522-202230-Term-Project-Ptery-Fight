@@ -3,6 +3,7 @@ package ca.bcit.comp2522.termproject.secretwonders;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.util.Duration;
@@ -69,21 +70,16 @@ public class GameEngine {
      * The last timestamp of player 2 attack (fireball).
      */
     private long lastPlayerTwoShot = System.currentTimeMillis();
-
     private long lastPlayerOneHit = System.currentTimeMillis();
 
     private long gameStartTime = System.currentTimeMillis();
-
     private long lastEnemyAddedToGame = System.currentTimeMillis();
 
     private int playerOneScore = 0;
     private int playterTwoScore = 0;
 
-    Media media = new Media(getClass().getResource("/mainTheme.mp3").toURI().toString());
-
-    MediaPlayer themeSong;
-
-
+    private Media media = new Media(getClass().getResource("/mainTheme.mp3").toURI().toString());
+    private MediaPlayer themeSong;
 
     /**
      * Constructor for GameEngine.
@@ -101,7 +97,6 @@ public class GameEngine {
         add(player2);
 
         // Main Game Loop
-
         setupTimelines();
     }
 
@@ -162,7 +157,6 @@ public class GameEngine {
             }
         });
     }
-
     /**
      * adds an entity to the game pane.
      * If the entity is a player, attaches a health bar to the entity.
@@ -184,12 +178,7 @@ public class GameEngine {
             projectiles.add((Projectile) entity);
             pane.getChildren().add(entity);
         }
-//        if (entity instanceof Enemy) {
-//            enemies.add((Enemy) entity);
-//            pane.getChildren().add(entity);
-//            }
-        }
-
+    }
     /**
      * removes the entity from the ArrayLists.
      * @param entity an Entity of entities or projectile.
@@ -200,7 +189,6 @@ public class GameEngine {
         enemies.remove(entity);
         pane.getChildren().remove(entity);
     }
-
     /**
      * Adds Entity to queue to add on next game loop.
      * @param entity to be added.
@@ -208,7 +196,6 @@ public class GameEngine {
     public void queueAddition(final Entity entity) {
         entitiesToAdd.add(entity);
     }
-
     /**
      * Adds entity to be removed on next game loop.
      * @param entity to be removed.
@@ -216,7 +203,6 @@ public class GameEngine {
     public void queueRemoval(final Entity entity) {
         entitiesToRemove.add(entity);
     }
-
     /**
      * returns this scene.
      * @return Scene.
@@ -224,16 +210,14 @@ public class GameEngine {
     public Scene getScene() {
         return scene;
     }
-
     public void music() throws URISyntaxException {
         themeSong = new MediaPlayer(media);
         themeSong.setAutoPlay(true);
         themeSong.setCycleCount(MediaPlayer.INDEFINITE);
     }
-
-    ////////////////////
-    // MAIN GAME LOOP \O.O///
-    ////////////////////
+    ///////////////////////
+    // MAIN GAME LOOP \O.O/
+    ///////////////////////
     /**
      * Sets up Timelines, and loops through gameLoop Timeline, watching for events. Handles game logic.
      */
@@ -252,27 +236,25 @@ public class GameEngine {
 
                 lastEnemyAddedToGame = System.currentTimeMillis();
             }
-
             for (Entity entity : entities) {
                 //Moves all entities
                 entity.doMovement();
-                if (entity instanceof Player1 || entity instanceof Player2) {
-
-                    // Remove player and their hit box if dead.
-                    if (((Character) entity).getHealth() <= 0) {
-
-                        // Remove player hit box
-                        entity.setHeightToZero();
-                        entity.setWidthToZero();
-                        entity.setX(0);
-                        entity.setY(0);
-
-                        // Remove player
-                        queueRemoval(entity);
-                        if (player1.getHealth() <= 0 && player2.getHealth() <= 0) {
-                            pane.showScoreCard();
-                        }
-                    }
+                if (entity instanceof Player1 && ((Player1) entity).getHealth() <= 0) {
+                    Image deathSprite = new Image("dead_bee.png");
+                    entity.setSprite(deathSprite);
+                    entity.setHeightToZero();
+                    entity.setWidthToZero();
+                    ((Player1) entity).setIsAlive(false);
+                }
+                if (entity instanceof Player2 && ((Player2) entity).getHealth() <= 0) {
+                    Image deathSprite = new Image("dead_dragonfly.png");
+                    entity.setSprite(deathSprite);
+                    entity.setHeightToZero();
+                    entity.setWidthToZero();
+                    ((Player2) entity).setIsAlive(false);
+                }
+                if (player1.getHealth() <= 0 && player2.getHealth() <= 0) {
+                    pane.showScoreCard();
                 }
             }
             // Check if player projectiles hit player or enemy
@@ -315,16 +297,13 @@ public class GameEngine {
                     System.out.println("Enemy hit Player 1!");
                     player1.subtractHealth(enemyUnit.getEnemyDamage());
                     queueRemoval(enemyUnit);
-
                 }
-
                 // Checks if enemy hits player 2; if so, character is damaged, and enemy disappears
                 if (enemyUnit.intersects(player2.getX(), player2.getY(), player2.getWidth(), player2.getHeight())) {
                     System.out.println("Enemy hit Player 2!");
                     player2.subtractHealth(enemyUnit.getEnemyDamage());
                     queueRemoval(enemyUnit);
                 }
-
                 // Check if enemy hit by player 2 projectile
                 for (Projectile projectile : projectiles) {
                     if (projectile instanceof Player1Projectile) {
@@ -345,15 +324,13 @@ public class GameEngine {
                         }
                     }
                 }
-
-                // Checks if enemy is off screen; if so, removes enemy.
+                // Checks if enemy is offscreen; if so, removes enemy.
                 if (enemyUnit.getCenterX() < -500 || enemyUnit.getCenterX() > Constants.SCREEN_WIDTH + 200) {
                     queueRemoval(enemyUnit);
                 }
                 if (enemyUnit.getCenterY() < -500 || enemyUnit.getCenterY() > Constants.SCREEN_HEIGHT + 200) {
                     queueRemoval(enemyUnit);
                 }
-
             }
             //removes entities that have been flagged for removal earlier.
             for (Entity entity : entitiesToRemove) {
@@ -365,7 +342,7 @@ public class GameEngine {
                 add(entity);
             }
             entitiesToAdd.clear();
-            if (player1.getHealth() > 0 || player2.getHealth() > 0) {
+            if (player1.getHealth() > 0 && player2.getHealth() > 0) {
                 pane.survivalTimeLabel.setText(String.valueOf((System.currentTimeMillis() - gameStartTime) / 1000));
             }
         }));

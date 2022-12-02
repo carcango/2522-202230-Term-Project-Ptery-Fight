@@ -38,7 +38,7 @@ public abstract class Entity extends ImageView {
      * @param width width of image.
      * @param height height of image.
      */
-    public Entity(String spriteName, double width, double height) {
+    public Entity(final String spriteName, final double width, final double height) {
         this.width = width;
         this.height = height;
         sprite = new Image(spriteName, width, height, false, false);
@@ -69,6 +69,10 @@ public abstract class Entity extends ImageView {
 
     public void setHeightToZero() {
         this.height = 0;
+    }
+
+    public void setSprite(final Image newSprite) {
+        this.setImage(newSprite);
     }
 
     /**

@@ -36,12 +36,16 @@ public class Player2 extends Character {
      * Creates initial Direction of directly up.
      */
     Point2D initialDirection = new Point2D(0, -1);
+
+    private boolean isAlive;
+
     /**
      * Constructs player two.
      */
     public Player2() {
         super("dragonfly.gif", Constants.PLAYER_TWO_WIDTH,
                 Constants.PLAYER_TWO_HEIGHT, Constants.PLAYER_TWO_HEALTH);
+        this.isAlive = false;
         setInitialPosition();
     }
     /**
@@ -114,6 +118,17 @@ public class Player2 extends Character {
             this.setY(newYPosition);
         }
     }
+
+
+    public void setIsAlive(final boolean newStatus) {
+        this.isAlive = newStatus;
+    }
+
+    public boolean getIsAlive() {
+        return isAlive;
+    }
+
+
     /**
      * Interprets instructions to move Player two.
      * Sets the pivot to centre of player, increments or rotates the movementChange based on what booleans are true,
@@ -123,6 +138,10 @@ public class Player2 extends Character {
     public void doMovement() {
         rotatePlayer.setPivotX(getCenterX());
         rotatePlayer.setPivotY(getCenterY());
+
+        if (!this.isAlive) {
+            return;
+        }
 
         double movementChangePlayer = 0;
 
@@ -138,11 +157,8 @@ public class Player2 extends Character {
         if (turnLeft) {
             rotatePlayer(-movementFactor);
         }
-
         Point2D pt1 = rotatePlayer.deltaTransform(initialDirection.multiply(movementChangePlayer));
-
         movePlayer(pt1.getX(), pt1.getY());
-
     }
     /**
      * rotates player one.
