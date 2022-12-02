@@ -8,14 +8,14 @@ import java.io.IOException;
 
 /**
  * Represents a main menu screen.
- * @author Rhys Mahannah
- * @version 17 November 2022
+ * @author Olafson & Mahannah
+ * @version December 2022
  */
 public class Driver extends Application {
 
-    private final String menuWindowTitle  = "Bug Blaster!";
-    private final int    menuWindowHeight = 300;
-    private final int    menuWindowWidth  = 400;
+    private static final String MENU_WINDOW_TITLE  = "Bug Blaster!";
+    private static final int    MENU_WINDOW_HEIGHT = 300;
+    private static final int    MENU_WINDOW_WIDTH  = 400;
 
     /**
      * Creates a main menu screen.
@@ -27,8 +27,8 @@ public class Driver extends Application {
 
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(Driver.class.getResource("/main-menu.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), menuWindowWidth, menuWindowHeight);
-            stage.setTitle(menuWindowTitle);
+            Scene scene = new Scene(fxmlLoader.load(), MENU_WINDOW_WIDTH, MENU_WINDOW_HEIGHT);
+            stage.setTitle(MENU_WINDOW_TITLE);
             stage.setScene(scene);
             stage.show();
 

@@ -2,10 +2,11 @@ package ca.bcit.comp2522.termproject.secretwonders;
 
 import javafx.geometry.Point2D;
 import javafx.scene.transform.Rotate;
+
 /**
- * Abstract Projectile Class.
+ * Represents an in-game projectile.
  * @author Olafson and Mahannah.
- * @version 2022
+ * @version December 2022
  */
 public class Projectile extends Entity {
     /**
@@ -97,9 +98,7 @@ public class Projectile extends Entity {
     public void doMovement() {
         projectileRotation.setPivotX(getCenterX());
         projectileRotation.setPivotY(getCenterY());
-        double x = pt1.getX() + getX();
-        double y = pt1.getY() + getY();
-        setX(x);
-        setY(y);
+        setX(pt1.getX() + getX());
+        setY(pt1.getY() + getY());
     }
 }
