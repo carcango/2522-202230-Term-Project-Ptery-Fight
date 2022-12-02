@@ -45,7 +45,7 @@ public class Player2 extends Character {
     public Player2() {
         super("dragonfly.gif", Constants.PLAYER_TWO_WIDTH,
                 Constants.PLAYER_TWO_HEIGHT, Constants.PLAYER_TWO_HEALTH);
-        this.isAlive = false;
+        this.isAlive = true;
         setInitialPosition();
     }
     /**

@@ -311,7 +311,7 @@ public class GameEngine {
                     System.out.println("Enemy hit Player 2!");
                     player2.subtractHealth(enemyUnit.getEnemyDamage());
 
-                    enemyUnit.setHasHitPlayer(false);
+                    enemyUnit.setHasHitPlayer(true);
 
                     Image deadEnemySprite = new Image("dead_fly.png");
                     enemyUnit.setHeightToZero();
