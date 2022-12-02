@@ -261,7 +261,8 @@ public class GameEngine {
 
             // Every second, create and add enemy to the game scene.
             if (System.currentTimeMillis() - lastEnemyAddedToGame >= ENEMY_CREATION_TIMER_IN_MS) {
-                Enemy enemy = new Enemy();
+                String enemySprite = "fly.gif";
+                Enemy enemy = new Enemy(enemySprite, Constants.PLAYER_ONE_WIDTH, Constants.PLAYER_ONE_HEIGHT);
 
                 enemies.add(enemy);
                 entities.add(enemy);
