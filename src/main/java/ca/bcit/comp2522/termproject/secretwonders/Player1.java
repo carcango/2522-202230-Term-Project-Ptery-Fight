@@ -15,6 +15,13 @@ public class Player1 extends Character {
      */
     final int movementFactor = Constants.PLAYER_ONE_MOVEMENT;
     /**
+     * creates rotate object for player.
+     */
+    final Rotate rotatePlayer = new Rotate();
+    /*
+     * Creates initial Direction of directly up.
+     */
+    /**
      * monitors if the flag for turning left is on.
      */
     protected boolean turnLeft = false;
@@ -30,14 +37,9 @@ public class Player1 extends Character {
      * monitors if the flag for going backward is on.
      */
     protected boolean goBackward = false;
-    /**
-     * creates rotate object for player.
-     */
-    final Rotate rotatePlayer = new Rotate();
-    /**
-     * Creates initial Direction of directly up.
-     */
     Point2D initialDirection = new Point2D(0, -1);
+
+    private boolean isAlive;
 
     /**
      * Constructs player one.
@@ -46,6 +48,7 @@ public class Player1 extends Character {
     public Player1() {
         super("bee.gif", Constants.PLAYER_ONE_WIDTH,
                 Constants.PLAYER_ONE_HEIGHT, Constants.PLAYER_ONE_HEALTH);
+        isAlive = true;
         setInitialPosition();
     }
 
@@ -66,15 +69,14 @@ public class Player1 extends Character {
      */
     public void startMovement(final GameEngine.Direction dir) {
         switch (dir) {
-            case UP:
-                goForward = true; break;
-            case DOWN:
-                goBackward = true; break;
-            case LEFT:
-                turnLeft = true; break;
-            case RIGHT:
-                turnRight = true; break;
+            case UP -> goForward = true;
+            case DOWN -> goBackward = true;
+            case LEFT -> turnLeft = true;
+            case RIGHT -> turnRight = true;
         }
+    }
+    public void setIsAlive(final boolean newStatus) {
+        this.isAlive = newStatus;
     }
 
     /**
@@ -84,6 +86,11 @@ public class Player1 extends Character {
      */
     @Override
     public void doMovement() {
+
+        if (!this.isAlive) {
+            return;
+        }
+
         rotatePlayer.setPivotX(getCenterX());
         rotatePlayer.setPivotY(getCenterY());
 
@@ -101,7 +108,6 @@ public class Player1 extends Character {
         if (turnLeft) {
             rotatePlayer1(-movementFactor);
         }
-
         Point2D pt1 = rotatePlayer.deltaTransform(initialDirection.multiply(movementChangePlayerOne));
         movePlayer(pt1.getX(), pt1.getY());
     }
@@ -110,7 +116,7 @@ public class Player1 extends Character {
      * stops player movements when key press has been released.
      * @param dir UP, DOWN, LEFT, or RIGHT.
      */
-    public void stopMovement(GameEngine.Direction dir) {
+    public void stopMovement(final GameEngine.Direction dir) {
         switch (dir) {
             case UP -> goForward = false;
             case DOWN -> goBackward = false;
@@ -169,7 +175,7 @@ public class Player1 extends Character {
      * creates Player One Projectile at characters location.
      */
     public void fireProjectile() {
-        ((GamePane)getParent()).getEngine().queueAddition(
+        ((GamePane) getParent()).getEngine().queueAddition(
                 new Player1Projectile(
                         getCenterX(),
                         getCenterY(),

@@ -4,10 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="511dd55e-1055-4411-9c85-cfde8bbb9710" name="Changes" comment="Randomized enemy placement at top of screen">
+    <list default="true" id="511dd55e-1055-4411-9c85-cfde8bbb9710" name="Changes" comment="Stopped players from moving when they die; added bug splat">
+      <change afterPath="$PROJECT_DIR$/src/resources/dead_fly.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/Driver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/Driver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/Enemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/Enemy.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/GameEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/GameEngine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/main-menu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/main-menu.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/Player1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/Player1.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/Player2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/Player2.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,13 +42,16 @@
     </option>
   </component>
   <component name="ProjectId" id="2GvfMwHOtr4Zv58QIcJbZWLls35" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
@@ -56,8 +63,8 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders" />
       <recent name="$PROJECT_DIR$/src/resources" />
+      <recent name="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders" />
       <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$/src/main" />
       <recent name="$PROJECT_DIR$/resources/view" />
@@ -177,7 +184,7 @@
       <workItem from="1669680813608" duration="4421000" />
       <workItem from="1669687830806" duration="529000" />
       <workItem from="1669776776916" duration="700000" />
-      <workItem from="1669931084075" duration="89000" />
+      <workItem from="1669931084075" duration="13172000" />
     </task>
     <task id="LOCAL-00001" summary="Moved Resources folder to root">
       <created>1668209205820</created>
@@ -417,7 +424,28 @@
       <option name="project" value="LOCAL" />
       <updated>1669777009455</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="Randomized enemy placement at top of screen">
+      <created>1669931180808</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1669931180808</updated>
+    </task>
+    <task id="LOCAL-00036" summary="Changed game title">
+      <created>1669931225847</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1669931225847</updated>
+    </task>
+    <task id="LOCAL-00037" summary="Stopped players from moving when they die; added bug splat">
+      <created>1669942373433</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1669942373433</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -435,8 +463,7 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Fixed display buy" />
-    <MESSAGE value="Fixed display bug" />
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Connected primary game to main menu -- runnable from there!" />
     <MESSAGE value="Added background image to main game" />
     <MESSAGE value="Update main menu image and visual style" />
@@ -460,19 +487,21 @@
     <MESSAGE value="Added bounds, so players cannot leave the play screen. Still a bit buggy." />
     <MESSAGE value="Fixed bug with screen bounds" />
     <MESSAGE value="Randomized enemy placement at top of screen" />
-    <option name="LAST_COMMIT_MESSAGE" value="Randomized enemy placement at top of screen" />
+    <MESSAGE value="Changed game title" />
+    <MESSAGE value="Stopped players from moving when they die; added bug splat" />
+    <option name="LAST_COMMIT_MESSAGE" value="Stopped players from moving when they die; added bug splat" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/Player1.java</url>
-          <line>44</line>
+          <line>46</line>
           <option name="timeStamp" value="3" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/GamePane.java</url>
-          <line>48</line>
+          <line>57</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
