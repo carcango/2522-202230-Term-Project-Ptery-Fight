@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="511dd55e-1055-4411-9c85-cfde8bbb9710" name="Changes" comment="Removed redundant abstract class">
+    <list default="true" id="511dd55e-1055-4411-9c85-cfde8bbb9710" name="Changes" comment="Updated code, removed redundant code from Enemy class">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/Enemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/Enemy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/GameEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/GameEngine.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -182,7 +181,7 @@
       <workItem from="1669776776916" duration="700000" />
       <workItem from="1669931084075" duration="14087000" />
       <workItem from="1669952760740" duration="4708000" />
-      <workItem from="1670014165860" duration="3869000" />
+      <workItem from="1670014165860" duration="3951000" />
     </task>
     <task id="LOCAL-00001" summary="Moved Resources folder to root">
       <created>1668209205820</created>
@@ -464,7 +463,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670018994231</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="Updated code, removed redundant code from Enemy class">
+      <created>1670020235457</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1670020235457</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -483,7 +489,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Shifted code" />
     <MESSAGE value="General code cleanup; removed unused files" />
     <MESSAGE value="Removed unnecessary spacing; removed unused imports" />
     <MESSAGE value="Added classes for potential refactoring" />
@@ -508,7 +513,8 @@
     <MESSAGE value="Added enemy blug splat giss" />
     <MESSAGE value="Fixed bug where dead enemies would prevent player from shooting through them" />
     <MESSAGE value="Removed redundant abstract class" />
-    <option name="LAST_COMMIT_MESSAGE" value="Removed redundant abstract class" />
+    <MESSAGE value="Updated code, removed redundant code from Enemy class" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated code, removed redundant code from Enemy class" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

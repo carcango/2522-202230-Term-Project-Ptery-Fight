@@ -2,7 +2,6 @@ package ca.bcit.comp2522.termproject.secretwonders;
 
 import javafx.geometry.Point2D;
 import javafx.scene.transform.Rotate;
-
 import java.util.Random;
 
 /**
@@ -118,7 +117,6 @@ public class Enemy extends Entity {
         if (isAlive) {
             rotateEnemy.setPivotX(getCenterX());
             rotateEnemy.setPivotY(getCenterY());
-
             Point2D pt1 = rotateEnemy.deltaTransform(initialDirection.multiply(ENEMY_MOVEMENT_SPEED));
             moveEnemy(pt1.getX(), pt1.getY());
         }
