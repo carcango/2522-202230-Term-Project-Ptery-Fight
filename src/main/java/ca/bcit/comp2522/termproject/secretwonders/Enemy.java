@@ -33,7 +33,7 @@ public class Enemy extends Entity {
      */
     public Enemy(final String spriteName, final double width, final double height) {
         super(spriteName, width, height);
-        isAlive = true;
+        isAlive         = true;
         hasNotHitPlayer = true;
     }
 
@@ -86,31 +86,30 @@ public class Enemy extends Entity {
     }
 
     /**
-     * Sets a boolean value to whether the enemy has hit the player (true) or not (false).
+     * Sets a boolean value to based on if the enemy has hit the player (true) or not (false).
      */
     public void setHasHitPlayer() {
         this.hasNotHitPlayer = false;
     }
 
     /**
-     * Returns if the enemy has hit the player or not.
+     * Returns true if the enemy has hit the player, else returns false.
      *
-     * @return whether the enemy has hit the player (true) or not (false)
+     * @return true if the enemy has hit the player, else false.
      */
     public boolean getHasNotHitPlayer() {
         return hasNotHitPlayer;
     }
 
     /**
-     * Sets the enemy's living status to false.
-     *
+     * Sets isAlive to false.
      */
     public void enemyIsDead() {
         this.isAlive = false;
     }
 
     /**
-     * Moves the enemy, if the enemy is alive.
+     * Moves the enemy, if the enemy is alive, else the enemy does not move.
      */
     @Override
     public void doMovement() {
