@@ -4,8 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="511dd55e-1055-4411-9c85-cfde8bbb9710" name="Changes" comment="Removed checkstyle errors from Driver class">
-      <change beforePath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/Enemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/Enemy.java" afterDir="false" />
+    <list default="true" id="511dd55e-1055-4411-9c85-cfde8bbb9710" name="Changes" comment="Removed redundant version">
+      <change beforePath="$PROJECT_DIR$/src/resources/fireblast.gif" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -181,7 +181,7 @@
       <workItem from="1669931084075" duration="14087000" />
       <workItem from="1669952760740" duration="4708000" />
       <workItem from="1670014165860" duration="4823000" />
-      <workItem from="1670028441349" duration="20000" />
+      <workItem from="1670028441349" duration="329000" />
     </task>
     <task id="LOCAL-00001" summary="Moved Resources folder to root">
       <created>1668209205820</created>
@@ -484,7 +484,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670021130043</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL-00044" summary="Removed redundant version">
+      <created>1670028472610</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1670028472610</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -503,7 +510,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Added classes for potential refactoring" />
     <MESSAGE value="Added classes for potential refactoring, cont." />
     <MESSAGE value="Removed unused classes; added refactored code" />
     <MESSAGE value="Updated refactored code" />
@@ -528,7 +534,8 @@
     <MESSAGE value="Updated code, removed redundant code from Enemy class" />
     <MESSAGE value="Removed redundant spacing" />
     <MESSAGE value="Removed checkstyle errors from Driver class" />
-    <option name="LAST_COMMIT_MESSAGE" value="Removed checkstyle errors from Driver class" />
+    <MESSAGE value="Removed redundant version" />
+    <option name="LAST_COMMIT_MESSAGE" value="Removed redundant version" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
