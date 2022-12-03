@@ -430,7 +430,7 @@ public class GameEngine {
                 add(entity);
             }
             entitiesToAdd.clear();
-            if (player1.getHealth() > 0 && player2.getHealth() > 0) {
+            if (player1.getHealth() > 0 || player2.getHealth() > 0) {
                 pane.survivalTimeLabel.setText(String.valueOf(
                         (System.currentTimeMillis() - gameStartTime) / ONE_SECOND_REPRESENTED_AS_MS));
             }
