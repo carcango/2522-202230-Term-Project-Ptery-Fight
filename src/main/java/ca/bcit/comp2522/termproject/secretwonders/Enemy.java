@@ -7,7 +7,7 @@ import java.util.Random;
 /**
  * Represents a game enemy.
  * @author Olafson & Mahannah
- * @version 2 December 2022
+ * @version December 2022
  */
 public class Enemy extends Entity {
 
