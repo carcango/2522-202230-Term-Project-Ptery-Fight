@@ -4,15 +4,18 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
-import java.net.URISyntaxException;
-
+/**
+ * Controls the buttons in the Driver Class.
+ * @author Olafson & Mahannah
+ * @version December 2022
+ */
 public class DriverController {
 
-    @FXML public Button startGameButton;
-    @FXML public Button quitGameButton;
+    @FXML private Button startGameButton;
+    @FXML private Button quitGameButton;
 
     @FXML
-    protected void onStartGameButtonClick() throws URISyntaxException {
+    private void onStartGameButtonClick() {
         GameEngine gameEngine = new GameEngine();
         Stage primaryScreen = new Stage();
         primaryScreen.setTitle("Bug Blaster");
@@ -21,7 +24,7 @@ public class DriverController {
     }
 
     @FXML
-    protected void onQuitGameButtonClick() {
+    private void onQuitGameButtonClick() {
         Stage stage = (Stage) quitGameButton.getScene().getWindow();
         stage.close();
     }
