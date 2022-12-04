@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="511dd55e-1055-4411-9c85-cfde8bbb9710" name="Changes" comment="Updated Javadocs, removed spacing in Enemy class">
+    <list default="true" id="511dd55e-1055-4411-9c85-cfde8bbb9710" name="Changes" comment="Added death sound effects for bugs">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/Enemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/Enemy.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/GameEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/GameEngine.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -185,7 +184,7 @@
       <workItem from="1670014165860" duration="4823000" />
       <workItem from="1670028441349" duration="20000" />
       <workItem from="1670183801825" duration="3493000" />
-      <workItem from="1670187745057" duration="545000" />
+      <workItem from="1670187745057" duration="1177000" />
     </task>
     <task id="LOCAL-00001" summary="Moved Resources folder to root">
       <created>1668209205820</created>
@@ -516,7 +515,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670187298935</updated>
     </task>
-    <option name="localTasksCounter" value="48" />
+    <task id="LOCAL-00048" summary="Added death sound effects for bugs">
+      <created>1670188585179</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1670188585179</updated>
+    </task>
+    <option name="localTasksCounter" value="49" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -535,7 +541,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Updated refactored code; deleted unused classes" />
     <MESSAGE value="Added abstract enemy class" />
     <MESSAGE value="Updated code in Enemy class" />
     <MESSAGE value="Added code to remove damage from player when in contact with enemy" />
@@ -560,7 +565,8 @@
     <MESSAGE value="Added Javadoc for fade-out method" />
     <MESSAGE value="Removed magic numbers, added final static variables" />
     <MESSAGE value="Updated Javadocs, removed spacing in Enemy class" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated Javadocs, removed spacing in Enemy class" />
+    <MESSAGE value="Added death sound effects for bugs" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added death sound effects for bugs" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
