@@ -24,7 +24,7 @@ public class GameEngine {
      */
     public enum Direction { UP, DOWN, LEFT, RIGHT }
 
-    private static final int ENEMY_CREATION_TIMER_IN_MS = 800;
+    private static final int ENEMY_CREATION_TIMER_IN_MS = 500;
     private static final int PLAYER_PROJECTILE_COOLDOWN_IN_MS = 500;
     private static final int ONE_SECOND_REPRESENTED_AS_MS = 1000;
 
@@ -269,7 +269,7 @@ public class GameEngine {
                 String enemySprite = "fly.gif";
                 Enemy enemy = null;
                 try {
-                    enemy = new Enemy(enemySprite, Constants.PLAYER_TWO_WIDTH, Constants.PLAYER_TWO_HEIGHT);
+                    enemy = new Enemy(enemySprite, Constants.PLAYER_ONE_WIDTH, Constants.PLAYER_ONE_HEIGHT);
                 } catch (URISyntaxException ex) {
                     throw new RuntimeException(ex);
                 }
