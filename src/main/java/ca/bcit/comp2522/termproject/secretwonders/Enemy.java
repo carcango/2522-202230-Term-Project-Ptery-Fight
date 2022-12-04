@@ -14,15 +14,19 @@ import java.util.Random;
  */
 public class Enemy extends Entity {
 
-    private static final double MIN_DEGREE_ENEMY_FACES = 150;
-    private static final double MAX_DEGREE_ENEMY_FACES = 220;
-    private static final int    ENEMY_MOVEMENT_SPEED   = 2;
-    private static final int    TOP_OF_SCREEN          = 0;
-    private static final int    ATTACK_DAMAGE          = 20;
+    private static final double MIN_DEGREE_ENEMY_FACES        = 150;
+    private static final double MAX_DEGREE_ENEMY_FACES        = 220;
+    private static final double DEAD_ENEMY_INITIAL_FADE_VALUE = 1.0;
+    private static final double DEAD_ENEMY_FADE_DECREMENT_AMT = 0.2;
+    private static final double DEAD_ENEMY_FINAL_FADE_VALUE   = 0.0;
+    private static final long   DEAD_ENEMY_FADEOUT_TIME_IN_MS = 5000;
+    private static final int    ENEMY_MOVEMENT_SPEED          = 2;
+    private static final int    TOP_OF_SCREEN                 = 0;
+    private static final int    ATTACK_DAMAGE                 = 20;
 
-    private final Random        random                 = new Random();
-    private final Rotate        rotateEnemy            = new Rotate();
-    private final Point2D       initialDirection       = new Point2D(0, -1);
+    private final Random        random           = new Random();
+    private final Rotate        rotateEnemy      = new Rotate();
+    private final Point2D       initialDirection = new Point2D(0, -1);
 
     private boolean             isAlive;
     private boolean             hasNotHitPlayer;
@@ -83,10 +87,10 @@ public class Enemy extends Entity {
      * Fades out the enemy when enemy dies.
      */
     public void fadeOutEnemyWhenDead() {
-        FadeTransition fadeOutEnemy = new FadeTransition(Duration.millis(5000), this);
-        fadeOutEnemy.setByValue(1.0);
-        fadeOutEnemy.setToValue(0);
-        fadeOutEnemy.setByValue(0.2);
+        FadeTransition fadeOutEnemy = new FadeTransition(Duration.millis(DEAD_ENEMY_FADEOUT_TIME_IN_MS), this);
+        fadeOutEnemy.setByValue(DEAD_ENEMY_INITIAL_FADE_VALUE);
+        fadeOutEnemy.setToValue(DEAD_ENEMY_FINAL_FADE_VALUE);
+        fadeOutEnemy.setByValue(DEAD_ENEMY_FADE_DECREMENT_AMT);
         fadeOutEnemy.play();
     }
 
