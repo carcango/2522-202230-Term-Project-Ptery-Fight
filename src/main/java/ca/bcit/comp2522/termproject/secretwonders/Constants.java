@@ -16,7 +16,7 @@ public class Constants {
      */
     public static final double SCREEN_WIDTH = 640;
     /**
-     * Height of screen
+     * Height of screen.
      */
     public static final double SCREEN_HEIGHT = 640;
     /**
@@ -89,7 +89,7 @@ public class Constants {
 
     //Player Two - Dragonfly Projectiles--------------------------------------------------------------------------------
     /**
-     * projectile two width
+     * projectile two width.
      */
     public static final double PROJECTILE_PLAYER_TWO_WIDTH = 42;
     /**

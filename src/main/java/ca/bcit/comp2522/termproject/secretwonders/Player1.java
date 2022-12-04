@@ -37,6 +37,9 @@ public class Player1 extends Character {
      * monitors if the flag for going backward is on.
      */
     protected boolean goBackward = false;
+    /**
+     * initial orientation of Player1.
+     */
     Point2D initialDirection = new Point2D(0, -1);
 
     private boolean isAlive;
@@ -75,6 +78,11 @@ public class Player1 extends Character {
             case RIGHT -> turnRight = true;
         }
     }
+
+    /**
+     * sets the life status of player.
+     * @param newStatus true or false.
+     */
     public void setIsAlive(final boolean newStatus) {
         this.isAlive = newStatus;
     }

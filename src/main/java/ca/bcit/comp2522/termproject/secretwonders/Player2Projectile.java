@@ -18,7 +18,7 @@ public class Player2Projectile extends Projectile {
      * @param originY starting Y location.
      * @param angle direction projectile is facing.
      */
-    public Player2Projectile(double originX, double originY, double angle) {
+    public Player2Projectile(final double originX, final double originY, final double angle) {
         super("smokeyFireball.gif", Constants.PROJECTILE_PLAYER_TWO_WIDTH,
                 Constants.PROJECTILE_PLAYER_TWO_HEIGHT, Constants.PROJECTILE_PLAYER_DMG,
                 originX - (Constants.PROJECTILE_PLAYER_TWO_WIDTH / 2),

@@ -26,11 +26,11 @@ public class GamePane extends Pane {
     /**
      * Health bar of player 1.
      */
-    private Rectangle healthBar1;
+    private final Rectangle healthBar1;
     /**
      * health bar of player 2.
      */
-    private Rectangle healthBar2;
+    private final Rectangle healthBar2;
 
     /**
      * scorecard Rectangle.
@@ -40,8 +40,13 @@ public class GamePane extends Pane {
      * shows how long the players have survived.
      */
     Label survivalTimeLabel = new Label("00:00:00");
-
+    /**
+     * honey bee score label.
+     */
     Label playerOneScoreLabel = new Label("Honeybee Score: ");
+    /**
+     * dragonfly score label.
+     */
     Label playerTwoScoreLabel = new Label("DragonFly Score: ");
 
     /**
@@ -66,7 +71,8 @@ public class GamePane extends Pane {
         healthBar1.setY(0);
         healthBar2 = new Rectangle(Constants.SCREEN_WIDTH, Constants.HEALTH_BAR_SIZE, Color.RED);
         healthBar2.setX(0);
-        healthBar2.setY(630);
+        healthBar2.setY(
+                630);
 
         /* apply settings to score labels */
         playerOneScoreLabel.setTextFill(Color.WHITE);

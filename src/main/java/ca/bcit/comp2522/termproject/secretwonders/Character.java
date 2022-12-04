@@ -19,32 +19,53 @@ public abstract class Character extends Entity {
      * Max health of the Character.
      */
     private int maxHealth;
-    /**
-     * A HealthMonitor object that graphically shows the characters current health.
-     */
-    private HealthMonitor healthMonitor;
 
+    /**
+     * Constructor.
+     */
     public Character() { }
 
+    /**
+     * Constructs Character.
+     * @param spriteName The String name for image.
+     * @param width width of character.
+     * @param height length of character.
+     * @param maxHealth Health of character.
+     */
     public Character(final String spriteName, final double width, final double height, final int maxHealth) {
         super(spriteName, width, height);
         this.maxHealth = maxHealth;
         healthProperty.set(maxHealth);
-        healthMonitor = new HealthMonitor(this);
     }
 
+    /**
+     * gets max health.
+     * @return int max health.
+     */
     public int getMaxHealth() {
         return maxHealth;
     }
 
+    /**
+     * get current health.
+     * @return simple Integer Property.
+     */
     public int getHealth() {
         return healthProperty.get();
     }
 
-    public void subtractHealth(int health) {
+    /**
+     * decrements health of character.
+     * @param health int amount of health.
+     */
+    public void subtractHealth(final int health) {
         healthProperty.set(healthProperty.get() - health);
     }
 
+    /**
+     * returns health property.
+     * @return amount of health.
+     */
     public ReadOnlyIntegerProperty healthPropertyUnmodifiable() {
         return healthProperty;
     }

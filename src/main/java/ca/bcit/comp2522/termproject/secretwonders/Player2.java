@@ -5,6 +5,7 @@ import javafx.scene.transform.Rotate;
 /**
  * Player Two Class.
  * @author Olafson and Mahannah.
+ * @version 2022
  * This is the Dragonfly character that is controlled with the WASD keys and Space Bar.
  */
 public class Player2 extends Character {
@@ -62,23 +63,19 @@ public class Player2 extends Character {
      * sets the movement booleans to true.
      * @param dir Up, down, left or right.
      */
-    public void startMovement(GameEngine.Direction dir) {
+    public void startMovement(final GameEngine.Direction dir) {
         switch (dir) {
-            case UP:
-                goForward = true; break;
-            case DOWN:
-                goBackward = true; break;
-            case LEFT:
-                turnLeft = true; break;
-            case RIGHT:
-                turnRight = true; break;
+            case UP -> goForward = true;
+            case DOWN -> goBackward = true;
+            case LEFT -> turnLeft = true;
+            case RIGHT -> turnRight = true;
         }
     }
     /**
      * stops player movements when key press has been released.
      * @param dir UP, DOWN, LEFT, or RIGHT.
      */
-    public void stopMovement(GameEngine.Direction dir) {
+    public void stopMovement(final GameEngine.Direction dir) {
         switch (dir) {
             case UP -> goForward = false;
             case DOWN -> goBackward = false;
@@ -119,6 +116,10 @@ public class Player2 extends Character {
         }
     }
 
+    /**
+     * sets life value of player.
+     * @param newStatus true or false.
+     */
     public void setIsAlive(final boolean newStatus) {
         this.isAlive = newStatus;
     }

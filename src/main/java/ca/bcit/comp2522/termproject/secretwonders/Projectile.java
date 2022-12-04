@@ -48,7 +48,7 @@ public class Projectile extends Entity {
      * @param height double height of image.
      * @param damage int damage projectile does.
      */
-    public Projectile(String spriteName, double width, double height, int damage) {
+    public Projectile(final String spriteName, final double width, final double height, final int damage) {
         super(spriteName, width, height);
         this.damage = damage;
     }
@@ -65,8 +65,9 @@ public class Projectile extends Entity {
      * @param deltaY Speed of projectile on Y.
      * @param angle what direction it's facing.
      */
-    public Projectile(String spriteName, double width, double height, int damage,
-                      double originX, double originY, double deltaX, double deltaY, double angle) {
+    public Projectile(final String spriteName, final double width, final double height, final int damage,
+                      final double originX, final double originY, final double deltaX,
+                      final double deltaY, final double angle) {
         super(spriteName, width, height);
         this.damage = damage;
         this.deltaX = deltaX;

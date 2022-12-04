@@ -20,7 +20,7 @@ public class Player1Projectile extends Projectile {
      * @param originY starting Y location.
      * @param angle direction projectile is facing.
      */
-    public Player1Projectile(double originX, double originY, double angle) {
+    public Player1Projectile(final double originX, final double originY, final double angle) {
         super("short_spear.png", Constants.PROJECTILE_PLAYER_ONE_WIDTH,
                 Constants.PROJECTILE_PLAYER_ONE_HEIGHT,
                 Constants.PROJECTILE_PLAYER_DMG,

@@ -235,6 +235,11 @@ public class GameEngine {
     public Scene getScene() {
         return scene;
     }
+
+    /**
+     * sets background music.
+     * @throws URISyntaxException if media not found.
+     */
     public void music() throws URISyntaxException {
         themeSong = new MediaPlayer(media);
         themeSong.setAutoPlay(true);

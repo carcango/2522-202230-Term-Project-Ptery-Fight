@@ -12,11 +12,11 @@ public abstract class Entity extends ImageView {
     /**
      * default width of entity, should be irrelevant unless not overridden.
      */
-    protected double width = 16;
+    protected double width;
     /**
      * default height of entity, should be irrelevant unless not overridden.
      */
-    protected double height = 16;
+    protected double height;
     /**
      * default image of entity, should be irrelevant unless not overridden.
      */
@@ -55,6 +55,9 @@ public abstract class Entity extends ImageView {
         return width;
     }
 
+    /**
+     * sets width to zero.
+     */
     public void setWidthToZero() {
         this.width = 0;
     }
@@ -67,10 +70,17 @@ public abstract class Entity extends ImageView {
         return height;
     }
 
+    /**
+     * Sets the height to zero.
+     */
     public void setHeightToZero() {
         this.height = 0;
     }
 
+    /**
+     * sets the sprite of entity.
+     * @param newSprite Image for new sprite.
+     */
     public void setSprite(final Image newSprite) {
         this.setImage(newSprite);
     }
