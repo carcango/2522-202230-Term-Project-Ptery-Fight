@@ -79,6 +79,9 @@ public class Enemy extends Entity {
         setEnemyAngle();
     }
 
+    /**
+     * Fades out the enemy when enemy dies.
+     */
     public void fadeOutEnemyWhenDead() {
         FadeTransition fadeOutEnemy = new FadeTransition(Duration.millis(5000), this);
         fadeOutEnemy.setByValue(1.0);
