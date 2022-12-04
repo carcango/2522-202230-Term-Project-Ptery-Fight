@@ -4,8 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="511dd55e-1055-4411-9c85-cfde8bbb9710" name="Changes" comment="Increased bug instantiation speed, made bugs smaller">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="511dd55e-1055-4411-9c85-cfde8bbb9710" name="Changes" comment="Increased instantiation of enemies">
       <change beforePath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/GameEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ca/bcit/comp2522/termproject/secretwonders/GameEngine.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -184,14 +183,7 @@
       <workItem from="1670014165860" duration="4823000" />
       <workItem from="1670028441349" duration="20000" />
       <workItem from="1670183801825" duration="3493000" />
-      <workItem from="1670187745057" duration="1332000" />
-    </task>
-    <task id="LOCAL-00001" summary="Moved Resources folder to root">
-      <created>1668209205820</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1668209205820</updated>
+      <workItem from="1670187745057" duration="1421000" />
     </task>
     <task id="LOCAL-00002" summary="Created menu with buttons and basic button-push events">
       <created>1668213423002</created>
@@ -529,7 +521,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670188949975</updated>
     </task>
-    <option name="localTasksCounter" value="50" />
+    <task id="LOCAL-00050" summary="Increased instantiation of enemies">
+      <created>1670189113494</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1670189113495</updated>
+    </task>
+    <option name="localTasksCounter" value="51" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -548,7 +547,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Updated code in Enemy class" />
     <MESSAGE value="Added code to remove damage from player when in contact with enemy" />
     <MESSAGE value="Fixed bugs (ha!) with enemy hitting player" />
     <MESSAGE value="Removed redundant code, comments" />
@@ -573,7 +571,8 @@
     <MESSAGE value="Updated Javadocs, removed spacing in Enemy class" />
     <MESSAGE value="Added death sound effects for bugs" />
     <MESSAGE value="Increased bug instantiation speed, made bugs smaller" />
-    <option name="LAST_COMMIT_MESSAGE" value="Increased bug instantiation speed, made bugs smaller" />
+    <MESSAGE value="Increased instantiation of enemies" />
+    <option name="LAST_COMMIT_MESSAGE" value="Increased instantiation of enemies" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
