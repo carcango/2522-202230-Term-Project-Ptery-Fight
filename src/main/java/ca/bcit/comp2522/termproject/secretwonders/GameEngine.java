@@ -268,7 +268,12 @@ public class GameEngine {
             // Every second, create and add enemy to the game scene.
             if (System.currentTimeMillis() - lastEnemyAddedToGame >= ENEMY_CREATION_TIMER_IN_MS) {
                 String enemySprite = "fly.gif";
-                Enemy enemy = new Enemy(enemySprite, Constants.PLAYER_ONE_WIDTH, Constants.PLAYER_ONE_HEIGHT);
+                Enemy enemy = null;
+                try {
+                    enemy = new Enemy(enemySprite, Constants.PLAYER_ONE_WIDTH, Constants.PLAYER_ONE_HEIGHT);
+                } catch (URISyntaxException ex) {
+                    throw new RuntimeException(ex);
+                }
 
                 enemies.add(enemy);
                 entities.add(enemy);
@@ -359,7 +364,7 @@ public class GameEngine {
                     enemyUnit.setImage(deadEnemySprite);
 
                     enemyUnit.fadeOutEnemyWhenDead();
-                    enemyUnit.makeDeathSound();
+                    enemyUnit.makeEnemyDeathSound();
                 }
                 // Checks if enemy hits player 2; if so, character is damaged and enemy dies.
                 if (enemyUnit.intersects(player2.getX(), player2.getY(), player2.getWidth(), player2.getHeight())
@@ -377,7 +382,7 @@ public class GameEngine {
                     enemyUnit.setImage(deadEnemySprite);
 
                     enemyUnit.fadeOutEnemyWhenDead();
-                    enemyUnit.makeDeathSound();
+                    enemyUnit.makeEnemyDeathSound();
                 }
                 // Check if enemy hit by player 2 projectile
                 for (Projectile projectile : projectiles) {
@@ -399,7 +404,7 @@ public class GameEngine {
                             queueRemoval(projectile);
 
                             enemyUnit.fadeOutEnemyWhenDead();
-                            enemyUnit.makeDeathSound();
+                            enemyUnit.makeEnemyDeathSound();
 
                             playerOneScore++;
                             pane.playerOneScoreLabel.setText("Honeybee Score: " + playerOneScore);
@@ -421,7 +426,7 @@ public class GameEngine {
                             enemyUnit.setImage(deadEnemySprite);
 
                             enemyUnit.fadeOutEnemyWhenDead();
-                            enemyUnit.makeDeathSound();
+                            enemyUnit.makeEnemyDeathSound();
 
                             queueRemoval(projectile);
 

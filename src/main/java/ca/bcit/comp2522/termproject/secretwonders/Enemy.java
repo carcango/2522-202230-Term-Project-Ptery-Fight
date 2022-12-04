@@ -2,8 +2,12 @@ package ca.bcit.comp2522.termproject.secretwonders;
 
 import javafx.animation.FadeTransition;
 import javafx.geometry.Point2D;
+import javafx.scene.media.AudioClip;
 import javafx.scene.transform.Rotate;
 import javafx.util.Duration;
+
+import java.net.URISyntaxException;
+import java.util.Objects;
 import java.util.Random;
 
 /**
@@ -24,6 +28,7 @@ public class Enemy extends Entity {
     private static final int TOP_OF_SCREEN = 0;
     private static final int ATTACK_DAMAGE = 20;
 
+    private final AudioClip enemyDeathSound = new AudioClip(Objects.requireNonNull(getClass().getResource("/dead_enemy_sound.aiff")).toExternalForm());
     private final Random random = new Random();
     private final Rotate rotateEnemy = new Rotate();
     private final Point2D initialDirection = new Point2D(0, -1);
@@ -38,7 +43,7 @@ public class Enemy extends Entity {
      * @param width      the width of the enemy's sprite image (int)
      * @param height     the height of the enemy's sprite image (int)
      */
-    public Enemy(final String spriteName, final double width, final double height) {
+    public Enemy(final String spriteName, final double width, final double height) throws URISyntaxException {
         super(spriteName, width, height);
         isAlive = true;
         hasNotHitPlayer = true;
@@ -92,6 +97,10 @@ public class Enemy extends Entity {
         fadeOutEnemy.setToValue(DEAD_ENEMY_FINAL_FADE_VALUE);
         fadeOutEnemy.setByValue(DEAD_ENEMY_FADE_DECREMENT_AMT);
         fadeOutEnemy.play();
+    }
+
+    public void makeEnemyDeathSound() {
+        enemyDeathSound.play();
     }
 
     /**
