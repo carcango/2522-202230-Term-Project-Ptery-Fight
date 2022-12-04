@@ -1,7 +1,10 @@
 package ca.bcit.comp2522.termproject.secretwonders;
 
+import javafx.animation.FadeTransition;
 import javafx.geometry.Point2D;
 import javafx.scene.transform.Rotate;
+import javafx.util.Duration;
+
 import java.util.Random;
 
 /**
@@ -74,6 +77,14 @@ public class Enemy extends Entity {
     public void makeEnemyAppear() {
         setInitialPosition();
         setEnemyAngle();
+    }
+
+    public void fadeOutEnemyWhenDead() {
+        FadeTransition fadeOutEnemy = new FadeTransition(Duration.millis(5000), this);
+        fadeOutEnemy.setByValue(1.0);
+        fadeOutEnemy.setToValue(0);
+        fadeOutEnemy.setByValue(0.2);
+        fadeOutEnemy.play();
     }
 
     /**
