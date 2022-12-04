@@ -357,7 +357,9 @@ public class GameEngine {
 
                     Image deadEnemySprite = new Image("dead_fly.png");
                     enemyUnit.setImage(deadEnemySprite);
+
                     enemyUnit.fadeOutEnemyWhenDead();
+                    enemyUnit.makeDeathSound();
                 }
                 // Checks if enemy hits player 2; if so, character is damaged and enemy dies.
                 if (enemyUnit.intersects(player2.getX(), player2.getY(), player2.getWidth(), player2.getHeight())
@@ -373,7 +375,9 @@ public class GameEngine {
 
                     Image deadEnemySprite = new Image("dead_fly.png");
                     enemyUnit.setImage(deadEnemySprite);
+
                     enemyUnit.fadeOutEnemyWhenDead();
+                    enemyUnit.makeDeathSound();
                 }
                 // Check if enemy hit by player 2 projectile
                 for (Projectile projectile : projectiles) {
@@ -391,9 +395,11 @@ public class GameEngine {
 
                             Image deadEnemySprite = new Image("dead_fly.png");
                             enemyUnit.setImage(deadEnemySprite);
-                            enemyUnit.fadeOutEnemyWhenDead();
 
                             queueRemoval(projectile);
+
+                            enemyUnit.fadeOutEnemyWhenDead();
+                            enemyUnit.makeDeathSound();
 
                             playerOneScore++;
                             pane.playerOneScoreLabel.setText("Honeybee Score: " + playerOneScore);
@@ -413,7 +419,9 @@ public class GameEngine {
 
                             Image deadEnemySprite = new Image("dead_fly.png");
                             enemyUnit.setImage(deadEnemySprite);
+
                             enemyUnit.fadeOutEnemyWhenDead();
+                            enemyUnit.makeDeathSound();
 
                             queueRemoval(projectile);
 

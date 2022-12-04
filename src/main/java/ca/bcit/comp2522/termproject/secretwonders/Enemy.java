@@ -4,43 +4,43 @@ import javafx.animation.FadeTransition;
 import javafx.geometry.Point2D;
 import javafx.scene.transform.Rotate;
 import javafx.util.Duration;
-
 import java.util.Random;
 
 /**
  * Represents a game enemy.
+ *
  * @author Olafson & Mahannah
  * @version December 2022
  */
 public class Enemy extends Entity {
 
-    private static final double MIN_DEGREE_ENEMY_FACES        = 150;
-    private static final double MAX_DEGREE_ENEMY_FACES        = 220;
+    private static final double MIN_DEGREE_ENEMY_FACES = 150;
+    private static final double MAX_DEGREE_ENEMY_FACES = 220;
     private static final double DEAD_ENEMY_INITIAL_FADE_VALUE = 1.0;
     private static final double DEAD_ENEMY_FADE_DECREMENT_AMT = 0.2;
-    private static final double DEAD_ENEMY_FINAL_FADE_VALUE   = 0.0;
-    private static final long   DEAD_ENEMY_FADEOUT_TIME_IN_MS = 5000;
-    private static final int    ENEMY_MOVEMENT_SPEED          = 2;
-    private static final int    TOP_OF_SCREEN                 = 0;
-    private static final int    ATTACK_DAMAGE                 = 20;
+    private static final double DEAD_ENEMY_FINAL_FADE_VALUE = 0.0;
+    private static final long DEAD_ENEMY_FADEOUT_TIME_IN_MS = 5000;
+    private static final int ENEMY_MOVEMENT_SPEED = 2;
+    private static final int TOP_OF_SCREEN = 0;
+    private static final int ATTACK_DAMAGE = 20;
 
-    private final Random        random           = new Random();
-    private final Rotate        rotateEnemy      = new Rotate();
-    private final Point2D       initialDirection = new Point2D(0, -1);
+    private final Random random = new Random();
+    private final Rotate rotateEnemy = new Rotate();
+    private final Point2D initialDirection = new Point2D(0, -1);
 
-    private boolean             isAlive;
-    private boolean             hasNotHitPlayer;
+    private boolean isAlive;
+    private boolean hasNotHitPlayer;
 
     /**
      * Creates an object of type Enemy.
      *
      * @param spriteName the name of file for the enemy's spite (String)
-     * @param width the width of the enemy's sprite image (int)
-     * @param height the height of the enemy's sprite image (int)
+     * @param width      the width of the enemy's sprite image (int)
+     * @param height     the height of the enemy's sprite image (int)
      */
     public Enemy(final String spriteName, final double width, final double height) {
         super(spriteName, width, height);
-        isAlive         = true;
+        isAlive = true;
         hasNotHitPlayer = true;
     }
 
@@ -84,7 +84,7 @@ public class Enemy extends Entity {
     }
 
     /**
-     * Fades out the enemy when enemy dies.
+     * Fades out enemy when enemy dies.
      */
     public void fadeOutEnemyWhenDead() {
         FadeTransition fadeOutEnemy = new FadeTransition(Duration.millis(DEAD_ENEMY_FADEOUT_TIME_IN_MS), this);
